@@ -468,6 +468,26 @@ con soli dati aperti, si passa a EOX cambiando una variabile d'ambiente e accett
 dettaglio. Il self-hosting invece **non conviene oggi**: costerebbe lavoro e darebbe comunque immagini
 a 10 metri.
 
+**FATTO.** La mappa è passata ad ArcGIS Location Platform ed è **online**. Come si è arrivati
+all'indirizzo giusto, perché non era ovvio:
+
+1. Il servizio "Static Basemap Tiles" **non espone le immagini satellitari**: espone solo lo strato
+   delle etichette (`arcgis/imagery/labels`). La base satellitare non c'è.
+2. La base si ottiene dal servizio **Basemap Styles**, chiedendo lo stile `arcgis/imagery` in JSON:
+   dentro quel file le sorgenti sono **due e separate** — una raster con le immagini, una vettoriale
+   con strade, confini **ed etichette**.
+3. Si usa **solo la prima**. Così la mappa resta senza i nomi dei paesi, che altrimenti risolvono il
+   gioco. Verificato scaricando e guardando le tessere: satellite puro, nessuna etichetta.
+4. Le tessere sono **256×256**, quindi entrano in Leaflet senza modifiche.
+
+Vantaggio collaterale: sono le **stesse identiche immagini** di prima (i file restituiti sono
+identici), quindi l'aspetto del gioco non cambia — cambia solo che ora l'uso è autorizzato e
+fatturato correttamente.
+
+**Da fare a mano, una volta:** limitare il token al dominio `intzetta.top` dalla console ArcGIS
+(restrizione per referrer). Il token viaggia nel JavaScript inviato al browser — è inevitabile per una
+mappa lato client — e senza restrizione chiunque potrebbe usarlo a tue spese.
+
 **Quanto costa, in pratica.** Il gioco carica 100-250 tessere per partita (8 round, con la cache del
 browser; le stime ufficiali dei fornitori parlano di 10-20 tessere per vista) 🔴. A ~150 tessere per
 partita:
@@ -569,14 +589,13 @@ Stato attuale: il repository è pubblico, il README dichiarava MIT, `package.jso
 - [ ] **Deliverable:** il sito ha qualcosa da indicizzare oltre al gioco ✅ *raggiunto: 6 pagine di contenuto*
 
 **Settimane 11-13 — I primi soldi**
-- [ ] Sostituire la sorgente delle mappe con una autorizzata per uso commerciale (vedi §7.3: la
-      correzione è una variabile d'ambiente, il codice è già predisposto)
-- [ ] Chiedere a Esri conferma scritta che il piano gratuito di ArcGIS Location Platform è
-      utilizzabile commercialmente
-- [ ] Punteggi validati lato server
+- [x] Sostituita la sorgente delle mappe con una autorizzata per uso commerciale
+      (ArcGIS Location Platform: **fatto e online**)
+- [x] Regole Firestore validate con l'emulatore (16 verifiche) e applicate in produzione
+- [ ] Punteggi validati lato server (Cloud Functions)
 - [ ] "Togli la pubblicità" a 2,99 €
 - [ ] Preparare la scheda prodotto B2B di una pagina, con i numeri veri
-- [ ] **Deliverable:** il prodotto è vendibile
+- [ ] **Deliverable:** il prodotto è vendibile — *manca la parte pagamenti*
 
 **Settimana 14 — Vendita**
 - [ ] Contattare **1 GAL o unione di comuni** (email pronta nel report B2B)

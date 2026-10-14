@@ -13,16 +13,17 @@ fino a 40.000 punti.
 | | |
 |---|---|
 | Sito in produzione | [intzetta.top](https://intzetta.top/) (Firebase Hosting, progetto `insetta-b078c`) |
-| Account registrati totali | **24**, di cui 21 hanno giocato almeno una partita |
+| Versione online | **aggiornata**: sfida giornaliera, condivisione, 6 pagine di contenuto, misurazione, mappa con licenza |
+| Account registrati totali | **24**, di cui 21 hanno giocato almeno una partita (dati storici, prima dell'aggiornamento) |
 | Prime iscrizioni | 3 maggio 2025 (16 dei 24 account nel primo mese) |
-| Ultima attività registrata | 8 maggio 2026 |
-| Indicizzazione sui motori di ricerca | **assente** (il sito non compare cercando "intzetta") |
-| Misurazione del traffico | **assente** (nessuna analytics attiva) |
+| Ultima attività registrata prima dell'aggiornamento | 8 maggio 2026 |
+| Indicizzazione sui motori di ricerca | **da costruire**: ora ci sono robots.txt, sitemap e 6 pagine di contenuto, ma i motori di ricerca devono ancora passare |
+| Misurazione del traffico | **attiva** (Umami: software libero, senza cookie, nessun banner) |
 | Ricavi | **nessuno** (nessuna pubblicità, nessun prodotto a pagamento) |
 
-Il dato di "account registrati" non conta chi gioca senza fare l'accesso: oggi non è possibile sapere
-quante persone aprono il gioco, perché non c'è nessuno strumento di misura. È il primo problema da
-risolvere, prima di qualunque ragionamento sui ricavi.
+Il dato di "account registrati" non conta chi gioca senza fare l'accesso: prima non c'era nessuno
+strumento di misura, **ora sì**. Le prossime settimane diranno finalmente quante persone aprono il
+gioco, quante partite finiscono e quanti tornano il giorno dopo.
 
 Il piano di crescita e monetizzazione è in **[docs/piano-crescita-e-ricavi.md](docs/piano-crescita-e-ricavi.md)**.
 
@@ -139,12 +140,14 @@ intzetta/
 
 ### Deploy
 ```bash
-npm test               # 71 verifiche: date, determinismo, punteggi, serie, condivisione
-npm run build          # genera dist/
+npm test               # 135 verifiche: date, determinismo, punteggi, serie, condivisione, misurazione
+npm run build          # genera dist/ e le pagine dei comuni
 firebase deploy --only hosting
 ```
-Per pubblicare anche le regole del database:
+Le regole del database sono invece da applicare **solo dopo averle provate** sull'emulatore:
 ```bash
+firebase emulators:start --only firestore        # in un terminale
+node scripts/test-firestore-rules.mjs            # 16 verifiche sulle regole
 firebase deploy --only firestore:rules
 ```
 
@@ -152,7 +155,7 @@ firebase deploy --only firestore:rules
 ```bash
 npm test
 ```
-**119 verifiche** in cinque suite:
+**135 verifiche** in cinque suite:
 - **sfida giornaliera** (53): stessa data = stessa partita, nessun comune ripetuto su 400 giorni
   consecutivi, punteggi ai valori limite, cambio di giorno compresi i giorni di 23 e 25 ore per il
   cambio d'ora, serie che cresce e scade, testo di condivisione senza spoiler, comportamento senza
@@ -165,6 +168,11 @@ npm test
   semplicemente non misura;
 - **partita completa** (18): dalla selezione dei comuni al risultato salvato, alla serie, al testo
   condiviso finale.
+
+E a parte, perché richiede l'emulatore: **regole Firestore** (16). Verificano che la classifica resti
+leggibile senza accesso, che nessuno possa scrivere nel profilo di un altro, che il punteggio non esca
+dai limiti, e — il caso che nella prima stesura falliva — che il **primo salvataggio di punteggio di
+chi si registra via email** funzioni, perché il suo profilo nasce senza il campo `bestScore`.
 
 ### Misurazione — attiva: Umami
 **Deciso e configurato: [Umami](https://umami.is)**, software **open source** (MIT), **senza cookie**
