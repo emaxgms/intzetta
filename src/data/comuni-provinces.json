@@ -1,0 +1,1891 @@
+{
+  "_fonte": "Elenco dei comuni italiani con provincia e sigla, derivato dai dati ISTAT (CC BY 3.0 IT). Generato da scripts/fetch-comuni-provinces.mjs",
+  "_aggiornato": "2026-10-14",
+  "comuni": {
+    "Santu Diadòru/San Teodoro": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090092"
+    },
+    "Domus De Maria": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111015"
+    },
+    "Teulada": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111089"
+    },
+    "Pula": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092050"
+    },
+    "Arresi/Sant'Anna Arresi": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111070"
+    },
+    "Sarrocu/Sarroch": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092066"
+    },
+    "Santu Antiogu/Sant'Antioco": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111071"
+    },
+    "Masainas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111040"
+    },
+    "Piscinas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111056"
+    },
+    "Giba": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111028"
+    },
+    "Santadi": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111068"
+    },
+    "Santu Giuanni Suèrgiu/San Giovanni Suergiu": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111063"
+    },
+    "Santu Perdu/Villa San Pietro": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092099"
+    },
+    "Tratalias": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111090"
+    },
+    "Sa Baronia/Villaperuccio": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111102"
+    },
+    "Assèmini/Assemini": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092003"
+    },
+    "Câdesédda/Calasetta": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111008"
+    },
+    "Cabuderra/Capoterra": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092011"
+    },
+    "Nuxis": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111049"
+    },
+    "Crabonaxa/Villasimius": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111105"
+    },
+    "Perdaxius": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111054"
+    },
+    "Sìnnia/Sinnai": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092080"
+    },
+    "Carbonia": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111009"
+    },
+    "Narcau/Narcao": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111044"
+    },
+    "Maracalagonis": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092037"
+    },
+    "Portescusi/Portoscuso": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111057"
+    },
+    "U Pàize/Carloforte": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111010"
+    },
+    "Uda/Uta": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092090"
+    },
+    "Casteddu/Cagliari": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092009"
+    },
+    "Quartu Sant'Aleni/Quartu Sant'Elena": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092051"
+    },
+    "Igrèsias/Iglesias": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111035"
+    },
+    "Bidda Matzràxia/Villamassargia": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111098"
+    },
+    "Deximumannu/Decimomannu": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092015"
+    },
+    "Quartùcciu/Quartucciu": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092105"
+    },
+    "Paùli/Monserrato": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092109"
+    },
+    "Gonnesa": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111030"
+    },
+    "Su Masu/Elmas": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092108"
+    },
+    "Sestu": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092074"
+    },
+    "Ceraxus/Selargius": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092068"
+    },
+    "Biddaspitziosa/Villaspeciosa": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111107"
+    },
+    "Sètimu/Settimo San Pietro": {
+      "provincia": "Cagliari",
+      "sigla": "CA",
+      "codiceIstat": "092075"
+    },
+    "Musei": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111043"
+    },
+    "Domunoas/Domusnovas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111016"
+    },
+    "Santu Idu/San Vito": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111066"
+    },
+    "Deximeputzu/Decimoputzu": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111013"
+    },
+    "Santu Sparau/San Sperate": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111065"
+    },
+    "Serdiana": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111076"
+    },
+    "Solèminis/Soleminis": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111087"
+    },
+    "Biddesorris/Villasor": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111106"
+    },
+    "Muristenis/Monastir": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111041"
+    },
+    "Biddaramosa/Vallermosa": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111095"
+    },
+    "Patiolla/Dolianova": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111014"
+    },
+    "Bugerru/Buggerru": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111006"
+    },
+    "Frùmini Majori/Fluminimaggiore": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111021"
+    },
+    "Biddacidru/Villacidro": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111096"
+    },
+    "Ùssana/Ussana": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111093"
+    },
+    "Brucei/Burcei": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111007"
+    },
+    "Nuràminis/Nuraminis": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111047"
+    },
+    "Serramanna": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111077"
+    },
+    "Biddesatu/Villasalto": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111104"
+    },
+    "Gonnos/Gonnosfanadiga": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111031"
+    },
+    "Biddeputzi/Villaputzu": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111103"
+    },
+    "Donori": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111017"
+    },
+    "Samatzai": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111060"
+    },
+    "Pauli Gerrei/San Nicolò Gerrei": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111064"
+    },
+    "Serrenti": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111078"
+    },
+    "Sant'Andrea Frius": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111069"
+    },
+    "Barrali": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111004"
+    },
+    "Arbus": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111001"
+    },
+    "Samassi": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111059"
+    },
+    "Seddori/Sanluri": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111067"
+    },
+    "Ortacesus": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111051"
+    },
+    "Pramantellu/Pimentel": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111055"
+    },
+    "Senorbì": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111075"
+    },
+    "Santu 'Asili 'e Monti/San Basilio": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111061"
+    },
+    "Santu 'Èngiu/San Gavino Monreale": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111062"
+    },
+    "Guasila": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111033"
+    },
+    "Futei/Furtei": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111022"
+    },
+    "Silius": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111085"
+    },
+    "Ballau/Ballao": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111003"
+    },
+    "Armùngia/Armungia": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111002"
+    },
+    "Seurgus Donigala/Siurgus Donigala": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111086"
+    },
+    "Sèligas/Selegas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111074"
+    },
+    "Àrthana/Arzana": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091002"
+    },
+    "Gomajori/Guamaggiore": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111032"
+    },
+    "Gùspini/Guspini": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111034"
+    },
+    "Pabillois/Pabillonis": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111052"
+    },
+    "Goni": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111029"
+    },
+    "Sueddi/Suelli": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111088"
+    },
+    "Segariu": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111073"
+    },
+    "Sàrdara/Sardara": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111072"
+    },
+    "Mara Arbarei/Villamar": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111097"
+    },
+    "Jersu/Jerzu": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091035"
+    },
+    "Scalepranu/Escalaplano": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111018"
+    },
+    "Lanusè/Lanusei": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091037"
+    },
+    "Arrolli/Orroli": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111050"
+    },
+    "Òsini/Osini": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091069"
+    },
+    "Gèsigu/Gesico": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111026"
+    },
+    "Biddanoa de Forru/Villanovaforru": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111100"
+    },
+    "Lunamatrona": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111038"
+    },
+    "Ulassa/Ulassai": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091098"
+    },
+    "Mandas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111039"
+    },
+    "Loceri": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091039"
+    },
+    "Biddanoa Franca/Villanovafranca": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111101"
+    },
+    "Tertenia": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091089"
+    },
+    "Iscroca/Escolca": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111019"
+    },
+    "Foghesu/Perdasdefogu": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091072"
+    },
+    "Nurri": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111048"
+    },
+    "Arcidanu/San Nicolò d'Arcidano": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095046"
+    },
+    "Mòguru/Mogoro": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095029"
+    },
+    "Forru/Collinas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111012"
+    },
+    "Pauli Arbarei": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111053"
+    },
+    "Is Pratzas/Las Plassas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111037"
+    },
+    "Grexei/Gergei": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111025"
+    },
+    "Siddi": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111083"
+    },
+    "Barùmini/Barumini": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111005"
+    },
+    "Gonnostramatza": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095024"
+    },
+    "Serri": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111079"
+    },
+    "Ussaramanna": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111094"
+    },
+    "Turri": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111092"
+    },
+    "Tuili": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111091"
+    },
+    "Gonnacodina/Gonnoscodina": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095022"
+    },
+    "Istersili/Esterzili": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111020"
+    },
+    "Aressa/Baressa": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095012"
+    },
+    "Uras": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095069"
+    },
+    "Seui": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111081"
+    },
+    "Terraba/Terralba": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095065"
+    },
+    "Masuddas/Masullas": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095026"
+    },
+    "Simaba/Simala": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095058"
+    },
+    "Pompu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095042"
+    },
+    "Setzu": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111080"
+    },
+    "Bobadri/Baradili": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095010"
+    },
+    "Giauni/Genuri": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111024"
+    },
+    "Gèsturi/Gesturi": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111027"
+    },
+    "Gàiru/Gairo": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091026"
+    },
+    "Siris": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095061"
+    },
+    "Margaxori/Morgongiori": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095030"
+    },
+    "Gonnonnò/Gonnosnò": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095023"
+    },
+    "Ìsili/Isili": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111036"
+    },
+    "Cardedu": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091103"
+    },
+    "Sini": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095060"
+    },
+    "Crucuris/Curcuris": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095077"
+    },
+    "Marrùbiu/Marrubiu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095025"
+    },
+    "Sàdili/Sadali": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111058"
+    },
+    "Geroni/Genoni": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111023"
+    },
+    "Nuragus": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111045"
+    },
+    "Abas/Ales": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095004"
+    },
+    "Biddanoa 'e Tulu/Villanova Tulo": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111099"
+    },
+    "Arborea": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095006"
+    },
+    "Ollasta Useddus/Albagiara": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095003"
+    },
+    "Useddus/Usellus": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095070"
+    },
+    "Bàini/Villa Verde": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095073"
+    },
+    "Assolu/Assolo": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095008"
+    },
+    "Nureci": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095036"
+    },
+    "Nuradda/Nurallao": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111046"
+    },
+    "Làconi/Laconi": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095082"
+    },
+    "Barì/Bari Sardo": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091005"
+    },
+    "Santa Justa/Santa Giusta": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095047"
+    },
+    "Pau": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095040"
+    },
+    "Ussassa/Ussassai": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091100"
+    },
+    "Prammas/Palmas Arborea": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095039"
+    },
+    "Seulu/Seulo": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111082"
+    },
+    "Senis": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095054"
+    },
+    "Gadoni": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091025"
+    },
+    "Biddobrana/Villaurbana": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095072"
+    },
+    "Santu Antoni Arruinas/Villa Sant'Antonio": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095048"
+    },
+    "Mogoredda/Mogorella": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095028"
+    },
+    "Asuni": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095009"
+    },
+    "Irvonu/Ilbono": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091032"
+    },
+    "Tortolì": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091095"
+    },
+    "Aristanis/Oristano": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095038"
+    },
+    "Crabas/Cabras": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095018"
+    },
+    "Arruinas/Ruinas": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095044"
+    },
+    "Aritzu/Aritzo": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091001"
+    },
+    "Siamanna": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095057"
+    },
+    "Elini": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091019"
+    },
+    "Samugheo": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095045"
+    },
+    "Meana/Meana Sardo": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091047"
+    },
+    "Simaghis/Simaxis": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095059"
+    },
+    "Sabarussa/Solarussa": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095062"
+    },
+    "Siapicia/Siapiccia": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095076"
+    },
+    "Àllai/Allai": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095005"
+    },
+    "Biddamanna Istrisàili/Villagrande Strisaili": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091101"
+    },
+    "Zrofolliu/Zerfaliu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095075"
+    },
+    "Ollasta/Ollastra": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095037"
+    },
+    "Fordongianus": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095020"
+    },
+    "Gelisuli/Girasole": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091031"
+    },
+    "Lotzorai": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091042"
+    },
+    "Nurachi": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095035"
+    },
+    "Brebì/Belvì": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091007"
+    },
+    "Siamajori/Siamaggiore": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095056"
+    },
+    "Boàtiri/Baratili San Pietro": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095011"
+    },
+    "Atzara": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091003"
+    },
+    "Zeddiani": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095074"
+    },
+    "Arriora/Riola Sardo": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095043"
+    },
+    "Sòrgono/Sorgono": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091086"
+    },
+    "Tramatza": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095066"
+    },
+    "Busache/Busachi": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095017"
+    },
+    "Dèsulu/Desulo": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091016"
+    },
+    "Baunei": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091006"
+    },
+    "Talana": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091088"
+    },
+    "Biddanoa Truschedu/Villanova Truschedu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095071"
+    },
+    "Tonara": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091093"
+    },
+    "Triei": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091097"
+    },
+    "Ortueri": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091066"
+    },
+    "Santeru/San Vero Milis": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095050"
+    },
+    "Paulle/Paulilatino": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095041"
+    },
+    "Baulau/Bauladu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095013"
+    },
+    "Ula/Ulà Tirso": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095068"
+    },
+    "Narabuia/Narbolia": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095031"
+    },
+    "Milis": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095027"
+    },
+    "Ilartzi/Ghilarza": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095021"
+    },
+    "Sèneghe/Seneghe": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095053"
+    },
+    "Tìana/Tiana": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091091"
+    },
+    "Austis": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091004"
+    },
+    "Neunele/Neoneli": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095032"
+    },
+    "Bonaccattu/Bonarcado": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095015"
+    },
+    "Ardaule/Ardauli": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095007"
+    },
+    "Cùllieri/Cuglieri": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095019"
+    },
+    "Onne/Fonni": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091024"
+    },
+    "Ovodda": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091071"
+    },
+    "Tadasune/Tadasuni": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095064"
+    },
+    "Orgòsolo/Orgosolo": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091062"
+    },
+    "Teti": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091090"
+    },
+    "Nughedu Santa Itòria/Nughedu Santa Vittoria": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095034"
+    },
+    "Sorradile": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095063"
+    },
+    "Orthullè/Urzulei": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091099"
+    },
+    "Bidoniu/Bidonì": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095014"
+    },
+    "Boroneddu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095016"
+    },
+    "Soddie/Soddì": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095078"
+    },
+    "Santu Lussurzu/Santu Lussurgiu": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095049"
+    },
+    "Abbasanta": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095001"
+    },
+    "Ollollai/Ollolai": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091056"
+    },
+    "Gavoi": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091028"
+    },
+    "Ortzai/Olzai": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091057"
+    },
+    "Sèdilo/Sedilo": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095052"
+    },
+    "Norghiddo/Norbello": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095033"
+    },
+    "Aidumajore/Aidomaggiore": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095002"
+    },
+    "Lodine": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091104"
+    },
+    "Mamujada/Mamoiada": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091046"
+    },
+    "Otzana/Ottana": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091070"
+    },
+    "Bòrore/Borore": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091011"
+    },
+    "Tresnuraghes": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095067"
+    },
+    "Iscanu/Scano di Montiferro": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095051"
+    },
+    "Sarule": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091077"
+    },
+    "Duarche/Dualchi": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091018"
+    },
+    "Durgali/Dorgali": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091017"
+    },
+    "Sinnariolo/Sennariolo": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095055"
+    },
+    "Noragugume": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091050"
+    },
+    "Macumere/Macomer": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091044"
+    },
+    "Flùssio/Flussio": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095080"
+    },
+    "Bìroro/Birori": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091008"
+    },
+    "Orane/Orani": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091061"
+    },
+    "Bolòtana/Bolotana": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091010"
+    },
+    "Silanos/Silanus": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091083"
+    },
+    "Magumadas/Magomadas": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095083"
+    },
+    "Nùgoro/Nuoro": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091051"
+    },
+    "Sàgama/Sagama": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095086"
+    },
+    "Bortigale/Bortigali": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091012"
+    },
+    "Sindìa/Sindia": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091084"
+    },
+    "Mòdolo/Modolo": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095084"
+    },
+    "Bosa": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095079"
+    },
+    "Tinnura": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095088"
+    },
+    "Sune/Suni": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095087"
+    },
+    "Ulìana/Oliena": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091055"
+    },
+    "Illorai": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090031"
+    },
+    "Oroteddi/Orotelli": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091064"
+    },
+    "Semèstene/Semestene": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090066"
+    },
+    "Putumajore/Pozzomaggiore": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090059"
+    },
+    "Lei": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091038"
+    },
+    "Orosei": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091063"
+    },
+    "Bottidda": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090016"
+    },
+    "Isporlatu/Esporlatu": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090028"
+    },
+    "Bono": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090012"
+    },
+    "Onieri/Oniferi": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091060"
+    },
+    "Benetutti": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090008"
+    },
+    "Pàdria/Padria": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090053"
+    },
+    "Garteddi/Galtellì": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091027"
+    },
+    "Montresta": {
+      "provincia": "Oristano",
+      "sigla": "OR",
+      "codiceIstat": "095085"
+    },
+    "Oniài/Onifai": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091059"
+    },
+    "Irgoli": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091033"
+    },
+    "Orune": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091067"
+    },
+    "Lùvula/Lula": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091043"
+    },
+    "Bonolva/Bonorva": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090013"
+    },
+    "Biddanoa Monteleone/Villanova Monteleone": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090078"
+    },
+    "Su Burgu/Burgos": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090020"
+    },
+    "Cossoine": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090027"
+    },
+    "Urtei/Bultei": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090018"
+    },
+    "Lòcula/Loculi": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091040"
+    },
+    "Mara": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090038"
+    },
+    "Rumana/Romana": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090061"
+    },
+    "Monteleone/Monteleone Rocca Doria": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090040"
+    },
+    "Bitzi/Bitti": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091009"
+    },
+    "Giave": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090030"
+    },
+    "Nule": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090045"
+    },
+    "Thiniscole/Siniscola": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091085"
+    },
+    "Turalva/Torralba": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090073"
+    },
+    "Thiesi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090071"
+    },
+    "Cherèmule/Cheremule": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090024"
+    },
+    "Nughedu Santu Nigola/Nughedu San Nicolò": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090044"
+    },
+    "Anela": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090004"
+    },
+    "Mores": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090042"
+    },
+    "Itireddu/Ittireddu": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090032"
+    },
+    "Boruta/Borutta": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090015"
+    },
+    "Patada/Pattada": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090055"
+    },
+    "Osidde/Osidda": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091068"
+    },
+    "Bunnànnaru/Bonnanaro": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090011"
+    },
+    "l'Alguer/Alghero": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090003"
+    },
+    "Potuvigari/Putifigari": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090060"
+    },
+    "Uddusò/Buddusò": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090017"
+    },
+    "Bessude": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090010"
+    },
+    "Ìtiri Cannedu/Ittiri": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090033"
+    },
+    "Onanìe/Onanì": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091058"
+    },
+    "Lodè": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091041"
+    },
+    "Sìligo/Siligo": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090068"
+    },
+    "Otieri/Ozieri": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090052"
+    },
+    "Bànari/Banari": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090007"
+    },
+    "Fiolinas/Florinas": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090029"
+    },
+    "Torpè": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091094"
+    },
+    "Pasada/Posada": {
+      "provincia": "Nuoro",
+      "sigla": "NU",
+      "codiceIstat": "091073"
+    },
+    "Codronzanu/Codrongianos": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090026"
+    },
+    "Àldara/Ardara": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090005"
+    },
+    "Uri": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090076"
+    },
+    "Ossi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090051"
+    },
+    "Piaghe/Ploaghe": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090057"
+    },
+    "Ùsini/Usini": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090077"
+    },
+    "S'Ulumedu/Olmedo": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090048"
+    },
+    "Padru": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090090"
+    },
+    "Alà/Alà dei Sardi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090002"
+    },
+    "Tzaramonte/Chiaramonti": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090025"
+    },
+    "Carzeghe/Cargeghe": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090022"
+    },
+    "Oscheri/Oschiri": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090049"
+    },
+    "Sassari": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090064"
+    },
+    "Budune/Budoni": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090091"
+    },
+    "Tissi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090072"
+    },
+    "Muros": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090043"
+    },
+    "Òsile/Osilo": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090050"
+    },
+    "Belchidda/Berchidda": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090009"
+    },
+    "Olbia": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090047"
+    },
+    "Monte/Monti": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090041"
+    },
+    "Tula": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090075"
+    },
+    "Erula": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090088"
+    },
+    "Sènnaru/Sennori": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090067"
+    },
+    "Martis": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090039"
+    },
+    "Pèifugas/Perfugas": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090056"
+    },
+    "Loiri-Poltu Santu Paolu/Loiri Porto San Paolo": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090084"
+    },
+    "Laerru": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090034"
+    },
+    "Tèmpiu/Tempio Pausania": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090070"
+    },
+    "Sòssu/Sorso": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090069"
+    },
+    "Bultzi/Bulzi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090019"
+    },
+    "Zelgu/Tergu": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090086"
+    },
+    "Posthudorra/Porto Torres": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090058"
+    },
+    "Caragnani/Calangianus": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090021"
+    },
+    "Telti": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090080"
+    },
+    "Isthintini/Stintino": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090089"
+    },
+    "Cuzina/Santa Maria Coghinas": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090087"
+    },
+    "Bultiggjata/Bortigiadas": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090014"
+    },
+    "Castheddu/Castelsardo": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090023"
+    },
+    "Codaruina/Valledoria": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090079"
+    },
+    "Viddha Eccia/Viddalba": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090082"
+    },
+    "Agghju/Aggius": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090001"
+    },
+    "Badesi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090081"
+    },
+    "Sant'Antoni di Gaddura/Sant'Antonio di Gallura": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090085"
+    },
+    "La Trinitai e Vignola/Trinità d'Agultu e Vignola": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090074"
+    },
+    "Figari/Golfo Aranci": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090083"
+    },
+    "Luras": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090037"
+    },
+    "Locusantu/Luogosanto": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090036"
+    },
+    "Alzachèna/Arzachena": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090006"
+    },
+    "Aglientu": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090062"
+    },
+    "Lu Palau/Palau": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090054"
+    },
+    "Lungòni/Santa Teresa Gallura": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090063"
+    },
+    "Nujvi/Nulvi": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090046"
+    },
+    "Séddini/Sedini": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090065"
+    },
+    "Castiadas": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111011"
+    },
+    "Murera/Muravera": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111042"
+    },
+    "Siliqua": {
+      "provincia": "Sud Sardegna",
+      "sigla": "SU",
+      "codiceIstat": "111084"
+    },
+    "La Maddalena": {
+      "provincia": "Sassari",
+      "sigla": "SS",
+      "codiceIstat": "090035"
+    }
+  }
+}

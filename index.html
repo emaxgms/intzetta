@@ -1,19 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
-    <title>Intzetta</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Intzetta — Trova i paesi della Sardegna sulla mappa | Quiz di geografia sarda</title>
+    <meta
+      name="description"
+      content="Quanto conosci la Sardegna? Intzetta ti dice il nome di un paese sardo e tu devi trovarlo sulla mappa: 8 round, 377 comuni, punteggio sulla distanza e classifica. Gratis, anche senza registrazione."
+    />
+    <link rel="canonical" href="https://intzetta.top/" />
+    <meta name="theme-color" content="#8A7240" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+
+    <!-- Icone -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <!-- Anteprima quando il link viene condiviso (WhatsApp, Instagram, Facebook, Telegram) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Intzetta" />
+    <meta property="og:locale" content="it_IT" />
+    <meta property="og:url" content="https://intzetta.top/" />
+    <meta property="og:title" content="Intzetta — Quanto conosci la Sardegna?" />
+    <meta
+      property="og:description"
+      content="Ti diciamo il nome di un paese sardo, tu lo trovi sulla mappa. 377 comuni, 8 round, classifica. Riesci a fare 40.000?"
+    />
+    <meta property="og:image" content="https://intzetta.top/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="La schermata iniziale di Intzetta, il gioco sui paesi della Sardegna" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Intzetta — Quanto conosci la Sardegna?" />
+    <meta
+      name="twitter:description"
+      content="Ti diciamo il nome di un paese sardo, tu lo trovi sulla mappa. 377 comuni, 8 round, classifica."
+    />
+    <meta name="twitter:image" content="https://intzetta.top/og-image.png" />
+
+    <!-- Il CSS di Leaflet è già dentro il bundle applicativo: non serve ricaricarlo da unpkg. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Sans+Extra+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Le tessere della mappa servono solo quando si gioca: preconnect per ridurre l'attesa al primo round. -->
+    <link rel="preconnect" href="https://server.arcgisonline.com" />
     <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Intzetta",
+        "url": "https://intzetta.top/",
+        "applicationCategory": "GameApplication",
+        "genre": "Quiz di geografia",
+        "operatingSystem": "Web",
+        "inLanguage": "it",
+        "description": "Gioco di geografia sulla Sardegna: viene mostrato il nome di un paese sardo e il giocatore deve individuarlo sulla mappa. Il punteggio dipende dalla distanza.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" },
+        "about": { "@type": "Place", "name": "Sardegna" },
+        "isAccessibleForFree": true
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript>
+      <h1>Intzetta — il gioco dei paesi della Sardegna</h1>
+      <p>
+        Intzetta è un gioco di geografia: ti viene mostrato il nome di un paese sardo e devi individuarlo
+        sulla mappa. Il punteggio dipende da quanto sei vicino: 8 round, 377 comuni, fino a 40.000 punti.
+        Per giocare serve JavaScript attivo.
+      </p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
-</html> 
+</html>

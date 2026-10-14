@@ -1,17 +1,37 @@
 {
-  "name": "insetta",
+  "name": "intzetta",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "type": "module",
+  "description": "Quiz di geografia sulla Sardegna: viene mostrato il nome di un paese e il giocatore deve trovarlo sulla mappa. Il punteggio dipende dalla distanza.",
+  "homepage": "https://intzetta.top/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emaxgms/intzetta.git"
+  },
+  "keywords": [
+    "sardegna",
+    "sardinia",
+    "quiz",
+    "geografia",
+    "gioco",
+    "mappa",
+    "leaflet",
+    "geoguessr"
+  ],
+  "author": "emaxgms",
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-content-pages.mjs",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "content": "node scripts/generate-content-pages.mjs",
+    "provinces": "node scripts/fetch-comuni-provinces.mjs",
+    "test": "npm run test:build && node scripts/test-daily.mjs && node scripts/test-provinces.mjs && node scripts/test-analytics.mjs && node scripts/test-analytics-configured.mjs && node scripts/test-game-flow.mjs",
+    "test:build": "node scripts/build-test-bundles.mjs",
+    "deploy": "npm run test && npm run build && firebase deploy --only hosting"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "@turf/turf": "^6.5.0",
     "firebase": "^11.6.0",

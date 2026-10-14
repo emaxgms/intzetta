@@ -26,15 +26,13 @@ export const AuthProvider = ({ children }) => {
       .then((result) => {
         if (result) {
           const user = result.user;
-          console.log("✅ Utente autenticato:", user);
         }
       })
       .catch((error) => {
-        console.error("❌ Errore durante il redirect:", error);
+        console.error("âŒ Errore durante il redirect:", error);
       });
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
       setUser(currentUser);
-      console.log('Utente attuale:', currentUser);
       
       setLoading(false);
     });
@@ -43,7 +41,6 @@ export const AuthProvider = ({ children }) => {
 
   const signInWithGoogle = async () => {
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-    console.log('isMobile:', isMobile);
     setLoading(true);
     try {
       if (true) {
@@ -70,44 +67,39 @@ export const AuthProvider = ({ children }) => {
     window.google.accounts.id.prompt((notification) => {
       if (notification.isNotDisplayed()) {
         setLoading(false);
-        console.warn("⚠️ Login non mostrato:", notification.getNotDisplayedReason());
+        console.warn("âš ï¸ Login non mostrato:", notification.getNotDisplayedReason());
       } else if (notification.isSkippedMoment()) {
-        console.warn("⚠️ Login saltato:", notification.getSkippedReason());
+        console.warn("âš ï¸ Login saltato:", notification.getSkippedReason());
         setLoading(false);
       } else if (notification.isDismissedMoment()) {
-        console.warn("⚠️ Login chiuso:", notification.getDismissedReason());
+        console.warn("âš ï¸ Login chiuso:", notification.getDismissedReason());
         setLoading(false);
       }
     });
   };
   const handleCredentialResponse = async (response) => {
     try {
-      console.log("✅ Response:", response);
       const idToken = response.credential;
       const credential = GoogleAuthProvider.credential(idToken);
       const result = await signInWithCredential(auth, credential);
-      console.log("✅ Login riuscito:", result.user);
       await checkIfUserExists(result.user.uid).then(async (exists) => {
         if (!exists) {
-          console.log("⚠️ Utente non trovato nel database, creazione del profilo...");
           await createOrUpdateUserProfile(result.user.uid,{username: result.user.displayName, photoURL: result.user.photoURL, bestScore: 0, bestScoreDate: new Date()});
         }
       });
     } catch (error) {
-      console.error("❌ Errore login Firebase:", error);
+      console.error("âŒ Errore login Firebase:", error);
     }
   };
   const signInWithEmail = async (email, password) => {
     try {
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
-      console.log('Login riuscito:', userCredential.user);
       setUser(userCredential.user);
       return { success: true, created: false };
     } catch (error) {
       if (error.code === 'auth/user-not-found' || error.code === 'auth/invalid-credential') {
         try {
           const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-          console.log('Utente registrato:', userCredential.user);
           setUser(userCredential.user);
           return { success: true, created: true };
         } catch (signupError) {
@@ -134,8 +126,6 @@ export const AuthProvider = ({ children }) => {
           ...prev,
           ...profileUpdates // solo i campi che hai cambiato, es. displayName, photoURL
         }));
-        console.log('Profilo aggiornato:', profileUpdates);
-        console.log(user);
       } catch (error) {
         console.error('Errore durante l\'aggiornamento del profilo:', error);
       }

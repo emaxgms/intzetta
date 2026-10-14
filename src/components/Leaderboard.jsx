@@ -11,7 +11,6 @@ export default function Leaderboard({ maxPlayers = 10, refreshData }) {
     const fetchLeaderboard = async () => {
       try {
         const topPlayers = await getLeaderboard(maxPlayers);
-        console.log('Classifica:', topPlayers);
         setLeaderboard(topPlayers);
         setLoading(false);
       } catch (err) {

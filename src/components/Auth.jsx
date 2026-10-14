@@ -20,7 +20,6 @@ export default function Auth() {
   const [avatarSeed, setAvatarSeed] = useState(Date.now());
   const wrapperRef = useRef(null);
   useEffect(() => {
-    console.log('Auth component mounted');
     function handleClickOutside(event) {
       if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
         setIsExpanded(false);
@@ -29,7 +28,6 @@ export default function Auth() {
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
     return () => {
-      console.log('Auth component unmounted');
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
@@ -40,11 +38,9 @@ export default function Auth() {
       setisModalNameOpen(true);
     }
     setIsExpanded(false);
-    console.log('refresh user');
   }, [user]);
 
   useEffect(() => {
-    console.log('expanded:' + isExpanded);
   }, [isExpanded]);
 
   const notExpanded = () => {
@@ -67,7 +63,6 @@ export default function Auth() {
   };
 
   const handleLogOut = () => {
-    console.log('Logout utente:');
     logout();
   }
 
@@ -85,7 +80,6 @@ export default function Auth() {
         setIsModalAvatarOpen(true);
         setAvatarSeed(Date.now());
       }
-      console.log('Username impostato con successo!');
     } catch (error) {
       console.error('Errore durante l\'impostazione dell\'username:', error);
     }
@@ -101,7 +95,6 @@ export default function Auth() {
       await updateUserProfile({ photoURL: avatarSelected, lastModifiedDate: Timestamp.now() });
       await createOrUpdateUserProfile(user.uid, { photoURL: avatarSelected }); // Aggiorna il profilo nella collezione "users"
       setIsModalAvatarOpen(false);
-      console.log('Avatar aggiornato con successo!');
     } catch (error) {
       console.error('Errore durante l\'aggiornamento dell\'avatar:', error);
     }

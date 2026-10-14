@@ -1,8 +1,63 @@
 rules_version = '2';
+
+// Regole Firestore di Intzetta.
+//
+// ATTENZIONE: la versione precedente di questo file indicava la collezione
+// "BestScores", che l'applicazione non usa: il codice legge e scrive su "users".
+// Deployare quel file avrebbe rotto classifica e salvataggio dei punteggi.
+//
+// Queste regole descrivono il comportamento voluto:
+//  - "users" e' leggibile da chiunque: serve per mostrare la classifica pubblica
+//    anche a chi non ha fatto l'accesso (la home la mostra prima del login).
+//  - ogni utente puo' creare e modificare SOLO il proprio documento.
+//  - il punteggio e' vincolato a un intero fra 0 e 40000 (8 round x 5000 punti) e
+//    non puo' diminuire. Non rende la classifica a prova di imbroglio: per quello
+//    serve validare il punteggio lato server (Cloud Functions), passo previsto
+//    prima di mettere in palio premi o vendere il gioco a un ente.
+//  - nessuno puo' cancellare documenti dal client.
+//
+// DETTAGLIO IMPORTANTE: chi si registra con EMAIL non ha subito un documento con
+// il campo bestScore (viene creato al primo salvataggio del nome utente, senza
+// punteggio). Per questo i confronti sul punteggio usano valori di riserva a 0:
+// senza questa accortezza il primo salvataggio di un punteggio verrebbe rifiutato.
+//
+// PRIMA DI DEPLOYARE: validare con l'emulatore, non direttamente in produzione.
+//   npm install -g firebase-tools
+//   firebase emulators:start --only firestore
+//   firebase deploy --only firestore:rules
 service cloud.firestore {
   match /databases/{database}/documents {
-    match /BestScores/{document} {
-      allow read, write: if request.auth != null; // Consenti solo agli utenti autenticati
+
+    match /users/{userId} {
+
+      function isOwner() {
+        return request.auth != null && request.auth.uid == userId;
+      }
+
+      function hasValidScore(data) {
+        return !('bestScore' in data)
+          || (data.bestScore is int && data.bestScore >= 0 && data.bestScore <= 40000);
+      }
+
+      function incomingScore() {
+        return ('bestScore' in request.resource.data) ? request.resource.data.bestScore : 0;
+      }
+
+      function storedScore() {
+        return ('bestScore' in resource.data) ? resource.data.bestScore : 0;
+      }
+
+      allow read: if true;
+      allow create: if isOwner() && hasValidScore(request.resource.data);
+      allow update: if isOwner()
+                    && hasValidScore(request.resource.data)
+                    && incomingScore() >= storedScore();
+      allow delete: if false;
+    }
+
+    // Tutto il resto e' chiuso: nessuna collezione inventata puo' restare aperta per errore.
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }

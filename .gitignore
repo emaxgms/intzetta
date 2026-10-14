@@ -27,4 +27,14 @@ yarn-error.log*
 .idea
 .vscode
 *.swp
-*.swo 
+*.swo
+
+# log di debug dei tool (firestore-debug.log era finito nel repo)
+*.log
+
+# artefatti dei test (bundle generato da esbuild)
+/.test-build
+
+# pagine di contenuto generate (si ricreano da sole con: npm run content)
+/public/comuni-*.html
+/public/sitemap.xml

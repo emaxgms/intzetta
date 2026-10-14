@@ -30,7 +30,6 @@ export const getUserProfile = async (userId) => {
 export const upsertBestScore = async (userId, newScore) => {
   const userRef = doc(db, 'users', userId);
   const userSnap = await getDoc(userRef);
-  console.log('dentro Upsert');
   if (!userSnap.exists()) {
     throw new Error('User profile not found');
   }
