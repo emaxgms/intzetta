@@ -734,6 +734,44 @@ Modifiche applicate al progetto, tutte verificate con una compilazione riuscita 
   di terze parti che ricevono richieste tecniche (Firebase, Esri, Google Fonts, Umami) — prima non ne
   parlava affatto.
 
+**Le meccaniche di competizione (Fase 3, anticipate)**
+- **Vite giornaliere**: 3 al giorno. Entra in classifica **solo** chi gioca con le vite; l'allenamento
+  resta libero ma fuori classifica. È la regola che rende la classifica un premio e apre la strada
+  alla vendita di vite.
+- **Tempo limite di 30 secondi a round** con punteggio legato al tempo: 100% entro 5 secondi, 75%
+  allo scadere, lineare in mezzo. Verificato che la quota non risalga mai col tempo e che la distanza
+  continui a pesare più del tempo (5 km in 30 secondi battono 20 km in 3 secondi): senza questo
+  controllo il gioco sarebbe diventato una corsa invece che un gioco di geografia.
+- **Classifiche separate** in `leaderboards/{tabellone}/entries/{uid}`: generale, sfida del giorno
+  (`giornaliera-AAAA-MM-GG`), una per provincia. La classifica del giorno si azzera da sola perché il
+  giorno dopo cambia il nome del tabellone: nessuna cancellazione, nessuna manutenzione.
+- **Territorio scelto dalla home**: tutta la Sardegna o una delle 5 province, sia per le partite
+  classificate sia per l'allenamento. Prima ci si arrivava solo dalle pagine dei comuni.
+- **Pagina della Stagione Alpha** con i primi 10 della versione iniziale, per dare credito a chi ha
+  giocato quando il gioco era grezzo. I dati sono stati catturati **prima** del reset.
+
+**Login con Google riparato, causa individuata**
+Il codice usava Google Identity Services con un `login_uri` che puntava a `intzetta.ema.lat`, un
+dominio che **non risolve più**: l'accesso falliva con errori di OAuth. Ora usa il flusso standard di
+Firebase (finestra su computer, reindirizzamento su telefono) e gli errori sono **visibili all'utente**,
+non solo nella console: prima fallivano in silenzio ed era impossibile capire perché.
+**Causa di fondo, da sistemare a mano**: `intzetta.top` **non è fra i domini autorizzati** del progetto
+Firebase — c'è ancora il vecchio `intzetta.ema.lat`. Va aggiunto dalla console Firebase
+(Autenticazione → Impostazioni → Domini autorizzati), altrimenti anche il codice corretto non funziona.
+
+**Profilo ridisegnato**
+Il pannello si apre toccando la propria immagine in qualsiasi momento. Prima l'avatar si poteva cambiare
+**solo al primo accesso** e per il nome bisognava indovinare che il proprio nome in alto fosse
+cliccabile. Ora avatar, nome e uscita stanno in un posto solo, con nove proposte e la possibilità di
+vederne altre nove.
+
+**Struttura pubblicitaria (spenta)**
+Banner in fondo alla pagina — mai sopra la mappa o i pulsanti, caricato solo quando entra nello
+schermo — e video di 5 secondi **dopo** la partita, mai durante. Se la pubblicità non è configurata
+non occupa **nessuno** spazio: meglio niente che un riquadro vuoto. Si accende con tre variabili
+d'ambiente dopo l'approvazione di un network. Le possibilità e i numeri sono in
+[monetizzazione.md](monetizzazione.md).
+
 **Indicizzazione e condivisione**
 - `index.html`: lingua italiana, titolo e descrizione reali, URL canonico, tag Open Graph e Twitter
   Card per l'anteprima su WhatsApp, dati strutturati schema.org (`WebApplication`), contenuto di
