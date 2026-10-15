@@ -70,30 +70,40 @@ export function AdBanner() {
 }
 
 /**
- * Video breve dopo la partita.
+ * Video dopo la partita.
  *
  * Perche' dopo e non durante: interrompere un round rovina la partita, mentre il momento in cui
- * il punteggio e' appena uscito e' l'unico in cui l'utente sta gia' aspettando qualcosa.
- * Dopo VIDEO_SECONDS secondi compare "Chiudi": il video non puo' bloccare nessuno.
+ * il punteggio sta per uscire e' l'unico in cui l'utente sta comunque aspettando qualcosa.
+ *
+ * DUE ACCORTEZZE NECESSARIE (la prima versione era sbagliata):
+ *  - il pulsante si sblocca solo quando l'annuncio ha FINITO, non quando sono passati 5 secondi.
+ *    Se l'annuncio dura 30 secondi, sbloccare a 5 significherebbe lasciar chiudere a forza un
+ *    annuncio in corso: oltre a essere scorretto, viola le regole del network.
+ *  - i 5 secondi sono un MINIMO, non una scadenza.
+ * L'annuncio vero, quando c'e', si disegna da solo sopra la pagina: qui sotto resta solo il
+ * conteggio e il pulsante. Non serve nessun <ins>.
  */
 export function VideoBreak({ attivo, onFinito }) {
   const [secondi, setSecondi] = useState(VIDEO_SECONDS);
-  const [pronto, setPronto] = useState(false);
+  const [conteggioFinito, setConteggioFinito] = useState(false);
+  const [annuncioFinito, setAnnuncioFinito] = useState(false);
   const avviato = useRef(false);
 
   useEffect(() => {
     if (!attivo || avviato.current) return undefined;
     avviato.current = true;
 
-    let timer = null;
-    const partire = () => {
+    let tick = null;
+    let rete = null;
+
+    const avviaConteggio = () => {
       setSecondi(VIDEO_SECONDS);
-      setPronto(false);
-      timer = setInterval(() => {
+      setConteggioFinito(false);
+      tick = setInterval(() => {
         setSecondi((s) => {
           if (s <= 1) {
-            clearInterval(timer);
-            setPronto(true);
+            clearInterval(tick);
+            setConteggioFinito(true);
             return 0;
           }
           return s - 1;
@@ -102,43 +112,47 @@ export function VideoBreak({ attivo, onFinito }) {
     };
 
     if (adsDemo()) {
-      partire();
+      // Dimostrazione: non c'e' nessun annuncio, quindi il conteggio basta.
+      setAnnuncioFinito(true);
+      avviaConteggio();
     } else {
-      requestVideoBreak({ prima: partire, dopo: partire });
+      // Rete di sicurezza: se per qualsiasi motivo il network non risponde, non si puo'
+      // lasciare l'utente bloccato su questa schermata.
+      rete = setTimeout(() => {
+        setAnnuncioFinito(true);
+        setConteggioFinito(true);
+      }, 45000);
+      requestVideoBreak({
+        prima: avviaConteggio,
+        dopo: () => setAnnuncioFinito(true),
+      });
     }
 
     return () => {
-      if (timer) clearInterval(timer);
+      if (tick) clearInterval(tick);
+      if (rete) clearTimeout(rete);
     };
   }, [attivo]);
 
   if (!attivo || !adsActive()) return null;
 
+  const pronto = conteggioFinito && annuncioFinito;
+
   return (
     <div className="video-pubblicita" role="dialog" aria-label="Pubblicità">
       <div className="video-riquadro">
-        {adsDemo() ? (
-          <div className="video-finto">
-            <p>video pubblicitario</p>
-            <small>durata {VIDEO_SECONDS} secondi</small>
-          </div>
-        ) : (
-          <ins
-            className="adsbygoogle"
-            style={{ display: 'block', width: '100%', height: '100%' }}
-            data-ad-client={ADS_CLIENT}
-            data-ad-slot=""
-            data-ad-format="fluid"
-          />
-        )}
-        <div className="video-conteggio">{secondi > 0 ? `${secondi}s` : 'fine'}</div>
+        <div className="video-finto">
+          <p>pubblicità</p>
+          <small>{conteggioFinito ? 'premi il pulsante per continuare' : 'ancora qualche secondo'}</small>
+        </div>
+        <div className="video-conteggio">{secondi > 0 ? `${secondi}s` : '—'}</div>
       </div>
       <button
         type="button"
         className="button video-chiudi"
         onClick={onFinito}
         disabled={!pronto}
-        title={pronto ? 'Chiudi e vedi il risultato' : 'Attendi la fine del video'}
+        title={pronto ? 'Chiudi e vedi il risultato' : 'Attendi la fine della pubblicità'}
       >
         {pronto ? 'Vedi il risultato' : `Attendi ${secondi}s`}
       </button>

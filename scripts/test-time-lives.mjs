@@ -123,5 +123,89 @@ try {
 }
 check('nessuna eccezione', sopravvissuto);
 
+console.log('\n=== 7. Round azzeccato e vite vinte nella sfida del giorno ===');
+// La sezione 6 ha sostituito la memoria locale con una che lancia errori: qui si torna a una
+// funzionante, altrimenti le verifiche seguenti passerebbero (o fallirebbero) per il motivo
+// sbagliato.
+globalThis.window = {
+  localStorage: {
+    getItem: (k) => (store.has(k) ? store.get(k) : null),
+    setItem: (k, val) => store.set(k, String(val)),
+    removeItem: (k) => store.delete(k),
+  },
+};
+check('il raggio è 1 km', d.PERFECT_DISTANCE_M === 1000, String(d.PERFECT_DISTANCE_M));
+check('il massimo vinto è 8', d.MAX_EARNABLE_LIVES === 8, String(d.MAX_EARNABLE_LIVES));
+check('a 800 metri è azzeccato', d.isPerfectRound({ distanceM: 800 }) === true);
+check('a 1 km esatto è azzeccato', d.isPerfectRound({ distanceM: 1000 }) === true);
+check('a 1.200 metri non è azzeccato', d.isPerfectRound({ distanceM: 1200 }) === false);
+check('un round saltato non è azzeccato', d.isPerfectRound({ distanceM: Number.MAX_SAFE_INTEGER, skipped: true }) === false);
+check('un round senza dati non è azzeccato', d.isPerfectRound(null) === false);
+// Il punto delicato: conta la distanza, NON il punteggio finale. Chi trova il paese in 25 secondi
+// ha azzeccato il paese esattamente come chi ci mette 3 secondi.
+check(
+  'conta la distanza e non la velocità',
+  d.isPerfectRound({ distanceM: 700, points: 3800 }) === true &&
+    d.roundPoints(700, 28) < d.MAX_ROUND_SCORE,
+  'un tiro preciso ma lento deve valere una vita'
+);
+
+console.log('\n=== 8. Le vite vinte si accumulano e hanno un tetto giornaliero ===');
+v.resetLives(OGGI);
+check('si vincono 3 vite', v.addEarnedLives(OGGI, 3) === 3);
+check('si vincono le altre 5', v.addEarnedLives(OGGI, 5) === 5);
+check('oltre 8 non si vince piu\'', v.addEarnedLives(OGGI, 2) === 0);
+let s = v.livesState(OGGI);
+check('vite vinte registrate a parte', s.earned === 8, String(s.earned));
+check('totale: 3 gratuite + 8 vinte', s.total === 11, String(s.total));
+check('restante vincibile oggi: 0', s.earnableToday === 0);
+check('le vinte non si sono mescolate con le comprate', s.bought === 0);
+
+console.log('\n=== 9. Ordine di consumo: prima le gratuite, poi le vinte ===');
+v.consumeLife(OGGI);
+v.consumeLife(OGGI);
+v.consumeLife(OGGI);
+s = v.livesState(OGGI);
+check('le gratuite sono finite', s.freeLeft === 0, String(s.freeLeft));
+check('le vinte sono intatte', s.earned === 8, String(s.earned));
+v.consumeLife(OGGI);
+s = v.livesState(OGGI);
+check('ora si intaccano le vinte', s.earned === 7, String(s.earned));
+
+console.log('\n=== 10. Le vite vinte restano il giorno dopo ===');
+// Data mai usata prima in questo file: le sezioni precedenti hanno gia' consumato le vite di
+// DOMANI, e riusarla farebbe fallire il controllo per il motivo sbagliato.
+const DOPODOMANI = '2026-10-16';
+s = v.livesState(DOPODOMANI);
+check('le vinte si portano avanti', s.earned === 7, String(s.earned));
+check('le gratuite tornano', s.freeLeft === 3, String(s.freeLeft));
+check('si puo\' vincere di nuovo', s.earnableToday === 8, String(s.earnableToday));
+
+console.log('\n=== 11. A quale classifica va ogni partita ===');
+const boards = await import('../.test-build/boards.mjs');
+check('allenamento: nessuna classifica', boards.boardForRun({ mode: 'practice', dateKey: '2026-10-14' }) === null);
+check(
+  'sfida del giorno: classifica del giorno',
+  boards.boardForRun({ mode: 'daily', dateKey: '2026-10-14' }) === 'giornaliera-2026-10-14'
+);
+check(
+  'partita a caso: classifica generale',
+  boards.boardForRun({ mode: 'ranked', dateKey: '2026-10-14' }) === 'generale'
+);
+check(
+  'partita di provincia: classifica di quella provincia',
+  boards.boardForRun({ mode: 'ranked', provinceSigla: 'SS', dateKey: '2026-10-14' }) === 'provincia-ss'
+);
+// Il caso che era sbagliato: la sfida del giorno finiva nella classifica della provincia
+// se sulla home era selezionata una provincia.
+check(
+  'la sfida del giorno NON finisce nella classifica di provincia',
+  boards.boardForRun({ mode: 'daily', provinceSigla: 'SS', dateKey: '2026-10-14' }) ===
+    'giornaliera-2026-10-14',
+  'era il bug: la sfida del giorno e\' su tutta la Sardegna'
+);
+check('province diverse hanno classifiche diverse', boards.provinceBoardId('CA') !== boards.provinceBoardId('SS'));
+check('giorni diversi hanno classifiche diverse', boards.dailyBoardId('2026-10-14') !== boards.dailyBoardId('2026-10-15'));
+
 console.log(`\n=== RISULTATO: ${pass} superati, ${fail} falliti ===\n`);
 process.exit(fail === 0 ? 0 : 1);

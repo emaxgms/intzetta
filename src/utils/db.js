@@ -67,29 +67,11 @@ export const getUserBestScore = async (userId) => {
 //    dentro una sola provincia e' piu' facile che su tutta l'isola, e i due punteggi non sono
 //    confrontabili;
 //  - non servono indici composti: ogni tabellone si interroga con un solo ordinamento.
+//
+// La scelta di QUALE tabellone riceve un punteggio sta in utils/boards.js, senza dipendenze da
+// Firebase, cosi' e' verificabile dai test.
 
-export const BOARD_GENERALE = 'generale';
-
-/** Identificativo del tabellone della sfida di un certo giorno. */
-export function dailyBoardId(dateKey) {
-  return `giornaliera-${dateKey}`;
-}
-
-/** Identificativo del tabellone di una provincia (sigla: CA, NU, OR, SS, SU). */
-export function provinceBoardId(sigla) {
-  return `provincia-${String(sigla).toLowerCase()}`;
-}
-
-/**
- * A quale classifica appartiene una partita.
- * Restituisce null per l'allenamento: non entra in classifica e non consuma vite.
- */
-export function boardForRun({ mode, provinceSigla, dateKey }) {
-  if (mode === 'practice') return null;
-  if (provinceSigla) return provinceBoardId(provinceSigla);
-  if (mode === 'daily') return dailyBoardId(dateKey);
-  return BOARD_GENERALE;
-}
+export { BOARD_GENERALE, dailyBoardId, provinceBoardId, boardForRun } from './boards';
 
 /**
  * Classifica di un tabellone, dal punteggio piu' alto.

@@ -21,6 +21,15 @@ export const MAX_GAME_SCORE = ROUNDS_PER_GAME * MAX_ROUND_SCORE; // 40.000
 /** Sito pubblico, usato nel testo di condivisione. */
 export const SITE_URL = 'https://intzetta.top';
 
+/** Distanza entro cui un round e' considerato "azzeccato" (1 km). */
+export const PERFECT_DISTANCE_M = 1000;
+
+/**
+ * Vite che si possono vincere in una sfida del giorno: una per round azzeccato.
+ * Con 8 round il massimo e' 8.
+ */
+export const MAX_EARNABLE_LIVES = 8;
+
 /**
  * Giorno 1 della numerazione delle sfide ("INZETTA #1").
  * DA CAMBIARE con il giorno in cui la sfida giornaliera va online.
@@ -176,7 +185,7 @@ export function pickRandomFrom(pool, count = ROUNDS_PER_GAME) {
  */
 export function calcScore(distanceInMeters) {
   const maxDistance = 50000;
-  const perfectDistance = 1000;
+  const perfectDistance = PERFECT_DISTANCE_M;
   const maxScore = MAX_ROUND_SCORE;
 
   if (distanceInMeters <= perfectDistance) return maxScore;
@@ -185,6 +194,19 @@ export function calcScore(distanceInMeters) {
   const ratio = (distanceInMeters - perfectDistance) / (maxDistance - perfectDistance);
   const score = Math.round(maxScore * Math.pow(0.9, ratio * 50));
   return Math.max(0, Math.min(score, maxScore));
+}
+
+/**
+ * Round "azzeccato": il paese e' stato trovato dentro il raggio (1 km).
+ *
+ * Attenzione a non confonderlo con "ha fatto 5.000 punti": da quando esiste il tempo limite,
+ * 5.000 punti si fanno solo se si e' anche veloci. Per vincere una vita nella sfida del giorno
+ * conta la bravura geografica, non la rapidita': chi punta il paese giusto in 25 secondi ha
+ * azzeccato il paese esattamente come chi ci mette 3 secondi.
+ */
+export function isPerfectRound(round) {
+  if (!round || round.skipped) return false;
+  return Number.isFinite(round.distanceM) && round.distanceM <= PERFECT_DISTANCE_M;
 }
 
 // ---------------------------------------------------------------------------

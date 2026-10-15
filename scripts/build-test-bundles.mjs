@@ -30,6 +30,7 @@ const bundles = [
   { entry: 'src/utils/daily.js', out: 'daily.mjs' },
   { entry: 'src/utils/provinces.js', out: 'provinces.mjs' },
   { entry: 'src/utils/lives.js', out: 'lives.mjs' },
+  { entry: 'src/utils/boards.js', out: 'boards.mjs' },
   { entry: 'src/utils/analytics.js', out: 'analytics.mjs' },
   { entry: 'src/utils/analytics.js', out: 'analytics-configured.mjs', define: CONFIGURATO },
 ];

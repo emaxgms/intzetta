@@ -45,22 +45,32 @@ Il piano di crescita e monetizzazione è in **[docs/piano-crescita-e-ricavi.md](
 
 ### Vite, tempo e classifiche
 
-- **Vite giornaliere**: 3 al giorno. Si entra in classifica **solo** giocando con le vite; la sfida del
-  giorno e le partite classificate ne consumano una, l'allenamento no.
+- **Vite giornaliere**: 3 gratis al giorno. Si entra in classifica **solo** giocando con le vite;
+  la sfida del giorno e le partite classificate ne consumano una, l'allenamento no.
+- **La sfida del giorno fa vincere vite**: ogni round azzeccato (paese trovato entro 1 km) vale una
+  vita, fino a 8 in una partita. È questo il suo senso nel ciclo di gioco: giocarla bene significa
+  potersi giocare altre partite classificate. Conta la **distanza**, non la velocità: chi trova il
+  paese giusto in 25 secondi ha azzeccato il paese come chi ci mette 3 secondi.
 - **Tempo limite di 30 secondi a round**: 100% dei punti se si conferma entro 5 secondi, 75% allo
   scadere, in mezzo in modo lineare. La distanza resta comunque la cosa che pesa di più.
-- **Classifiche separate**: generale, sfida del giorno, e una per provincia. Giocare su una sola
-  provincia è più facile che su tutta l'isola, quindi i punteggi non si mescolano.
+- **Classifiche separate**: generale, sfida del giorno (si azzera ogni 24 ore da sola), e una per
+  provincia. La sfida del giorno va **sempre** nella classifica del giorno, anche se è selezionata
+  una provincia: è una partita su tutta la Sardegna con gli stessi comuni per tutti.
 - **Territorio scelto dalla home**: tutta la Sardegna oppure una delle 5 province.
 - La **Stagione Alpha** (la classifica della versione iniziale, prima del reset) è ricordata in
   `/stagione-alpha.html`.
 
 ### Pubblicità
 Struttura pronta ma **spenta**: banner in fondo alla pagina (mai sopra la mappa o i pulsanti, caricato
-solo quando entra nello schermo) e video di 5 secondi **dopo** la partita, mai durante. Si accende con
-tre variabili d'ambiente dopo l'approvazione di un network — vedi `src/utils/ads.js` e
-[docs/monetizzazione.md](docs/monetizzazione.md). Con `VITE_ADS_MODE=demo` si vedono i riquadri senza
-pubblicità vera.
+solo quando entra nello schermo) e video **dopo** la partita, mai durante — e non dopo *ogni* partita:
+al massimo una volta ogni 3, perché le regole dei network vietano i fullscreen a ogni interazione e
+l'allenamento è illimitato. Il pulsante si sblocca quando l'annuncio ha davvero finito, non dopo 5
+secondi. Si accende con tre variabili d'ambiente dopo l'approvazione di un network.
+
+**Leggere [docs/monetizzazione.md](docs/monetizzazione.md) prima di attivare la pubblicità**: contiene
+i vincoli di ammissione (AdSense non accetta pubblicità su pagine senza contenuto: le pagine dei comuni
+sono la condizione di ammissibilità e vanno scritte a mano, non generate), i numeri realistici e il
+nodo della partita IVA.
 
 ---
 

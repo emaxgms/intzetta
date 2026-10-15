@@ -20,6 +20,8 @@ import {
   pickRandomFrom,
   roundPoints,
   timeMultiplier,
+  isPerfectRound,
+  PERFECT_DISTANCE_M,
   distanceEmoji,
   formatDistance,
   buildShareText,
@@ -35,7 +37,7 @@ import {
   formatCountdown,
   dailyNumber,
 } from './utils/daily';
-import { livesState, consumeLife } from './utils/lives';
+import { livesState, consumeLife, addEarnedLives, MAX_EARNABLE_LIVES } from './utils/lives';
 import {
   saveRankedScore,
   boardForRun,
@@ -46,7 +48,7 @@ import {
 import { provinceGroups, provinceFromSearch, citiesByProvince, PROVINCE } from './utils/provinces';
 import { initAnalytics, track, EVENTS } from './utils/analytics';
 import { getTileSource, warnIfUnlicensedSource } from './utils/maptiles';
-import { adsActive, loadAdsScript } from './utils/ads';
+import { loadAdsScript, shouldShowVideo } from './utils/ads';
 
 // ---------------------------------------------------------------------------
 // Mappa
@@ -267,19 +269,15 @@ function SelettoreClassifica({ scelte, attiva, onScegli }) {
 }
 
 function IndicatoreVite({ stato }) {
-  const mostrate = Math.min(stato.total, 5);
   return (
-    <div className="vite" title={`${stato.freeLeft} gratuite oggi, ${stato.bought} comprate`}>
+    <div className="vite" title="Vite disponibili">
       <span className="vite-etichetta">Vite</span>
-      <span className="vite-pallini">
-        {Array.from({ length: mostrate }).map((_, i) => (
-          <span key={i} className="vite-pallino" aria-hidden="true">
-            {i < stato.freeLeft ? '❤️' : '💛'}
-          </span>
-        ))}
-        {stato.total > mostrate && <span className="vite-extra">+{stato.total - mostrate}</span>}
+      <span className="vite-numero-grande">{stato.total}</span>
+      <span className="vite-dettaglio">
+        {stato.freeLeft > 0 && <span title="gratuite di oggi">❤️ {stato.freeLeft}</span>}
+        {stato.earned > 0 && <span title="vinte giocando la sfida del giorno">💚 {stato.earned}</span>}
+        {stato.bought > 0 && <span title="comprate">💛 {stato.bought}</span>}
       </span>
-      <span className="vite-numero">{stato.total}</span>
     </div>
   );
 }
@@ -348,6 +346,18 @@ function StartPage({
                 <span key={i}>{distanceEmoji(r.distanceM)}</span>
               ))}
             </div>
+            {dailyResult.viteVinte > 0 ? (
+              <p className="vite-vinte">
+                💚 Hai vinto {dailyResult.viteVinte}{' '}
+                {dailyResult.viteVinte === 1 ? 'vita' : 'vite'} ({dailyResult.roundAzzeccati} round
+                azzeccati su {ROUNDS_PER_GAME})
+              </p>
+            ) : (
+              <p className="countdown">
+                Nessuna vita vinta stavolta: serviva trovare il paese entro{' '}
+                {PERFECT_DISTANCE_M / 1000} km.
+              </p>
+            )}
             <ShareBox result={dailyResult} />
             <p className="countdown">Prossima sfida fra {formatCountdown(countdownMs)}</p>
           </div>
@@ -362,8 +372,13 @@ function StartPage({
             >
               {inProgress ? 'RIPRENDI LA SFIDA' : 'SFIDA DEL GIORNO'}
             </button>
+            <p className="vite-vinte">
+              Ogni round azzeccato (entro {PERFECT_DISTANCE_M / 1000} km) ti fa <strong>vincere una vita</strong>:
+              fino a {MAX_EARNABLE_LIVES} in una partita.
+            </p>
             <p className="countdown">
               Sfida #{dailyNumber(dateKey)} · {ROUNDS_PER_GAME} comuni · {ROUND_TIME_LIMIT_S}s a round
+              {vite.earnableToday < MAX_EARNABLE_LIVES && ` · oggi ne puoi ancora vincere ${vite.earnableToday}`}
             </p>
           </div>
         )}
@@ -459,6 +474,25 @@ function EndPage({ result, streak, onRestart, onPractice, refreshData, classific
           Partita di allenamento: non entra in classifica. Gioca una partita classificata per
           confrontarti con gli altri.
         </p>
+      )}
+
+      {mode === 'daily' && (
+        <div className="vite-guadagnate">
+          {result.viteVinte > 0 ? (
+            <>
+              <span className="vite-guadagnate-numero">+{result.viteVinte}</span>
+              <span>
+                {result.viteVinte === 1 ? 'vita vinta' : 'vite vinte'} — {result.roundAzzeccati} round
+                azzeccati entro {PERFECT_DISTANCE_M / 1000} km
+              </span>
+            </>
+          ) : (
+            <span>
+              Nessuna vita vinta: per vincerla bastava trovare il paese entro{' '}
+              {PERFECT_DISTANCE_M / 1000} km.
+            </span>
+          )}
+        </div>
       )}
 
       {streak > 0 && mode === 'daily' && (
@@ -801,14 +835,25 @@ function App() {
     if (finito.mode === 'daily') {
       saveDailyResult(finito.dateKey, finito);
       clearDailyProgress(finito.dateKey);
-      setDailyResult(finito);
       setStreak(registerDailyPlayed(finito.dateKey).current);
       setInProgress(false);
+
+      // La sfida del giorno fa VINCERE vite: una per ogni round azzeccato (paese trovato entro
+      // il raggio). E' questo il motivo per cui vale la pena giocarla ogni giorno.
+      const azzeccati = finito.rounds.filter(isPerfectRound).length;
+      const vinte = addEarnedLives(finito.dateKey, azzeccati);
+      setDailyResult({ ...finito, viteVinte: vinte, roundAzzeccati: azzeccati });
+      setRisultato((r) => ({ ...r, viteVinte: vinte, roundAzzeccati: azzeccati }));
+      if (vinte > 0) {
+        track(EVENTS.GAME_FINISHED, { azione: 'vite_vinte', quante: vinte });
+      }
+      setVite(livesState(finito.dateKey));
     }
 
-    // Il video sta fra la fine della partita e il risultato: e' l'unico momento in cui
-    // l'utente sta comunque aspettando qualcosa.
-    if (adsActive()) setVideoAttivo(true);
+    // Il video sta fra la fine della partita e il risultato: e' l'unico momento in cui l'utente
+    // sta comunque aspettando qualcosa. Ma NON dopo ogni partita: le regole dei network vietano i
+    // fullscreen a ogni interazione, e l'allenamento e' illimitato. shouldShowVideo() decide.
+    if (shouldShowVideo()) setVideoAttivo(true);
 
     // Entrano in classifica SOLO le partite giocate con le vite.
     if (classificata) {

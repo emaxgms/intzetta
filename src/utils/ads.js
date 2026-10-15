@@ -31,14 +31,79 @@ export function adsVisible() {
   return ADS_ENABLED && Boolean(ADS_CLIENT);
 }
 
-/** Vero se va mostrata la dimostrazione (riquadri finti, per rivedere il progetto). */
+/**
+ * Vero se va mostrata la dimostrazione (riquadri finti, per rivedere il progetto).
+ *
+ * In produzione NON deve mai essere vera: mostrare un riquadro finto sarebbe pubblicita'
+ * annunciata e non mostrata. Se la modalita' dimostrazione e' accesa in un sito pubblicato,
+ * si disattiva da sola e lo segnala in console.
+ */
 export function adsDemo() {
-  return !adsVisible() && ADS_MODE === 'demo';
+  if (adsVisible() || ADS_MODE !== 'demo') return false;
+  const inProduzione =
+    typeof window !== 'undefined' &&
+    window.location &&
+    !/^(localhost|127\.0\.0\.1|0\.0\.0\.0|\[::1\])$/.test(window.location.hostname) &&
+    !window.location.hostname.endsWith('.web.app') &&
+    !window.location.hostname.endsWith('.firebaseapp.com');
+  if (inProduzione) {
+    console.error(
+      '[pubblicita] VITE_ADS_MODE=demo su un sito pubblico: i riquadri finti non vengono mostrati. ' +
+        'Togliere la modalita\' dimostrazione prima di pubblicare.'
+    );
+    return false;
+  }
+  return true;
 }
 
 /** Vero se c'e' qualcosa da disegnare, vero o finto. */
 export function adsActive() {
   return adsVisible() || adsDemo();
+}
+
+// ---------------------------------------------------------------------------
+// Quanto spesso mostrare il video
+// ---------------------------------------------------------------------------
+//
+// Le regole di H5 Games Ads vietano i fullscreen "dopo ogni interazione dell'utente". Mostrare un
+// video dopo OGNI partita, con l'allenamento illimitato, significherebbe violarle e rovinare il
+// gioco. Si mostra quindi al massimo una volta ogni VIDEO_EVERY_N_GAMES partite.
+//
+// Sulle partite classificate il problema non si pone: sono al massimo 3 al giorno, quindi il
+// limite non le tocca quasi mai.
+
+const VIDEO_COUNTER_KEY = 'intzetta:ads:games';
+export const VIDEO_EVERY_N_GAMES = 3;
+
+function leggiContatore() {
+  try {
+    return parseInt(window.localStorage.getItem(VIDEO_COUNTER_KEY) || '0', 10) || 0;
+  } catch (err) {
+    return 0;
+  }
+}
+
+function scriviContatore(valore) {
+  try {
+    window.localStorage.setItem(VIDEO_COUNTER_KEY, String(valore));
+  } catch (err) {
+    /* niente da fare */
+  }
+}
+
+/**
+ * Decide se questa partita merita il video, e aggiorna il conteggio.
+ * Restituisce true ogni VIDEO_EVERY_N_GAMES partite.
+ */
+export function shouldShowVideo() {
+  if (!adsActive()) return false;
+  const n = leggiContatore() + 1;
+  if (n >= VIDEO_EVERY_N_GAMES) {
+    scriviContatore(0);
+    return true;
+  }
+  scriviContatore(n);
+  return false;
 }
 
 let scriptCaricato = false;

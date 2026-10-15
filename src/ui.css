@@ -41,6 +41,47 @@
   font-weight: 700;
 }
 
+.vite-numero-grande {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.vite-dettaglio {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  opacity: 0.95;
+}
+
+/* Riquadro "hai vinto N vite" */
+.vite-vinte {
+  text-align: center;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+  background: rgba(74, 107, 61, 0.35);
+  border-radius: 10px;
+  padding: 8px 12px;
+  line-height: 1.45;
+}
+
+.vite-guadagnate {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--secondary-color);
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin: 4px 0 14px;
+  max-width: 440px;
+  font-size: clamp(0.9rem, 2.2vw, 1rem);
+}
+
+.vite-guadagnate-numero {
+  font-size: 1.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
 /* ------------------------------------------------------------------ */
 /* Pastiglie: territorio e classifiche                                 */
 /* ------------------------------------------------------------------ */
