@@ -9,6 +9,7 @@ import Auth from './components/Auth';
 import Leaderboard from './components/Leaderboard';
 import BestScore from './components/BestScore';
 import { AdBanner, VideoBreak } from './components/AdSlot';
+import SponsorBox from './components/SponsorBox';
 import { useAuth } from './context/AuthContext';
 import {
   ROUNDS_PER_GAME,
@@ -425,14 +426,19 @@ function StartPage({
         <BestScore />
       </section>
 
+      <SponsorBox />
       <AdBanner />
 
       <footer className="legal-links">
         <a href="/comuni-sardegna.html">I 377 comuni della Sardegna</a>
         <span className="gap"> | </span>
-        <a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        <a href="/sponsor.html">Pubblica la tua attività</a>
         <span className="gap"> | </span>
-        <a href="/terms-of-service.html" target="_blank" rel="noopener noreferrer">Termini di Servizio</a>
+        <a href="/privacy-policy.html" target="_blank" rel="noopener noreferrer">Privacy</a>
+        <span className="gap"> | </span>
+        <a href="/cookie-policy.html" target="_blank" rel="noopener noreferrer">Cookie</a>
+        <span className="gap"> | </span>
+        <a href="/terms-of-service.html" target="_blank" rel="noopener noreferrer">Termini</a>
       </footer>
     </div>
   );

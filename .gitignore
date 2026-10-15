@@ -1,4 +1,4 @@
-# dependencies
+﻿# dependencies
 /node_modules
 /.pnp
 .pnp.js
@@ -38,3 +38,4 @@ yarn-error.log*
 # pagine di contenuto generate (si ricreano da sole con: npm run content)
 /public/comuni-*.html
 /public/sitemap.xml
+/public/comuni/

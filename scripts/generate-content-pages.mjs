@@ -19,6 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { sponsorHtml, SPONSOR_STILE } from './lib/pages.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'src', 'data', 'sardinian-cities-corrected.json');
@@ -211,7 +212,11 @@ table.alpha tbody tr:nth-child(2) .pos{color:#8a8a8a}
 table.alpha tbody tr:nth-child(3) .pos{color:#a9713b}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(255,255,255,.25);font-size:.9rem;opacity:.9}
 @media (max-width:620px){ul.comuni{columns:1}}
+${SPONSOR_STILE}
 `;
+
+/** Riquadro dello sponsor, uguale in tutte le pagine statiche. Vuoto se non c'e' nessuno sponsor. */
+const SPONSOR_BOX = sponsorHtml();
 
 function pageShell({ title, description, canonical, body }) {
   return `<!DOCTYPE html>
@@ -242,12 +247,16 @@ ${TRACKER ? `${TRACKER}\n` : ''}</head>
   <a class="cta" href="/">Gioca alla sfida del giorno</a>
 </header>
 ${body}
+${SPONSOR_BOX}
 <footer>
   <p><strong>Intzetta</strong> — il gioco dei paesi della Sardegna: esce il nome di un comune e devi
   trovarlo sulla mappa. <a href="/">Gioca gratis</a>.</p>
   <p><a href="/comuni-sardegna.html">Tutti i comuni della Sardegna</a> ·
   <a href="/stagione-alpha.html">Stagione Alpha</a> ·
-  <a href="/privacy-policy.html">Privacy Policy</a> ·
+  <a href="/sponsor.html">Pubblica la tua attività</a></p>
+  <p><a href="/privacy-policy.html">Privacy Policy</a> ·
+  <a href="/cookie-policy.html">Cookie Policy</a> ·
+  <a href="/termini-acquisti.html">Termini di acquisto</a> ·
   <a href="/terms-of-service.html">Termini di Servizio</a></p>
 </footer>
 </div>
@@ -261,7 +270,7 @@ function comuniList(items) {
 ${items
   .map(
     (e) =>
-      `    <li id="${e.slug}">${escapeHtml(e.display)}${
+      `    <li id="${e.slug}"><a href="/comuni/${e.slug}.html">${escapeHtml(e.display)}</a>${
         e.alt ? ` <span class="alt">(${escapeHtml(e.alt)})</span>` : ''
       }</li>`
   )
@@ -487,7 +496,15 @@ const urls = [
     changefreq: 'monthly',
   })),
   ...(alpha ? [{ loc: `${SITE}/stagione-alpha.html`, priority: '0.3', changefreq: 'yearly' }] : []),
+  ...entries.map((e) => ({
+    loc: `${SITE}/comuni/${e.slug}.html`,
+    priority: '0.6',
+    changefreq: 'yearly',
+  })),
   { loc: `${SITE}/privacy-policy.html`, priority: '0.2', changefreq: 'yearly' },
+  { loc: `${SITE}/cookie-policy.html`, priority: '0.2', changefreq: 'yearly' },
+  { loc: `${SITE}/termini-acquisti.html`, priority: '0.2', changefreq: 'yearly' },
+  { loc: `${SITE}/sponsor.html`, priority: '0.5', changefreq: 'monthly' },
   { loc: `${SITE}/terms-of-service.html`, priority: '0.2', changefreq: 'yearly' },
 ];
 

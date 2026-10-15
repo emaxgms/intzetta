@@ -1,0 +1,18 @@
+{
+  "_nota": "Sponsor locali. Questa e' l'unica forma di pubblicita' che non dipende da un network esterno, non richiede approvazioni e rende piu' di AdSense alle scale piccole. Per attivare uno sponsor: mettere attivo a true e compilare i campi. Le date di inizio e fine permettono di vendere periodi ('per la stagione estiva') senza dover ricordare di disattivarlo.",
+  "_come_si_aggiunge": "1) il nome dell'attivita' 2) una riga di presentazione di massimo 90 caratteri 3) l'indirizzo web (facoltativo) 4) la localita' 5) dal/al in formato AAAA-MM-GG 6) attivo: true",
+  "_prezzi_consigliati": "150-300 euro all'anno per un banner nel riquadro degli sponsor. Vedi docs/monetizzazione.md",
+  "sponsor": [
+    {
+      "id": "esempio-non-attivo",
+      "nome": "La tua attività qui",
+      "testo": "Questo riquadro è riservato alle attività della Sardegna. Nessuno sponsor è attivo in questo momento.",
+      "url": "",
+      "localita": "Sardegna",
+      "dal": "2026-01-01",
+      "al": "2030-12-31",
+      "attivo": false,
+      "colore": "#4A6B3D"
+    }
+  ]
+}

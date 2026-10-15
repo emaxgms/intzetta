@@ -1,0 +1,3789 @@
+{
+  "_fonte": "Popolazione e CAP: elenco dei comuni italiani derivato dai dati ISTAT (CC BY 3.0 IT). Altitudine: Open-Meteo Elevation API, dati Copernicus DEM. Generato da scripts/fetch-comuni-dettagli.mjs",
+  "_aggiornato": "2026-10-15",
+  "comuni": {
+    "Santu Diadòru/San Teodoro": {
+      "popolazione": 4540,
+      "cap": [
+        "07052"
+      ],
+      "codiceIstat": "090092",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 13
+    },
+    "Domus De Maria": {
+      "popolazione": 1675,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111015",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 79
+    },
+    "Teulada": {
+      "popolazione": 3773,
+      "cap": [
+        "09019"
+      ],
+      "codiceIstat": "111089",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 45
+    },
+    "Pula": {
+      "popolazione": 7141,
+      "cap": [
+        "09050"
+      ],
+      "codiceIstat": "092050",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 13
+    },
+    "Arresi/Sant'Anna Arresi": {
+      "popolazione": 2712,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111070",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 74
+    },
+    "Sarrocu/Sarroch": {
+      "popolazione": 5198,
+      "cap": [
+        "09018"
+      ],
+      "codiceIstat": "092066",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 34
+    },
+    "Santu Antiogu/Sant'Antioco": {
+      "popolazione": 11496,
+      "cap": [
+        "09017"
+      ],
+      "codiceIstat": "111071",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 9
+    },
+    "Masainas": {
+      "popolazione": 1350,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111040",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 59
+    },
+    "Piscinas": {
+      "popolazione": 872,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111056",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 67
+    },
+    "Giba": {
+      "popolazione": 2120,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111028",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 61
+    },
+    "Santadi": {
+      "popolazione": 3570,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111068",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 122
+    },
+    "Santu Giuanni Suèrgiu/San Giovanni Suergiu": {
+      "popolazione": 6020,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111063",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 19
+    },
+    "Santu Perdu/Villa San Pietro": {
+      "popolazione": 2009,
+      "cap": [
+        "09050"
+      ],
+      "codiceIstat": "092099",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 36
+    },
+    "Tratalias": {
+      "popolazione": 1107,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111090",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 51
+    },
+    "Sa Baronia/Villaperuccio": {
+      "popolazione": 1097,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111102",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 67
+    },
+    "Assèmini/Assemini": {
+      "popolazione": 26620,
+      "cap": [
+        "09032"
+      ],
+      "codiceIstat": "092003",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 10
+    },
+    "Câdesédda/Calasetta": {
+      "popolazione": 2822,
+      "cap": [
+        "09011"
+      ],
+      "codiceIstat": "111008",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 15
+    },
+    "Cabuderra/Capoterra": {
+      "popolazione": 23255,
+      "cap": [
+        "09012"
+      ],
+      "codiceIstat": "092011",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 52
+    },
+    "Nuxis": {
+      "popolazione": 1631,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111049",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 186
+    },
+    "Crabonaxa/Villasimius": {
+      "popolazione": 3420,
+      "cap": [
+        "09049"
+      ],
+      "codiceIstat": "111105",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 41
+    },
+    "Perdaxius": {
+      "popolazione": 1475,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111054",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 99
+    },
+    "Sìnnia/Sinnai": {
+      "popolazione": 16730,
+      "cap": [
+        "09048"
+      ],
+      "codiceIstat": "092080",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 145
+    },
+    "Carbonia": {
+      "popolazione": 28882,
+      "cap": [
+        "09013"
+      ],
+      "codiceIstat": "111009",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 110
+    },
+    "Narcau/Narcao": {
+      "popolazione": 3373,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111044",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 123
+    },
+    "Maracalagonis": {
+      "popolazione": 7523,
+      "cap": [
+        "09069"
+      ],
+      "codiceIstat": "092037",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 82
+    },
+    "Portescusi/Portoscuso": {
+      "popolazione": 5236,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111057",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 31
+    },
+    "U Pàize/Carloforte": {
+      "popolazione": 6301,
+      "cap": [
+        "09014"
+      ],
+      "codiceIstat": "111010",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 12
+    },
+    "Uda/Uta": {
+      "popolazione": 7859,
+      "cap": [
+        "09068"
+      ],
+      "codiceIstat": "092090",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 8
+    },
+    "Casteddu/Cagliari": {
+      "popolazione": 149883,
+      "cap": [
+        "09121",
+        "09122",
+        "09123",
+        "09124",
+        "09125",
+        "09126",
+        "09127",
+        "09128",
+        "09129",
+        "09130",
+        "09131",
+        "09132",
+        "09133",
+        "09134"
+      ],
+      "codiceIstat": "092009",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 26
+    },
+    "Quartu Sant'Aleni/Quartu Sant'Elena": {
+      "popolazione": 69296,
+      "cap": [
+        "09045"
+      ],
+      "codiceIstat": "092051",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 9
+    },
+    "Igrèsias/Iglesias": {
+      "popolazione": 27674,
+      "cap": [
+        "09016"
+      ],
+      "codiceIstat": "111035",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 208
+    },
+    "Bidda Matzràxia/Villamassargia": {
+      "popolazione": 3655,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111098",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 126
+    },
+    "Deximumannu/Decimomannu": {
+      "popolazione": 7831,
+      "cap": [
+        "09033"
+      ],
+      "codiceIstat": "092015",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 15
+    },
+    "Quartùcciu/Quartucciu": {
+      "popolazione": 12825,
+      "cap": [
+        "09044"
+      ],
+      "codiceIstat": "092105",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 16
+    },
+    "Paùli/Monserrato": {
+      "popolazione": 20449,
+      "cap": [
+        "09042"
+      ],
+      "codiceIstat": "092109",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 9
+    },
+    "Gonnesa": {
+      "popolazione": 5135,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111030",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 52
+    },
+    "Su Masu/Elmas": {
+      "popolazione": 8949,
+      "cap": [
+        "09067"
+      ],
+      "codiceIstat": "092108",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 7
+    },
+    "Sestu": {
+      "popolazione": 19893,
+      "cap": [
+        "09028"
+      ],
+      "codiceIstat": "092074",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 43
+    },
+    "Ceraxus/Selargius": {
+      "popolazione": 28684,
+      "cap": [
+        "09047"
+      ],
+      "codiceIstat": "092068",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 13
+    },
+    "Biddaspitziosa/Villaspeciosa": {
+      "popolazione": 2407,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111107",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 14
+    },
+    "Sètimu/Settimo San Pietro": {
+      "popolazione": 6532,
+      "cap": [
+        "09060"
+      ],
+      "codiceIstat": "092075",
+      "sigla": "CA",
+      "provincia": "Cagliari",
+      "altitudine": 77
+    },
+    "Musei": {
+      "popolazione": 1522,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111043",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 119
+    },
+    "Domunoas/Domusnovas": {
+      "popolazione": 6416,
+      "cap": [
+        "09015"
+      ],
+      "codiceIstat": "111016",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 150
+    },
+    "Santu Idu/San Vito": {
+      "popolazione": 3822,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111066",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 18
+    },
+    "Deximeputzu/Decimoputzu": {
+      "popolazione": 4315,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111013",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 17
+    },
+    "Santu Sparau/San Sperate": {
+      "popolazione": 7972,
+      "cap": [
+        "09026"
+      ],
+      "codiceIstat": "111065",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 42
+    },
+    "Serdiana": {
+      "popolazione": 2620,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111076",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 173
+    },
+    "Solèminis/Soleminis": {
+      "popolazione": 1858,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111087",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 207
+    },
+    "Biddesorris/Villasor": {
+      "popolazione": 6857,
+      "cap": [
+        "09034"
+      ],
+      "codiceIstat": "111106",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 27
+    },
+    "Muristenis/Monastir": {
+      "popolazione": 4505,
+      "cap": [
+        "09023"
+      ],
+      "codiceIstat": "111041",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 86
+    },
+    "Biddaramosa/Vallermosa": {
+      "popolazione": 1944,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111095",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 75
+    },
+    "Patiolla/Dolianova": {
+      "popolazione": 9404,
+      "cap": [
+        "09041"
+      ],
+      "codiceIstat": "111014",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 231
+    },
+    "Bugerru/Buggerru": {
+      "popolazione": 1108,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111006",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 39
+    },
+    "Frùmini Majori/Fluminimaggiore": {
+      "popolazione": 2966,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111021",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 82
+    },
+    "Biddacidru/Villacidro": {
+      "popolazione": 14281,
+      "cap": [
+        "09039"
+      ],
+      "codiceIstat": "111096",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 248
+    },
+    "Ùssana/Ussana": {
+      "popolazione": 4285,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111093",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 95
+    },
+    "Brucei/Burcei": {
+      "popolazione": 2896,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111007",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 638
+    },
+    "Nuràminis/Nuraminis": {
+      "popolazione": 2606,
+      "cap": [
+        "09024"
+      ],
+      "codiceIstat": "111047",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 87
+    },
+    "Serramanna": {
+      "popolazione": 9259,
+      "cap": [
+        "09038"
+      ],
+      "codiceIstat": "111077",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 45
+    },
+    "Biddesatu/Villasalto": {
+      "popolazione": 1127,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111104",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 508
+    },
+    "Gonnos/Gonnosfanadiga": {
+      "popolazione": 6702,
+      "cap": [
+        "09035"
+      ],
+      "codiceIstat": "111031",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 181
+    },
+    "Biddeputzi/Villaputzu": {
+      "popolazione": 4836,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111103",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 16
+    },
+    "Donori": {
+      "popolazione": 2119,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111017",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 147
+    },
+    "Samatzai": {
+      "popolazione": 1720,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111060",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 161
+    },
+    "Pauli Gerrei/San Nicolò Gerrei": {
+      "popolazione": 846,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111064",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 368
+    },
+    "Serrenti": {
+      "popolazione": 5028,
+      "cap": [
+        "09027"
+      ],
+      "codiceIstat": "111078",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 124
+    },
+    "Sant'Andrea Frius": {
+      "popolazione": 1834,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111069",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 289
+    },
+    "Barrali": {
+      "popolazione": 1139,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111004",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 138
+    },
+    "Arbus": {
+      "popolazione": 6575,
+      "cap": [
+        "09031"
+      ],
+      "codiceIstat": "111001",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 289
+    },
+    "Samassi": {
+      "popolazione": 5321,
+      "cap": [
+        "09030"
+      ],
+      "codiceIstat": "111059",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 54
+    },
+    "Seddori/Sanluri": {
+      "popolazione": 8460,
+      "cap": [
+        "09025"
+      ],
+      "codiceIstat": "111067",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 144
+    },
+    "Ortacesus": {
+      "popolazione": 933,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111051",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 165
+    },
+    "Pramantellu/Pimentel": {
+      "popolazione": 1193,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111055",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 155
+    },
+    "Senorbì": {
+      "popolazione": 4781,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111075",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 202
+    },
+    "Santu 'Asili 'e Monti/San Basilio": {
+      "popolazione": 1281,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111061",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 400
+    },
+    "Santu 'Èngiu/San Gavino Monreale": {
+      "popolazione": 8894,
+      "cap": [
+        "09037"
+      ],
+      "codiceIstat": "111062",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 56
+    },
+    "Guasila": {
+      "popolazione": 2775,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111033",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 206
+    },
+    "Futei/Furtei": {
+      "popolazione": 1674,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111022",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 87
+    },
+    "Silius": {
+      "popolazione": 1271,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111085",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 591
+    },
+    "Ballau/Ballao": {
+      "popolazione": 877,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111003",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 88
+    },
+    "Armùngia/Armungia": {
+      "popolazione": 489,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111002",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 356
+    },
+    "Seurgus Donigala/Siurgus Donigala": {
+      "popolazione": 2080,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111086",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 439
+    },
+    "Sèligas/Selegas": {
+      "popolazione": 1433,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111074",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 229
+    },
+    "Àrthana/Arzana": {
+      "popolazione": 2501,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091002",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 702
+    },
+    "Gomajori/Guamaggiore": {
+      "popolazione": 1050,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111032",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 213
+    },
+    "Gùspini/Guspini": {
+      "popolazione": 12272,
+      "cap": [
+        "09036"
+      ],
+      "codiceIstat": "111034",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 121
+    },
+    "Pabillois/Pabillonis": {
+      "popolazione": 2948,
+      "cap": [
+        "09030"
+      ],
+      "codiceIstat": "111052",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 46
+    },
+    "Goni": {
+      "popolazione": 504,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111029",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 388
+    },
+    "Sueddi/Suelli": {
+      "popolazione": 1135,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111088",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 255
+    },
+    "Segariu": {
+      "popolazione": 1277,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111073",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 114
+    },
+    "Sàrdara/Sardara": {
+      "popolazione": 4168,
+      "cap": [
+        "09030"
+      ],
+      "codiceIstat": "111072",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 152
+    },
+    "Mara Arbarei/Villamar": {
+      "popolazione": 2872,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111097",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 106
+    },
+    "Jersu/Jerzu": {
+      "popolazione": 3228,
+      "cap": [
+        "08044"
+      ],
+      "codiceIstat": "091035",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 469
+    },
+    "Scalepranu/Escalaplano": {
+      "popolazione": 2268,
+      "cap": [
+        "09051"
+      ],
+      "codiceIstat": "111018",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 347
+    },
+    "Lanusè/Lanusei": {
+      "popolazione": 5492,
+      "cap": [
+        "08045"
+      ],
+      "codiceIstat": "091037",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 584
+    },
+    "Arrolli/Orroli": {
+      "popolazione": 2397,
+      "cap": [
+        "09061"
+      ],
+      "codiceIstat": "111050",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 540
+    },
+    "Òsini/Osini": {
+      "popolazione": 811,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091069",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 647
+    },
+    "Gèsigu/Gesico": {
+      "popolazione": 886,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111026",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 291
+    },
+    "Biddanoa de Forru/Villanovaforru": {
+      "popolazione": 681,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111100",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 316
+    },
+    "Lunamatrona": {
+      "popolazione": 1783,
+      "cap": [
+        "09022"
+      ],
+      "codiceIstat": "111038",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 167
+    },
+    "Ulassa/Ulassai": {
+      "popolazione": 1517,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091098",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 712
+    },
+    "Mandas": {
+      "popolazione": 2238,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111039",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 484
+    },
+    "Loceri": {
+      "popolazione": 1278,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091039",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 220
+    },
+    "Biddanoa Franca/Villanovafranca": {
+      "popolazione": 1433,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111101",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 286
+    },
+    "Tertenia": {
+      "popolazione": 3815,
+      "cap": [
+        "08047"
+      ],
+      "codiceIstat": "091089",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 121
+    },
+    "Iscroca/Escolca": {
+      "popolazione": 624,
+      "cap": [
+        "09052"
+      ],
+      "codiceIstat": "111019",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 419
+    },
+    "Foghesu/Perdasdefogu": {
+      "popolazione": 2042,
+      "cap": [
+        "08046"
+      ],
+      "codiceIstat": "091072",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 605
+    },
+    "Nurri": {
+      "popolazione": 2233,
+      "cap": [
+        "09059"
+      ],
+      "codiceIstat": "111048",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 587
+    },
+    "Arcidanu/San Nicolò d'Arcidano": {
+      "popolazione": 2811,
+      "cap": [
+        "09097"
+      ],
+      "codiceIstat": "095046",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 14
+    },
+    "Mòguru/Mogoro": {
+      "popolazione": 4354,
+      "cap": [
+        "09095"
+      ],
+      "codiceIstat": "095029",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 142
+    },
+    "Forru/Collinas": {
+      "popolazione": 885,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111012",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 256
+    },
+    "Pauli Arbarei": {
+      "popolazione": 651,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111053",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 137
+    },
+    "Is Pratzas/Las Plassas": {
+      "popolazione": 257,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111037",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 153
+    },
+    "Grexei/Gergei": {
+      "popolazione": 1298,
+      "cap": [
+        "09055"
+      ],
+      "codiceIstat": "111025",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 372
+    },
+    "Siddi": {
+      "popolazione": 696,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111083",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 188
+    },
+    "Barùmini/Barumini": {
+      "popolazione": 1310,
+      "cap": [
+        "09021"
+      ],
+      "codiceIstat": "111005",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 207
+    },
+    "Gonnostramatza": {
+      "popolazione": 943,
+      "cap": [
+        "09093"
+      ],
+      "codiceIstat": "095024",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 90
+    },
+    "Serri": {
+      "popolazione": 676,
+      "cap": [
+        "09063"
+      ],
+      "codiceIstat": "111079",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 619
+    },
+    "Ussaramanna": {
+      "popolazione": 556,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111094",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 156
+    },
+    "Turri": {
+      "popolazione": 442,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111092",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 166
+    },
+    "Tuili": {
+      "popolazione": 1062,
+      "cap": [
+        "09029"
+      ],
+      "codiceIstat": "111091",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 205
+    },
+    "Gonnacodina/Gonnoscodina": {
+      "popolazione": 505,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095022",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 120
+    },
+    "Istersili/Esterzili": {
+      "popolazione": 721,
+      "cap": [
+        "09053"
+      ],
+      "codiceIstat": "111020",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 722
+    },
+    "Aressa/Baressa": {
+      "popolazione": 723,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095012",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 164
+    },
+    "Uras": {
+      "popolazione": 2960,
+      "cap": [
+        "09099"
+      ],
+      "codiceIstat": "095069",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 22
+    },
+    "Seui": {
+      "popolazione": 1361,
+      "cap": [
+        "09064"
+      ],
+      "codiceIstat": "111081",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 806
+    },
+    "Terraba/Terralba": {
+      "popolazione": 10440,
+      "cap": [
+        "09098"
+      ],
+      "codiceIstat": "095065",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 12
+    },
+    "Masuddas/Masullas": {
+      "popolazione": 1129,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095026",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 136
+    },
+    "Simaba/Simala": {
+      "popolazione": 357,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095058",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 155
+    },
+    "Pompu": {
+      "popolazione": 278,
+      "cap": [
+        "09093"
+      ],
+      "codiceIstat": "095042",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 147
+    },
+    "Setzu": {
+      "popolazione": 144,
+      "cap": [
+        "09029"
+      ],
+      "codiceIstat": "111080",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 205
+    },
+    "Bobadri/Baradili": {
+      "popolazione": 90,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095010",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 160
+    },
+    "Giauni/Genuri": {
+      "popolazione": 345,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111024",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 235
+    },
+    "Gèsturi/Gesturi": {
+      "popolazione": 1280,
+      "cap": [
+        "09020"
+      ],
+      "codiceIstat": "111027",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 319
+    },
+    "Gàiru/Gairo": {
+      "popolazione": 1514,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091026",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 677
+    },
+    "Siris": {
+      "popolazione": 224,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095061",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 168
+    },
+    "Margaxori/Morgongiori": {
+      "popolazione": 777,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095030",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 362
+    },
+    "Gonnonnò/Gonnosnò": {
+      "popolazione": 800,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095023",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 192
+    },
+    "Ìsili/Isili": {
+      "popolazione": 2842,
+      "cap": [
+        "09056"
+      ],
+      "codiceIstat": "111036",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 510
+    },
+    "Cardedu": {
+      "popolazione": 1809,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091103",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 43
+    },
+    "Sini": {
+      "popolazione": 515,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095060",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 245
+    },
+    "Crucuris/Curcuris": {
+      "popolazione": 314,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095077",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 147
+    },
+    "Marrùbiu/Marrubiu": {
+      "popolazione": 4921,
+      "cap": [
+        "09094"
+      ],
+      "codiceIstat": "095025",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 10
+    },
+    "Sàdili/Sadali": {
+      "popolazione": 918,
+      "cap": [
+        "09062"
+      ],
+      "codiceIstat": "111058",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 762
+    },
+    "Geroni/Genoni": {
+      "popolazione": 885,
+      "cap": [
+        "09054"
+      ],
+      "codiceIstat": "111023",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 445
+    },
+    "Nuragus": {
+      "popolazione": 942,
+      "cap": [
+        "09057"
+      ],
+      "codiceIstat": "111045",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 358
+    },
+    "Abas/Ales": {
+      "popolazione": 1515,
+      "cap": [
+        "09091"
+      ],
+      "codiceIstat": "095004",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 185
+    },
+    "Biddanoa 'e Tulu/Villanova Tulo": {
+      "popolazione": 1158,
+      "cap": [
+        "09066"
+      ],
+      "codiceIstat": "111099",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 584
+    },
+    "Arborea": {
+      "popolazione": 4048,
+      "cap": [
+        "09092"
+      ],
+      "codiceIstat": "095006",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 9
+    },
+    "Ollasta Useddus/Albagiara": {
+      "popolazione": 277,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095003",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 210
+    },
+    "Useddus/Usellus": {
+      "popolazione": 854,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095070",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 266
+    },
+    "Bàini/Villa Verde": {
+      "popolazione": 335,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095073",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 201
+    },
+    "Assolu/Assolo": {
+      "popolazione": 434,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095008",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 232
+    },
+    "Nureci": {
+      "popolazione": 348,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095036",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 322
+    },
+    "Nuradda/Nurallao": {
+      "popolazione": 1357,
+      "cap": [
+        "09058"
+      ],
+      "codiceIstat": "111046",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 399
+    },
+    "Làconi/Laconi": {
+      "popolazione": 2008,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095082",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 505
+    },
+    "Barì/Bari Sardo": {
+      "popolazione": 3938,
+      "cap": [
+        "08042"
+      ],
+      "codiceIstat": "091005",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 42
+    },
+    "Santa Justa/Santa Giusta": {
+      "popolazione": 4811,
+      "cap": [
+        "09096"
+      ],
+      "codiceIstat": "095047",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 3
+    },
+    "Pau": {
+      "popolazione": 300,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095040",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 308
+    },
+    "Ussassa/Ussassai": {
+      "popolazione": 599,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091100",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 665
+    },
+    "Prammas/Palmas Arborea": {
+      "popolazione": 1482,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095039",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 10
+    },
+    "Seulu/Seulo": {
+      "popolazione": 897,
+      "cap": [
+        "09065"
+      ],
+      "codiceIstat": "111082",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 759
+    },
+    "Senis": {
+      "popolazione": 479,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095054",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 240
+    },
+    "Gadoni": {
+      "popolazione": 886,
+      "cap": [
+        "08030"
+      ],
+      "codiceIstat": "091025",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 717
+    },
+    "Biddobrana/Villaurbana": {
+      "popolazione": 1731,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095072",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 90
+    },
+    "Santu Antoni Arruinas/Villa Sant'Antonio": {
+      "popolazione": 382,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095048",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 241
+    },
+    "Mogoredda/Mogorella": {
+      "popolazione": 463,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095028",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 281
+    },
+    "Asuni": {
+      "popolazione": 357,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095009",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 238
+    },
+    "Irvonu/Ilbono": {
+      "popolazione": 2207,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091032",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 383
+    },
+    "Tortolì": {
+      "popolazione": 10743,
+      "cap": [
+        "08048"
+      ],
+      "codiceIstat": "091095",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 20
+    },
+    "Aristanis/Oristano": {
+      "popolazione": 31155,
+      "cap": [
+        "09170"
+      ],
+      "codiceIstat": "095038",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 9
+    },
+    "Crabas/Cabras": {
+      "popolazione": 9032,
+      "cap": [
+        "09072"
+      ],
+      "codiceIstat": "095018",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 7
+    },
+    "Arruinas/Ruinas": {
+      "popolazione": 728,
+      "cap": [
+        "09085"
+      ],
+      "codiceIstat": "095044",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 342
+    },
+    "Aritzu/Aritzo": {
+      "popolazione": 1328,
+      "cap": [
+        "08031"
+      ],
+      "codiceIstat": "091001",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 774
+    },
+    "Siamanna": {
+      "popolazione": 824,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095057",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 46
+    },
+    "Elini": {
+      "popolazione": 550,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091019",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 475
+    },
+    "Samugheo": {
+      "popolazione": 3183,
+      "cap": [
+        "09086"
+      ],
+      "codiceIstat": "095045",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 372
+    },
+    "Meana/Meana Sardo": {
+      "popolazione": 1913,
+      "cap": [
+        "08030"
+      ],
+      "codiceIstat": "091047",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 602
+    },
+    "Simaghis/Simaxis": {
+      "popolazione": 2309,
+      "cap": [
+        "09088"
+      ],
+      "codiceIstat": "095059",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 16
+    },
+    "Sabarussa/Solarussa": {
+      "popolazione": 2467,
+      "cap": [
+        "09077"
+      ],
+      "codiceIstat": "095062",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 26
+    },
+    "Siapicia/Siapiccia": {
+      "popolazione": 370,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095076",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 53
+    },
+    "Àllai/Allai": {
+      "popolazione": 370,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095005",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 60
+    },
+    "Biddamanna Istrisàili/Villagrande Strisaili": {
+      "popolazione": 3376,
+      "cap": [
+        "08049"
+      ],
+      "codiceIstat": "091101",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 675
+    },
+    "Zrofolliu/Zerfaliu": {
+      "popolazione": 1172,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095075",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 19
+    },
+    "Ollasta/Ollastra": {
+      "popolazione": 1255,
+      "cap": [
+        "09088"
+      ],
+      "codiceIstat": "095037",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 24
+    },
+    "Fordongianus": {
+      "popolazione": 939,
+      "cap": [
+        "09083"
+      ],
+      "codiceIstat": "095020",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 39
+    },
+    "Gelisuli/Girasole": {
+      "popolazione": 1191,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091031",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 10
+    },
+    "Lotzorai": {
+      "popolazione": 2151,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091042",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 9
+    },
+    "Nurachi": {
+      "popolazione": 1790,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095035",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 7
+    },
+    "Brebì/Belvì": {
+      "popolazione": 665,
+      "cap": [
+        "08030"
+      ],
+      "codiceIstat": "091007",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 675
+    },
+    "Siamajori/Siamaggiore": {
+      "popolazione": 970,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095056",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 20
+    },
+    "Boàtiri/Baratili San Pietro": {
+      "popolazione": 1329,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095011",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 13
+    },
+    "Atzara": {
+      "popolazione": 1210,
+      "cap": [
+        "08030"
+      ],
+      "codiceIstat": "091003",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 552
+    },
+    "Zeddiani": {
+      "popolazione": 1158,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095074",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 12
+    },
+    "Arriora/Riola Sardo": {
+      "popolazione": 2146,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095043",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 5
+    },
+    "Sòrgono/Sorgono": {
+      "popolazione": 1753,
+      "cap": [
+        "08038"
+      ],
+      "codiceIstat": "091086",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 681
+    },
+    "Tramatza": {
+      "popolazione": 997,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095066",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 24
+    },
+    "Busache/Busachi": {
+      "popolazione": 1379,
+      "cap": [
+        "09082"
+      ],
+      "codiceIstat": "095017",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 380
+    },
+    "Dèsulu/Desulo": {
+      "popolazione": 2465,
+      "cap": [
+        "08032"
+      ],
+      "codiceIstat": "091016",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 929
+    },
+    "Baunei": {
+      "popolazione": 3716,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091006",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 503
+    },
+    "Talana": {
+      "popolazione": 1069,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091088",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 731
+    },
+    "Biddanoa Truschedu/Villanova Truschedu": {
+      "popolazione": 323,
+      "cap": [
+        "09084"
+      ],
+      "codiceIstat": "095071",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 47
+    },
+    "Tonara": {
+      "popolazione": 2116,
+      "cap": [
+        "08039"
+      ],
+      "codiceIstat": "091093",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 903
+    },
+    "Triei": {
+      "popolazione": 1126,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091097",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 131
+    },
+    "Ortueri": {
+      "popolazione": 1262,
+      "cap": [
+        "08036"
+      ],
+      "codiceIstat": "091066",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 591
+    },
+    "Santeru/San Vero Milis": {
+      "popolazione": 2526,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095050",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 15
+    },
+    "Paulle/Paulilatino": {
+      "popolazione": 2347,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095041",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 285
+    },
+    "Baulau/Bauladu": {
+      "popolazione": 703,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095013",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 40
+    },
+    "Ula/Ulà Tirso": {
+      "popolazione": 580,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095068",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 361
+    },
+    "Narabuia/Narbolia": {
+      "popolazione": 1801,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095031",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 46
+    },
+    "Milis": {
+      "popolazione": 1591,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095027",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 77
+    },
+    "Ilartzi/Ghilarza": {
+      "popolazione": 4615,
+      "cap": [
+        "09074"
+      ],
+      "codiceIstat": "095021",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 296
+    },
+    "Sèneghe/Seneghe": {
+      "popolazione": 1847,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095053",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 308
+    },
+    "Tìana/Tiana": {
+      "popolazione": 521,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091091",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 552
+    },
+    "Austis": {
+      "popolazione": 876,
+      "cap": [
+        "08030"
+      ],
+      "codiceIstat": "091004",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 728
+    },
+    "Neunele/Neoneli": {
+      "popolazione": 713,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095032",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 548
+    },
+    "Bonaccattu/Bonarcado": {
+      "popolazione": 1627,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095015",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 252
+    },
+    "Ardaule/Ardauli": {
+      "popolazione": 946,
+      "cap": [
+        "09081"
+      ],
+      "codiceIstat": "095007",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 439
+    },
+    "Cùllieri/Cuglieri": {
+      "popolazione": 2811,
+      "cap": [
+        "09073"
+      ],
+      "codiceIstat": "095019",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 425
+    },
+    "Onne/Fonni": {
+      "popolazione": 4062,
+      "cap": [
+        "08023"
+      ],
+      "codiceIstat": "091024",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 988
+    },
+    "Ovodda": {
+      "popolazione": 1627,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091071",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 732
+    },
+    "Tadasune/Tadasuni": {
+      "popolazione": 184,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095064",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 197
+    },
+    "Orgòsolo/Orgosolo": {
+      "popolazione": 4347,
+      "cap": [
+        "08027"
+      ],
+      "codiceIstat": "091062",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 604
+    },
+    "Teti": {
+      "popolazione": 690,
+      "cap": [
+        "08030"
+      ],
+      "codiceIstat": "091090",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 726
+    },
+    "Nughedu Santa Itòria/Nughedu Santa Vittoria": {
+      "popolazione": 508,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095034",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 497
+    },
+    "Sorradile": {
+      "popolazione": 417,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095063",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 336
+    },
+    "Orthullè/Urzulei": {
+      "popolazione": 1295,
+      "cap": [
+        "08040"
+      ],
+      "codiceIstat": "091099",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 552
+    },
+    "Bidoniu/Bidonì": {
+      "popolazione": 147,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095014",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 244
+    },
+    "Boroneddu": {
+      "popolazione": 165,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095016",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 231
+    },
+    "Soddie/Soddì": {
+      "popolazione": 116,
+      "cap": [
+        "09080"
+      ],
+      "codiceIstat": "095078",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 245
+    },
+    "Santu Lussurzu/Santu Lussurgiu": {
+      "popolazione": 2440,
+      "cap": [
+        "09075"
+      ],
+      "codiceIstat": "095049",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 515
+    },
+    "Abbasanta": {
+      "popolazione": 2828,
+      "cap": [
+        "09071"
+      ],
+      "codiceIstat": "095001",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 318
+    },
+    "Ollollai/Ollolai": {
+      "popolazione": 1373,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091056",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 939
+    },
+    "Gavoi": {
+      "popolazione": 2790,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091028",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 766
+    },
+    "Ortzai/Olzai": {
+      "popolazione": 903,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091057",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 427
+    },
+    "Sèdilo/Sedilo": {
+      "popolazione": 2216,
+      "cap": [
+        "09076"
+      ],
+      "codiceIstat": "095052",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 285
+    },
+    "Norghiddo/Norbello": {
+      "popolazione": 1178,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095033",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 316
+    },
+    "Aidumajore/Aidomaggiore": {
+      "popolazione": 472,
+      "cap": [
+        "09070"
+      ],
+      "codiceIstat": "095002",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 253
+    },
+    "Lodine": {
+      "popolazione": 358,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091104",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 873
+    },
+    "Mamujada/Mamoiada": {
+      "popolazione": 2559,
+      "cap": [
+        "08024"
+      ],
+      "codiceIstat": "091046",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 633
+    },
+    "Otzana/Ottana": {
+      "popolazione": 2384,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091070",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 189
+    },
+    "Bòrore/Borore": {
+      "popolazione": 2190,
+      "cap": [
+        "08016"
+      ],
+      "codiceIstat": "091011",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 399
+    },
+    "Tresnuraghes": {
+      "popolazione": 1215,
+      "cap": [
+        "09079"
+      ],
+      "codiceIstat": "095067",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 251
+    },
+    "Iscanu/Scano di Montiferro": {
+      "popolazione": 1580,
+      "cap": [
+        "09078"
+      ],
+      "codiceIstat": "095051",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 363
+    },
+    "Sarule": {
+      "popolazione": 1770,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091077",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 630
+    },
+    "Duarche/Dualchi": {
+      "popolazione": 668,
+      "cap": [
+        "08010"
+      ],
+      "codiceIstat": "091018",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 324
+    },
+    "Durgali/Dorgali": {
+      "popolazione": 8524,
+      "cap": [
+        "08022"
+      ],
+      "codiceIstat": "091017",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 396
+    },
+    "Sinnariolo/Sennariolo": {
+      "popolazione": 183,
+      "cap": [
+        "09078"
+      ],
+      "codiceIstat": "095055",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 270
+    },
+    "Noragugume": {
+      "popolazione": 338,
+      "cap": [
+        "08010"
+      ],
+      "codiceIstat": "091050",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 288
+    },
+    "Macumere/Macomer": {
+      "popolazione": 10511,
+      "cap": [
+        "08015"
+      ],
+      "codiceIstat": "091044",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 576
+    },
+    "Flùssio/Flussio": {
+      "popolazione": 454,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095080",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 317
+    },
+    "Bìroro/Birori": {
+      "popolazione": 561,
+      "cap": [
+        "08010"
+      ],
+      "codiceIstat": "091008",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 471
+    },
+    "Orane/Orani": {
+      "popolazione": 3007,
+      "cap": [
+        "08026"
+      ],
+      "codiceIstat": "091061",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 529
+    },
+    "Bolòtana/Bolotana": {
+      "popolazione": 2846,
+      "cap": [
+        "08011"
+      ],
+      "codiceIstat": "091010",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 465
+    },
+    "Silanos/Silanus": {
+      "popolazione": 2200,
+      "cap": [
+        "08017"
+      ],
+      "codiceIstat": "091083",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 421
+    },
+    "Magumadas/Magomadas": {
+      "popolazione": 643,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095083",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 257
+    },
+    "Nùgoro/Nuoro": {
+      "popolazione": 36674,
+      "cap": [
+        "08100"
+      ],
+      "codiceIstat": "091051",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 542
+    },
+    "Sàgama/Sagama": {
+      "popolazione": 193,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095086",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 336
+    },
+    "Bortigale/Bortigali": {
+      "popolazione": 1417,
+      "cap": [
+        "08012"
+      ],
+      "codiceIstat": "091012",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 513
+    },
+    "Sindìa/Sindia": {
+      "popolazione": 1811,
+      "cap": [
+        "08018"
+      ],
+      "codiceIstat": "091084",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 516
+    },
+    "Mòdolo/Modolo": {
+      "popolazione": 165,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095084",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 112
+    },
+    "Bosa": {
+      "popolazione": 8026,
+      "cap": [
+        "09089"
+      ],
+      "codiceIstat": "095079",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 6
+    },
+    "Tinnura": {
+      "popolazione": 268,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095088",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 328
+    },
+    "Sune/Suni": {
+      "popolazione": 1130,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095087",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 342
+    },
+    "Ulìana/Oliena": {
+      "popolazione": 7355,
+      "cap": [
+        "08025"
+      ],
+      "codiceIstat": "091055",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 351
+    },
+    "Illorai": {
+      "popolazione": 953,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090031",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 498
+    },
+    "Oroteddi/Orotelli": {
+      "popolazione": 2152,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091064",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 425
+    },
+    "Semèstene/Semestene": {
+      "popolazione": 171,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090066",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 394
+    },
+    "Putumajore/Pozzomaggiore": {
+      "popolazione": 2717,
+      "cap": [
+        "07018"
+      ],
+      "codiceIstat": "090059",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 442
+    },
+    "Lei": {
+      "popolazione": 566,
+      "cap": [
+        "08010"
+      ],
+      "codiceIstat": "091038",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 475
+    },
+    "Orosei": {
+      "popolazione": 6794,
+      "cap": [
+        "08028"
+      ],
+      "codiceIstat": "091063",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 20
+    },
+    "Bottidda": {
+      "popolazione": 736,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090016",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 400
+    },
+    "Isporlatu/Esporlatu": {
+      "popolazione": 412,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090028",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 468
+    },
+    "Bono": {
+      "popolazione": 3636,
+      "cap": [
+        "07011"
+      ],
+      "codiceIstat": "090012",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 554
+    },
+    "Onieri/Oniferi": {
+      "popolazione": 925,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091060",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 464
+    },
+    "Benetutti": {
+      "popolazione": 1971,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090008",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 399
+    },
+    "Pàdria/Padria": {
+      "popolazione": 695,
+      "cap": [
+        "07015"
+      ],
+      "codiceIstat": "090053",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 309
+    },
+    "Garteddi/Galtellì": {
+      "popolazione": 2472,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091027",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 23
+    },
+    "Montresta": {
+      "popolazione": 535,
+      "cap": [
+        "09090"
+      ],
+      "codiceIstat": "095085",
+      "sigla": "OR",
+      "provincia": "Oristano",
+      "altitudine": 401
+    },
+    "Oniài/Onifai": {
+      "popolazione": 742,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091059",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 20
+    },
+    "Irgoli": {
+      "popolazione": 2345,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091033",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 24
+    },
+    "Orune": {
+      "popolazione": 2561,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091067",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 749
+    },
+    "Lùvula/Lula": {
+      "popolazione": 1495,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091043",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 514
+    },
+    "Bonolva/Bonorva": {
+      "popolazione": 3669,
+      "cap": [
+        "07012"
+      ],
+      "codiceIstat": "090013",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 485
+    },
+    "Biddanoa Monteleone/Villanova Monteleone": {
+      "popolazione": 2375,
+      "cap": [
+        "07019"
+      ],
+      "codiceIstat": "090078",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 578
+    },
+    "Su Burgu/Burgos": {
+      "popolazione": 944,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090020",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 568
+    },
+    "Cossoine": {
+      "popolazione": 900,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090027",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 530
+    },
+    "Urtei/Bultei": {
+      "popolazione": 1046,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090018",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 454
+    },
+    "Lòcula/Loculi": {
+      "popolazione": 515,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091040",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 33
+    },
+    "Mara": {
+      "popolazione": 682,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090038",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 288
+    },
+    "Rumana/Romana": {
+      "popolazione": 578,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090061",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 273
+    },
+    "Monteleone/Monteleone Rocca Doria": {
+      "popolazione": 117,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090040",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 372
+    },
+    "Bitzi/Bitti": {
+      "popolazione": 3019,
+      "cap": [
+        "08021"
+      ],
+      "codiceIstat": "091009",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 523
+    },
+    "Giave": {
+      "popolazione": 586,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090030",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 587
+    },
+    "Nule": {
+      "popolazione": 1427,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090045",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 635
+    },
+    "Thiniscole/Siniscola": {
+      "popolazione": 11469,
+      "cap": [
+        "08029"
+      ],
+      "codiceIstat": "091085",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 48
+    },
+    "Turalva/Torralba": {
+      "popolazione": 998,
+      "cap": [
+        "07048"
+      ],
+      "codiceIstat": "090073",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 427
+    },
+    "Thiesi": {
+      "popolazione": 3005,
+      "cap": [
+        "07047"
+      ],
+      "codiceIstat": "090071",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 470
+    },
+    "Cherèmule/Cheremule": {
+      "popolazione": 455,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090024",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 554
+    },
+    "Nughedu Santu Nigola/Nughedu San Nicolò": {
+      "popolazione": 874,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090044",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 579
+    },
+    "Anela": {
+      "popolazione": 673,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090004",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 475
+    },
+    "Mores": {
+      "popolazione": 1945,
+      "cap": [
+        "07013"
+      ],
+      "codiceIstat": "090042",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 372
+    },
+    "Itireddu/Ittireddu": {
+      "popolazione": 580,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090032",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 318
+    },
+    "Boruta/Borutta": {
+      "popolazione": 285,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090015",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 483
+    },
+    "Patada/Pattada": {
+      "popolazione": 3253,
+      "cap": [
+        "07016"
+      ],
+      "codiceIstat": "090055",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 780
+    },
+    "Osidde/Osidda": {
+      "popolazione": 230,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091068",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 642
+    },
+    "Bunnànnaru/Bonnanaro": {
+      "popolazione": 1021,
+      "cap": [
+        "07043"
+      ],
+      "codiceIstat": "090011",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 395
+    },
+    "l'Alguer/Alghero": {
+      "popolazione": 40641,
+      "cap": [
+        "07041"
+      ],
+      "codiceIstat": "090003",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 14
+    },
+    "Potuvigari/Putifigari": {
+      "popolazione": 757,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090060",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 269
+    },
+    "Uddusò/Buddusò": {
+      "popolazione": 3979,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090017",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 685
+    },
+    "Bessude": {
+      "popolazione": 428,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090010",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 425
+    },
+    "Ìtiri Cannedu/Ittiri": {
+      "popolazione": 8868,
+      "cap": [
+        "07044"
+      ],
+      "codiceIstat": "090033",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 397
+    },
+    "Onanìe/Onanì": {
+      "popolazione": 430,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091058",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 470
+    },
+    "Lodè": {
+      "popolazione": 1894,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091041",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 346
+    },
+    "Sìligo/Siligo": {
+      "popolazione": 912,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090068",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 398
+    },
+    "Otieri/Ozieri": {
+      "popolazione": 10881,
+      "cap": [
+        "07014"
+      ],
+      "codiceIstat": "090052",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 360
+    },
+    "Bànari/Banari": {
+      "popolazione": 610,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090007",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 427
+    },
+    "Fiolinas/Florinas": {
+      "popolazione": 1547,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090029",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 414
+    },
+    "Torpè": {
+      "popolazione": 2891,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091094",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 21
+    },
+    "Pasada/Posada": {
+      "popolazione": 2737,
+      "cap": [
+        "08020"
+      ],
+      "codiceIstat": "091073",
+      "sigla": "NU",
+      "provincia": "Nuoro",
+      "altitudine": 17
+    },
+    "Codronzanu/Codrongianos": {
+      "popolazione": 1346,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090026",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 334
+    },
+    "Àldara/Ardara": {
+      "popolazione": 800,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090005",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 306
+    },
+    "Uri": {
+      "popolazione": 3016,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090076",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 143
+    },
+    "Ossi": {
+      "popolazione": 5876,
+      "cap": [
+        "07045"
+      ],
+      "codiceIstat": "090051",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 323
+    },
+    "Piaghe/Ploaghe": {
+      "popolazione": 4653,
+      "cap": [
+        "07017"
+      ],
+      "codiceIstat": "090057",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 417
+    },
+    "Ùsini/Usini": {
+      "popolazione": 4321,
+      "cap": [
+        "07049"
+      ],
+      "codiceIstat": "090077",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 204
+    },
+    "S'Ulumedu/Olmedo": {
+      "popolazione": 4001,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090048",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 56
+    },
+    "Padru": {
+      "popolazione": 2130,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090090",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 167
+    },
+    "Alà/Alà dei Sardi": {
+      "popolazione": 1947,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090002",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 668
+    },
+    "Tzaramonte/Chiaramonti": {
+      "popolazione": 1735,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090025",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 433
+    },
+    "Carzeghe/Cargeghe": {
+      "popolazione": 644,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090022",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 319
+    },
+    "Oscheri/Oschiri": {
+      "popolazione": 3436,
+      "cap": [
+        "07027"
+      ],
+      "codiceIstat": "090049",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 204
+    },
+    "Sassari": {
+      "popolazione": 123782,
+      "cap": [
+        "07100"
+      ],
+      "codiceIstat": "090064",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 206
+    },
+    "Budune/Budoni": {
+      "popolazione": 4846,
+      "cap": [
+        "07051"
+      ],
+      "codiceIstat": "090091",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 15
+    },
+    "Tissi": {
+      "popolazione": 2289,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090072",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 242
+    },
+    "Muros": {
+      "popolazione": 837,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090043",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 304
+    },
+    "Òsile/Osilo": {
+      "popolazione": 3204,
+      "cap": [
+        "07033"
+      ],
+      "codiceIstat": "090050",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 629
+    },
+    "Belchidda/Berchidda": {
+      "popolazione": 2897,
+      "cap": [
+        "07022"
+      ],
+      "codiceIstat": "090009",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 248
+    },
+    "Olbia": {
+      "popolazione": 53307,
+      "cap": [
+        "07026"
+      ],
+      "codiceIstat": "090047",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 12
+    },
+    "Monte/Monti": {
+      "popolazione": 2488,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090041",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 288
+    },
+    "Tula": {
+      "popolazione": 1598,
+      "cap": [
+        "07010"
+      ],
+      "codiceIstat": "090075",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 248
+    },
+    "Erula": {
+      "popolazione": 766,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090088",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 458
+    },
+    "Sènnaru/Sennori": {
+      "popolazione": 7375,
+      "cap": [
+        "07036"
+      ],
+      "codiceIstat": "090067",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 206
+    },
+    "Martis": {
+      "popolazione": 553,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090039",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 301
+    },
+    "Pèifugas/Perfugas": {
+      "popolazione": 2415,
+      "cap": [
+        "07034"
+      ],
+      "codiceIstat": "090056",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 96
+    },
+    "Loiri-Poltu Santu Paolu/Loiri Porto San Paolo": {
+      "popolazione": 3234,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090084",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 14
+    },
+    "Laerru": {
+      "popolazione": 945,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090034",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 177
+    },
+    "Tèmpiu/Tempio Pausania": {
+      "popolazione": 13946,
+      "cap": [
+        "07029"
+      ],
+      "codiceIstat": "090070",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 568
+    },
+    "Sòssu/Sorso": {
+      "popolazione": 14300,
+      "cap": [
+        "07037"
+      ],
+      "codiceIstat": "090069",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 154
+    },
+    "Bultzi/Bulzi": {
+      "popolazione": 552,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090019",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 204
+    },
+    "Zelgu/Tergu": {
+      "popolazione": 614,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090086",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 285
+    },
+    "Posthudorra/Porto Torres": {
+      "popolazione": 22391,
+      "cap": [
+        "07046"
+      ],
+      "codiceIstat": "090058",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 8
+    },
+    "Caragnani/Calangianus": {
+      "popolazione": 4267,
+      "cap": [
+        "07023"
+      ],
+      "codiceIstat": "090021",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 500
+    },
+    "Telti": {
+      "popolazione": 2222,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090080",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 325
+    },
+    "Isthintini/Stintino": {
+      "popolazione": 1501,
+      "cap": [
+        "07040"
+      ],
+      "codiceIstat": "090089",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 21
+    },
+    "Cuzina/Santa Maria Coghinas": {
+      "popolazione": 1430,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090087",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 6
+    },
+    "Bultiggjata/Bortigiadas": {
+      "popolazione": 800,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090014",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 482
+    },
+    "Castheddu/Castelsardo": {
+      "popolazione": 5737,
+      "cap": [
+        "07031"
+      ],
+      "codiceIstat": "090023",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 48
+    },
+    "Codaruina/Valledoria": {
+      "popolazione": 4091,
+      "cap": [
+        "07039"
+      ],
+      "codiceIstat": "090079",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 16
+    },
+    "Viddha Eccia/Viddalba": {
+      "popolazione": 1694,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090082",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 34
+    },
+    "Agghju/Aggius": {
+      "popolazione": 1602,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090001",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 508
+    },
+    "Badesi": {
+      "popolazione": 1898,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090081",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 108
+    },
+    "Sant'Antoni di Gaddura/Sant'Antonio di Gallura": {
+      "popolazione": 1619,
+      "cap": [
+        "07030"
+      ],
+      "codiceIstat": "090085",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 344
+    },
+    "La Trinitai e Vignola/Trinità d'Agultu e Vignola": {
+      "popolazione": 2155,
+      "cap": [
+        "07038"
+      ],
+      "codiceIstat": "090074",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 358
+    },
+    "Figari/Golfo Aranci": {
+      "popolazione": 2288,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090083",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 14
+    },
+    "Luras": {
+      "popolazione": 2651,
+      "cap": [
+        "07025"
+      ],
+      "codiceIstat": "090037",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 495
+    },
+    "Locusantu/Luogosanto": {
+      "popolazione": 1905,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090036",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 291
+    },
+    "Alzachèna/Arzachena": {
+      "popolazione": 11447,
+      "cap": [
+        "07021"
+      ],
+      "codiceIstat": "090006",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 77
+    },
+    "Aglientu": {
+      "popolazione": 1171,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090062",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 442
+    },
+    "Lu Palau/Palau": {
+      "popolazione": 3772,
+      "cap": [
+        "07020"
+      ],
+      "codiceIstat": "090054",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 13
+    },
+    "Lungòni/Santa Teresa Gallura": {
+      "popolazione": 5018,
+      "cap": [
+        "07028"
+      ],
+      "codiceIstat": "090063",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 35
+    },
+    "Nujvi/Nulvi": {
+      "popolazione": 2851,
+      "cap": [
+        "07032"
+      ],
+      "codiceIstat": "090046",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 481
+    },
+    "Séddini/Sedini": {
+      "popolazione": 1378,
+      "cap": [
+        "07035"
+      ],
+      "codiceIstat": "090065",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 326
+    },
+    "Castiadas": {
+      "popolazione": 1507,
+      "cap": [
+        "09040"
+      ],
+      "codiceIstat": "111011",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 157
+    },
+    "Murera/Muravera": {
+      "popolazione": 5162,
+      "cap": [
+        "09043"
+      ],
+      "codiceIstat": "111042",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 8
+    },
+    "Siliqua": {
+      "popolazione": 3997,
+      "cap": [
+        "09010"
+      ],
+      "codiceIstat": "111084",
+      "sigla": "SU",
+      "provincia": "Sud Sardegna",
+      "altitudine": 67
+    },
+    "La Maddalena": {
+      "popolazione": 10936,
+      "cap": [
+        "07024"
+      ],
+      "codiceIstat": "090035",
+      "sigla": "SS",
+      "provincia": "Sassari",
+      "altitudine": 11
+    }
+  }
+}
