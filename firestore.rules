@@ -55,6 +55,37 @@ service cloud.firestore {
       allow delete: if false;
     }
 
+    // Classifiche divise per tabellone:
+    //   leaderboards/generale/entries/{uid}
+    //   leaderboards/giornaliera-2026-10-14/entries/{uid}
+    //   leaderboards/provincia-ss/entries/{uid}
+    //
+    // Come per i profili: leggibili da chiunque (la classifica si vede anche senza accesso) e
+    // scrivibili solo dal proprietario della propria voce. Il punteggio e' limitato al massimo
+    // ottenibile e non puo' peggiorare. Le voci non si cancellano dal client: la classifica
+    // della sfida del giorno si azzera da sola perche' il giorno dopo cambia il nome del
+    // tabellone, non perche' qualcuno cancella qualcosa.
+    match /leaderboards/{boardId}/entries/{userId} {
+
+      function isOwner() {
+        return request.auth != null && request.auth.uid == userId;
+      }
+
+      function validEntry(data) {
+        return data.bestScore is int && data.bestScore >= 0 && data.bestScore <= 40000;
+      }
+
+      function notWorse() {
+        return !('bestScore' in resource.data)
+          || request.resource.data.bestScore >= resource.data.bestScore;
+      }
+
+      allow read: if true;
+      allow create: if isOwner() && validEntry(request.resource.data);
+      allow update: if isOwner() && validEntry(request.resource.data) && notWorse();
+      allow delete: if false;
+    }
+
     // Tutto il resto e' chiuso: nessuna collezione inventata puo' restare aperta per errore.
     match /{document=**} {
       allow read, write: if false;

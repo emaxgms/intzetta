@@ -1,0 +1,58 @@
+{
+    "stagione":  "Alpha",
+    "chiusura":  "2026-10-15",
+    "nota":  "Classifica della versione iniziale del gioco, prima del reset. Punteggi salvati dal client.",
+    "partecipanti":  24,
+    "classifica":  [
+                       {
+                           "posizione":  1,
+                           "nome":  "Luca Siddi",
+                           "punteggio":  40000
+                       },
+                       {
+                           "posizione":  2,
+                           "nome":  "giorgio bardi",
+                           "punteggio":  40000
+                       },
+                       {
+                           "posizione":  3,
+                           "nome":  "Daniele Corsi",
+                           "punteggio":  40000
+                       },
+                       {
+                           "posizione":  4,
+                           "nome":  "Matteo Lenzi",
+                           "punteggio":  39030
+                       },
+                       {
+                           "posizione":  5,
+                           "nome":  "Matteo Coda",
+                           "punteggio":  34594
+                       },
+                       {
+                           "posizione":  6,
+                           "nome":  "Alessandro Pinna",
+                           "punteggio":  34299
+                       },
+                       {
+                           "posizione":  7,
+                           "nome":  "Franco Pinna",
+                           "punteggio":  28295
+                       },
+                       {
+                           "posizione":  8,
+                           "nome":  "davide",
+                           "punteggio":  27117
+                       },
+                       {
+                           "posizione":  9,
+                           "nome":  "Lorenzo Bardi",
+                           "punteggio":  26702
+                       },
+                       {
+                           "posizione":  10,
+                           "nome":  "Valerio Palmieri",
+                           "punteggio":  24466
+                       }
+                   ]
+}

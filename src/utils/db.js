@@ -1,76 +1,153 @@
+import {
+  doc,
+  setDoc,
+  getDoc,
+  updateDoc,
+  collection,
+  query,
+  orderBy,
+  limit,
+  getDocs,
+  getCountFromServer,
+} from 'firebase/firestore';
 import { db } from '../firebase';
-import { doc, setDoc, getDoc, addDoc, updateDoc, collection, query, orderBy, limit, getDocs } from 'firebase/firestore';
 
-// Crea o aggiorna il profilo utente
+// ---------------------------------------------------------------------------
+// Profilo utente
+// ---------------------------------------------------------------------------
+
+/** Crea o aggiorna il profilo. Usa merge: i campi non indicati restano com'e' erano. */
 export const createOrUpdateUserProfile = async (userId, userData) => {
   const userRef = doc(db, 'users', userId);
-  await setDoc(userRef, {
-    ...userData,
-    lastModifiedDate: new Date(),
-  }, { merge: true });
+  await setDoc(
+    userRef,
+    {
+      ...userData,
+      lastModifiedDate: new Date(),
+    },
+    { merge: true }
+  );
 };
+
 export const checkIfUserExists = async (uid) => {
-  try {
-    const userDocRef = doc(db, 'users', uid);
-    const userDoc = await getDoc(userDocRef);
-    return userDoc.exists(); // Restituisce true se il documento esiste, false altrimenti
-  } catch (error) {
-    console.error('Errore durante il controllo dell\'esistenza del documento:', error);
-    throw error;
-  }
+  const userDoc = await getDoc(doc(db, 'users', uid));
+  return userDoc.exists();
 };
-// Ottieni il profilo utente
+
 export const getUserProfile = async (userId) => {
-  const userRef = doc(db, 'users', userId);
-  const userSnap = await getDoc(userRef);
+  const userSnap = await getDoc(doc(db, 'users', userId));
   return userSnap.exists() ? userSnap.data() : null;
 };
 
-// Aggiorna il punteggio massimo dell'utente
-export const upsertBestScore = async (userId, newScore) => {
-  const userRef = doc(db, 'users', userId);
-  const userSnap = await getDoc(userRef);
-  if (!userSnap.exists()) {
-    throw new Error('User profile not found');
-  }
-
-  const currentBestScore = userSnap.data().bestScore || 0;
-  
-  if (newScore > currentBestScore) {
-    await updateDoc(userRef, {
-      bestScore: newScore,
-      bestScoreDate: new Date(),
-    });
-    return newScore;
-  }
-  
-  return currentBestScore;
-};
-
-// Ottieni la classifica dei migliori punteggi
-export const getLeaderboard = async (maxPlayers = 10) => {
-  const usersRef = collection(db, 'users');
-  const q = query(usersRef, orderBy('bestScore', 'desc'), limit(maxPlayers));
-  const querySnapshot = await getDocs(q);
-  
-  return querySnapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }));
-}; 
-
-// Recupera i migliori punteggi di un utente
+/** Punteggio migliore storico dell'utente (usato per il riquadro "il tuo record"). */
 export const getUserBestScore = async (userId) => {
   try {
-    const bestScoreRef = doc(db, 'users', userId);
-
-    const docSnap = await getDoc(bestScoreRef);
-
-    if (docSnap.exists()) {
-      return docSnap.data().bestScore;
-    }
-    return null;
+    const docSnap = await getDoc(doc(db, 'users', userId));
+    return docSnap.exists() ? docSnap.data().bestScore ?? null : null;
   } catch (error) {
-    console.error('Error querying score: ', error);
+    console.error('Errore nella lettura del miglior punteggio:', error);
+    return null;
   }
+};
+
+// ---------------------------------------------------------------------------
+// Classifiche
+// ---------------------------------------------------------------------------
+//
+// Sono divise per "tabellone", e ogni tabellone e' una sottocollezione:
+//
+//   leaderboards/generale/entries/{uid}
+//   leaderboards/giornaliera-2026-10-14/entries/{uid}
+//   leaderboards/provincia-ss/entries/{uid}
+//
+// Perche' cosi':
+//  - la classifica della sfida del giorno si azzera da sola: il giorno dopo cambia il nome del
+//    tabellone, quindi i punteggi di ieri non compaiono piu' e restano comunque consultabili;
+//  - la classifica di una provincia e' separata da quella generale, come deve essere: giocare
+//    dentro una sola provincia e' piu' facile che su tutta l'isola, e i due punteggi non sono
+//    confrontabili;
+//  - non servono indici composti: ogni tabellone si interroga con un solo ordinamento.
+
+export const BOARD_GENERALE = 'generale';
+
+/** Identificativo del tabellone della sfida di un certo giorno. */
+export function dailyBoardId(dateKey) {
+  return `giornaliera-${dateKey}`;
+}
+
+/** Identificativo del tabellone di una provincia (sigla: CA, NU, OR, SS, SU). */
+export function provinceBoardId(sigla) {
+  return `provincia-${String(sigla).toLowerCase()}`;
+}
+
+/**
+ * A quale classifica appartiene una partita.
+ * Restituisce null per l'allenamento: non entra in classifica e non consuma vite.
+ */
+export function boardForRun({ mode, provinceSigla, dateKey }) {
+  if (mode === 'practice') return null;
+  if (provinceSigla) return provinceBoardId(provinceSigla);
+  if (mode === 'daily') return dailyBoardId(dateKey);
+  return BOARD_GENERALE;
+}
+
+/**
+ * Classifica di un tabellone, dal punteggio piu' alto.
+ * Se il tabellone non esiste ancora restituisce un elenco vuoto invece di un errore.
+ */
+export const getLeaderboard = async (boardId = BOARD_GENERALE, maxPlayers = 10) => {
+  try {
+    const entriesRef = collection(db, 'leaderboards', boardId, 'entries');
+    const q = query(entriesRef, orderBy('bestScore', 'desc'), limit(maxPlayers));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map((d) => ({ id: d.id, ...d.data() }));
+  } catch (error) {
+    console.error('Errore nel caricamento della classifica:', error);
+    return [];
+  }
+};
+
+/** Numero di partecipanti a un tabellone (per la riga "12 giocatori"). */
+export const getLeaderboardSize = async (boardId) => {
+  try {
+    const entriesRef = collection(db, 'leaderboards', boardId, 'entries');
+    const snapshot = await getCountFromServer(entriesRef);
+    return snapshot.data().count;
+  } catch (error) {
+    return 0;
+  }
+};
+
+/**
+ * Salva il punteggio di una partita classificata, se migliore del precedente.
+ * Viene scritta anche una copia in users/{uid}.bestScore, che resta il record personale.
+ */
+export const saveRankedScore = async ({ uid, username, boardId, score }) => {
+  if (!uid || !boardId) throw new Error('Dati insufficienti per salvare il punteggio');
+
+  const entryRef = doc(db, 'leaderboards', boardId, 'entries', uid);
+  const existing = await getDoc(entryRef);
+  const previous = existing.exists() ? existing.data().bestScore || 0 : 0;
+
+  if (score > previous) {
+    await setDoc(
+      entryRef,
+      {
+        username: username || 'Giocatore',
+        bestScore: score,
+        updatedAt: new Date(),
+      },
+      { merge: true }
+    );
+  }
+
+  // Record personale: sempre il massimo, indipendentemente dal tabellone.
+  const userRef = doc(db, 'users', uid);
+  const userSnap = await getDoc(userRef);
+  const personalBest = userSnap.exists() ? userSnap.data().bestScore || 0 : 0;
+  if (userSnap.exists() && score > personalBest) {
+    await updateDoc(userRef, { bestScore: score, bestScoreDate: new Date() });
+  }
+
+  return Math.max(previous, score);
 };

@@ -17,11 +17,11 @@ import provincesData from '../data/comuni-provinces.json';
 const BY_NAME = provincesData.comuni;
 
 export const PROVINCE = {
-  CA: { sigla: 'CA', nome: 'Città metropolitana di Cagliari', slug: 'cagliari' },
-  NU: { sigla: 'NU', nome: 'Provincia di Nuoro', slug: 'nuoro' },
-  OR: { sigla: 'OR', nome: 'Provincia di Oristano', slug: 'oristano' },
-  SS: { sigla: 'SS', nome: 'Provincia di Sassari', slug: 'sassari' },
-  SU: { sigla: 'SU', nome: 'Provincia del Sud Sardegna', slug: 'sud-sardegna' },
+  CA: { sigla: 'CA', nome: 'Città metropolitana di Cagliari', breve: 'Cagliari', slug: 'cagliari' },
+  NU: { sigla: 'NU', nome: 'Provincia di Nuoro', breve: 'Nuoro', slug: 'nuoro' },
+  OR: { sigla: 'OR', nome: 'Provincia di Oristano', breve: 'Oristano', slug: 'oristano' },
+  SS: { sigla: 'SS', nome: 'Provincia di Sassari', breve: 'Sassari', slug: 'sassari' },
+  SU: { sigla: 'SU', nome: 'Provincia del Sud Sardegna', breve: 'Sud Sardegna', slug: 'sud-sardegna' },
 };
 
 /** Sigla della provincia di un comune, oppure null se il dato manca. */

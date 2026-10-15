@@ -1,4 +1,4 @@
-{
+﻿{
   "name": "intzetta",
   "private": true,
   "version": "0.1.0",
@@ -28,7 +28,7 @@
     "preview": "vite preview",
     "content": "node scripts/generate-content-pages.mjs",
     "provinces": "node scripts/fetch-comuni-provinces.mjs",
-    "test": "npm run test:build && node scripts/test-daily.mjs && node scripts/test-provinces.mjs && node scripts/test-analytics.mjs && node scripts/test-analytics-configured.mjs && node scripts/test-game-flow.mjs",
+    "test": "npm run test:build && node scripts/test-daily.mjs && node scripts/test-provinces.mjs && node scripts/test-time-lives.mjs && node scripts/test-analytics.mjs && node scripts/test-analytics-configured.mjs && node scripts/test-game-flow.mjs",
     "test:build": "node scripts/build-test-bundles.mjs",
     "deploy": "npm run test && npm run build && firebase deploy --only hosting"
   },

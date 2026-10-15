@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const DATA = path.join(ROOT, 'src', 'data', 'sardinian-cities-corrected.json');
 const PROVINCES = path.join(ROOT, 'src', 'data', 'comuni-provinces.json');
+const ALPHA_DATA = path.join(ROOT, 'src', 'data', 'stagione-alpha.json');
 const PUBLIC = path.join(ROOT, 'public');
 
 const SITE = 'https://intzetta.top';
@@ -30,6 +31,7 @@ const TODAY = new Date().toISOString().slice(0, 10);
 
 const comuni = JSON.parse(fs.readFileSync(DATA, 'utf8'));
 const provincesRaw = JSON.parse(fs.readFileSync(PROVINCES, 'utf8')).comuni;
+const alpha = fs.existsSync(ALPHA_DATA) ? JSON.parse(fs.readFileSync(ALPHA_DATA, 'utf8')) : null;
 
 const PROVINCE_NAMES = {
   CA: { nome: 'Città metropolitana di Cagliari', breve: 'Cagliari', slug: 'cagliari' },
@@ -199,6 +201,14 @@ ul.comuni .alt{opacity:.6;font-size:.86rem}
 .province a:hover{background:rgba(0,0,0,.4)}
 .province b{display:block;font-size:1.35rem;line-height:1.2}
 .province span{font-size:.9rem;opacity:.85}
+table.alpha{width:100%;border-collapse:collapse;color:var(--ink)}
+table.alpha th{text-align:left;font-size:.8rem;text-transform:uppercase;letter-spacing:1px;opacity:.6;padding:6px 8px;border-bottom:1px solid rgba(0,0,0,.15)}
+table.alpha td{padding:9px 8px;border-bottom:1px solid rgba(0,0,0,.07)}
+table.alpha .pos{width:40px;font-weight:700;opacity:.7}
+table.alpha .punti{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+table.alpha tbody tr:nth-child(1) .pos{color:#b8860b}
+table.alpha tbody tr:nth-child(2) .pos{color:#8a8a8a}
+table.alpha tbody tr:nth-child(3) .pos{color:#a9713b}
 footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(255,255,255,.25);font-size:.9rem;opacity:.9}
 @media (max-width:620px){ul.comuni{columns:1}}
 `;
@@ -236,6 +246,7 @@ ${body}
   <p><strong>Intzetta</strong> — il gioco dei paesi della Sardegna: esce il nome di un comune e devi
   trovarlo sulla mappa. <a href="/">Gioca gratis</a>.</p>
   <p><a href="/comuni-sardegna.html">Tutti i comuni della Sardegna</a> ·
+  <a href="/stagione-alpha.html">Stagione Alpha</a> ·
   <a href="/privacy-policy.html">Privacy Policy</a> ·
   <a href="/terms-of-service.html">Termini di Servizio</a></p>
 </footer>
@@ -386,6 +397,66 @@ ${JSON.stringify(itemList)}
 }
 
 // ---------------------------------------------------------------------------
+// Pagina: la Stagione Alpha (crediti ai primi giocatori)
+// ---------------------------------------------------------------------------
+// La classifica della versione iniziale e' stata azzerata per fare posto alle classifiche
+// nuove (generale, giornaliera, per provincia). Questa pagina tiene il ricordo di chi c'era
+// prima: un grazie pubblico ai primi che hanno giocato quando il gioco era ancora grezzo.
+if (alpha && Array.isArray(alpha.classifica) && alpha.classifica.length > 0) {
+  const righe = alpha.classifica
+    .map(
+      (r) => `      <tr>
+        <td class="pos">${r.posizione}</td>
+        <td>${escapeHtml(r.nome)}</td>
+        <td class="punti">${Number(r.punteggio).toLocaleString('it-IT')}</td>
+      </tr>`
+    )
+    .join('\n');
+
+  const alphaPage = pageShell({
+    title: 'Stagione Alpha — i primi giocatori di Intzetta',
+    description: `I primi ${alpha.classifica.length} classificati della Stagione Alpha di Intzetta, la versione iniziale del gioco dei paesi della Sardegna. Un grazie a chi ha giocato per primo.`,
+    canonical: `${SITE}/stagione-alpha.html`,
+    body: `  <h1>Stagione Alpha</h1>
+  <p>Prima delle classifiche di oggi — generale, giornaliera e per provincia — Intzetta ha avuto
+  una sola stagione, giocata quando il gioco era ancora grezzo e i comuni si caricavano a mano.
+  Questa pagina è il grazie a chi c'era.</p>
+
+  <ul class="facts">
+    <li><b>${alpha.partecipanti}</b>partecipanti</li>
+    <li><b>${escapeHtml(String(alpha.chiusura))}</b>data di chiusura</li>
+    <li><b>40.000</b>punteggio massimo</li>
+  </ul>
+
+  <div class="card">
+    <h2 style="color:var(--primary-dark);border-color:rgba(0,0,0,.15);margin-top:0">I primi ${alpha.classifica.length}</h2>
+    <table class="alpha">
+      <thead>
+        <tr><th>#</th><th>Giocatore</th><th>Punteggio</th></tr>
+      </thead>
+      <tbody>
+${righe}
+      </tbody>
+    </table>
+  </div>
+
+  <h2>La nuova stagione è aperta</h2>
+  <p>Adesso ogni giorno c'è una <strong>sfida del giorno</strong> con gli stessi comuni per tutti,
+  tre vite per giocare partite valide per la classifica, un tempo limite di 30 secondi a round e
+  classifiche separate per ogni provincia. E si può giocare anche senza account, in allenamento.</p>
+  <p><a class="cta" href="/">Gioca la sfida di oggi</a></p>
+
+  <p style="opacity:.75;font-size:.85rem;margin-top:22px">
+    Nota: i punteggi della Stagione Alpha venivano calcolati e salvati dal browser, senza controllo
+    lato server. Sono conservati qui come memoria storica, non come classifica ufficiale.
+  </p>`,
+  });
+
+  fs.writeFileSync(path.join(PUBLIC, 'stagione-alpha.html'), alphaPage, 'utf8');
+  written.push({ file: 'stagione-alpha.html', size: alphaPage.length, count: alpha.classifica.length });
+}
+
+// ---------------------------------------------------------------------------
 // Controllo finale: se un comune non finisce nell'HTML, la compilazione si ferma
 // ---------------------------------------------------------------------------
 const mainRendered = (comuniPage.match(/<li id="/g) || []).length;
@@ -415,6 +486,7 @@ const urls = [
     priority: '0.8',
     changefreq: 'monthly',
   })),
+  ...(alpha ? [{ loc: `${SITE}/stagione-alpha.html`, priority: '0.3', changefreq: 'yearly' }] : []),
   { loc: `${SITE}/privacy-policy.html`, priority: '0.2', changefreq: 'yearly' },
   { loc: `${SITE}/terms-of-service.html`, priority: '0.2', changefreq: 'yearly' },
 ];
@@ -439,7 +511,7 @@ fs.writeFileSync(path.join(PUBLIC, 'sitemap.xml'), sitemap, 'utf8');
 // ---------------------------------------------------------------------------
 console.log('Pagine di contenuto generate:');
 written.forEach((w) =>
-  console.log(`  public/${w.file.padEnd(28)} ${(w.size / 1024).toFixed(1)} KB, ${w.count} comuni`)
+  console.log(`  public/${w.file.padEnd(28)} ${(w.size / 1024).toFixed(1)} KB, ${w.count} voci`)
 );
 console.log(`  public/sitemap.xml              ${urls.length} indirizzi`);
 console.log(`  comuni con secondo nome ufficiale: ${bilingual.length}`);

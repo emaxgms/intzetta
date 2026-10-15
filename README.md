@@ -33,16 +33,34 @@ Il piano di crescita e monetizzazione è in **[docs/piano-crescita-e-ricavi.md](
 
 - **Sfida del giorno**: gli stessi 8 comuni per tutti, un solo tentativo al giorno, cambio a mezzanotte
   (fuso di Roma). Selezione deterministica: stessa data, stessa partita per chiunque.
-- **Allenamento libero**: partite illimitate con comuni estratti a caso.
+- **Allenamento libero**: partite illimitate, con comuni a caso o di una sola provincia.
 - **Risultato condivisibile**: griglia di emoji senza spoiler, più il link, pronto da incollare su WhatsApp.
 - **Serie di giorni consecutivi**, salvata anche senza account.
-- **Gioco interattivo**: trova i paesi della Sardegna cliccando sulla mappa (mappa satellitare, tile Esri).
+- **Gioco interattivo**: trova i paesi della Sardegna cliccando sulla mappa (satellite senza etichette).
 - **Punteggio per distanza**: 5.000 punti entro 1 km, 0 punti oltre i 50 km, curva esponenziale in mezzo.
-- **Classifica globale**: visibile anche senza account.
-- **Miglior punteggio personale** per chi effettua l'accesso.
-- **Autenticazione**: Google o email.
-- **Ripresa della partita**: ricaricando la pagina a metà sfida si riprende dal round giusto.
-- **Design responsivo**: desktop e mobile.
+- **Classifica leggibile anche senza accesso**; per salvare il punteggio serve un account.
+- **Profilo**: avatar e nome modificabili in qualsiasi momento toccando la propria immagine.
+- **Ripresa della partita**: ricaricando la pagina a metà partita classificata si riprende da dove si era.
+- **Design responsivo**, pensato prima per il telefono.
+
+### Vite, tempo e classifiche
+
+- **Vite giornaliere**: 3 al giorno. Si entra in classifica **solo** giocando con le vite; la sfida del
+  giorno e le partite classificate ne consumano una, l'allenamento no.
+- **Tempo limite di 30 secondi a round**: 100% dei punti se si conferma entro 5 secondi, 75% allo
+  scadere, in mezzo in modo lineare. La distanza resta comunque la cosa che pesa di più.
+- **Classifiche separate**: generale, sfida del giorno, e una per provincia. Giocare su una sola
+  provincia è più facile che su tutta l'isola, quindi i punteggi non si mescolano.
+- **Territorio scelto dalla home**: tutta la Sardegna oppure una delle 5 province.
+- La **Stagione Alpha** (la classifica della versione iniziale, prima del reset) è ricordata in
+  `/stagione-alpha.html`.
+
+### Pubblicità
+Struttura pronta ma **spenta**: banner in fondo alla pagina (mai sopra la mappa o i pulsanti, caricato
+solo quando entra nello schermo) e video di 5 secondi **dopo** la partita, mai durante. Si accende con
+tre variabili d'ambiente dopo l'approvazione di un network — vedi `src/utils/ads.js` e
+[docs/monetizzazione.md](docs/monetizzazione.md). Con `VITE_ADS_MODE=demo` si vedono i riquadri senza
+pubblicità vera.
 
 ---
 
@@ -155,17 +173,18 @@ firebase deploy --only firestore:rules
 ```bash
 npm test
 ```
-**135 verifiche** in cinque suite:
+**159 verifiche** in sei suite, più 27 sulle regole Firestore (che richiedono l'emulatore):
 - **sfida giornaliera** (53): stessa data = stessa partita, nessun comune ripetuto su 400 giorni
-  consecutivi, punteggi ai valori limite, cambio di giorno compresi i giorni di 23 e 25 ore per il
-  cambio d'ora, serie che cresce e scade, testo di condivisione senza spoiler, comportamento senza
-  memoria locale disponibile;
+  consecutivi, cambio di giorno compresi i giorni di 23 e 25 ore per il cambio d'ora, serie che
+  cresce e scade, testo di condivisione senza spoiler, comportamento senza memoria locale;
 - **province** (24): i conteggi ufficiali tornano, nessun comune in due province, una sigla inventata
-  nell'indirizzo viene ignorata, una partita di provincia pesca solo da quella provincia;
-- **misurazione spenta** (9): senza configurazione non parte nessun dato e `track()` non lancia mai errori;
-- **misurazione accesa** (15): lo script inserito ha gli attributi giusti. Questa suite esiste perché un
-  nome di attributo sbagliato (`data-domain` invece di `data-domains`) non rompe nulla a occhio:
-  semplicemente non misura;
+  nell'indirizzo viene ignorata;
+- **tempo e vite** (40): la quota del punteggio non risale mai col tempo, allo scadere vale il 75%,
+  la distanza continua a pesare più del tempo, le vite si consumano e si ricomprano, le gratuite
+  tornano il giorno dopo mentre le comprate restano;
+- **misurazione spenta** (9) e **misurazione accesa** (15): senza configurazione non parte nessun dato;
+  con configurazione lo script ha gli attributi giusti (`data-domains`, non `data-domain` — un errore
+  che non rompe nulla a occhio ma impedisce di misurare);
 - **partita completa** (18): dalla selezione dei comuni al risultato salvato, alla serie, al testo
   condiviso finale.
 

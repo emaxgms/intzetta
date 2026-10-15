@@ -1,160 +1,144 @@
-import React from 'react';
-import { useAuth } from '../context/AuthContext';
 import { useState, useEffect, useRef } from 'react';
+import { useAuth } from '../context/AuthContext';
 import Modal from './Modal';
-import { createOrUpdateUserProfile } from '../utils/db';
-import avatars from '../data/avatars.json';
-import { Timestamp } from 'firebase/firestore';
+import ProfileModal from './ProfileModal';
 
+/**
+ * Accesso e profilo.
+ *
+ * Due situazioni ben distinte:
+ *  - senza accesso: un solo pulsante "ACCEDI" che apre le due possibilita' (Google o email);
+ *  - con accesso: la propria immagine e il proprio nome. Toccandoli si apre il pannello del
+ *    profilo, dove si cambia avatar e nome e si esce.
+ *
+ * Gli errori di accesso vengono mostrati all'utente, non solo scritti nella console: prima un
+ * dominio non autorizzato falliva in silenzio ed era impossibile capire perche'.
+ */
 export default function Auth() {
-  const { user, signInWithGoogle, signInWithEmail, logout, loading, updateUserProfile } = useAuth();
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isModalLoginOpen, setisModalLoginOpen] = useState(false);
+  const {
+    user,
+    signInWithGoogle,
+    signInWithEmail,
+    logout,
+    authError,
+    clearAuthError,
+    updateUserProfile,
+  } = useAuth();
+
+  const [menuAperto, setMenuAperto] = useState(false);
+  const [loginAperto, setLoginAperto] = useState(false);
+  const [profiloAperto, setprofiloAperto] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [username, setUsername] = useState('');
-  const [error, setError] = useState('');
-  const [isModalNameOpen, setisModalNameOpen] = useState(false);
-  const [isModalAvatarOpen, setIsModalAvatarOpen] = useState(false);
-  const [avatarSelected, setAvatarSelected] = useState('');
-  const [avatarSeed, setAvatarSeed] = useState(Date.now());
-  const wrapperRef = useRef(null);
+  const [erroreEmail, setErroreEmail] = useState('');
+  const contenitore = useRef(null);
+
+  // Chiudendo il menu con un tocco fuori.
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (wrapperRef.current && !wrapperRef.current.contains(event.target)) {
-        setIsExpanded(false);
-      }
-    }
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+    const fuori = (event) => {
+      if (contenitore.current && !contenitore.current.contains(event.target)) setMenuAperto(false);
+    };
+    document.addEventListener('mousedown', fuori);
+    document.addEventListener('touchstart', fuori);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener('mousedown', fuori);
+      document.removeEventListener('touchstart', fuori);
     };
   }, []);
 
+  // Al primo accesso il nome non c'e': si apre il profilo per farlo scegliere subito.
   useEffect(() => {
-    if (user && !user.displayName) {
-      setisModalNameOpen(true);
-    }
-    setIsExpanded(false);
+    setMenuAperto(false);
+    if (user && !user.displayName) setprofiloAperto(true);
   }, [user]);
 
-  useEffect(() => {
-  }, [isExpanded]);
-
-  const notExpanded = () => {
-    setIsExpanded(false);
-  };
-
-  const handleSignInEmail = async (e) => {
+  const handleLoginEmail = async (e) => {
     e.preventDefault();
-    try {
-      const result = await signInWithEmail(email, password);
-      if (result.success) {
-        setError('');
-        setisModalLoginOpen(false);
-      } else {
-        setError('Errore: ' + result.message);
-      }
-    } catch (err) {
-      setError('Credenziali non valide. Riprova.' + err);
+    setErroreEmail('');
+    const risultato = await signInWithEmail(email, password);
+    if (risultato.success) {
+      setLoginAperto(false);
+      setEmail('');
+      setPassword('');
+    } else {
+      setErroreEmail(risultato.message || 'Accesso non riuscito.');
     }
   };
 
-  const handleLogOut = () => {
-    logout();
-  }
-
-  const handleSetUsername = async (firstLogin) => {
-    if (username.trim() === '') {
-      alert('Il nome utente non può essere vuoto.');
-      return;
-    }
-
-    try {
-      await updateUserProfile({displayName: username, lastModifiedDate: Timestamp.now()}); // Aggiorna il displayName
-      await createOrUpdateUserProfile(user.uid, { username }); // Aggiorna il profilo nella collezione "users"
-      setisModalNameOpen(false); // Chiudi il modal
-      if(firstLogin) {
-        setIsModalAvatarOpen(true);
-        setAvatarSeed(Date.now());
-      }
-    } catch (error) {
-      console.error('Errore durante l\'impostazione dell\'username:', error);
-    }
+  const apriLogin = () => {
+    clearAuthError?.();
+    setErroreEmail('');
+    setLoginAperto(true);
+    setMenuAperto(false);
   };
 
-  const handleUpdateAvatar = async () => {
-    if (!avatarSelected) {
-      alert('Seleziona un avatar prima di confermare.');
-      return;
-    }
-
-    try {
-      await updateUserProfile({ photoURL: avatarSelected, lastModifiedDate: Timestamp.now() });
-      await createOrUpdateUserProfile(user.uid, { photoURL: avatarSelected }); // Aggiorna il profilo nella collezione "users"
-      setIsModalAvatarOpen(false);
-    } catch (error) {
-      console.error('Errore durante l\'aggiornamento dell\'avatar:', error);
-    }
-  };
-
-  if (loading) {
-    return <div>Caricamento...</div>;
-  }
-  // {() => {setAvatarSeed(Date.now());setIsModalAvatarOpen(true);}}    Apertura modal cambio Avatar
-  // {() => {setisModalNameOpen(true);}}                  Apertura modal cambio Nome Utente
   return (
     <>
-      <div 
-        className="auth-container"
-        ref={wrapperRef}
-      >
+      <div className="auth-container" ref={contenitore}>
         {user ? (
-          <div className="user-info" onClick={() => setIsExpanded(true)}>
-            {user.photoURL ?
-              <img src={user.photoURL} alt="Avatar" className="user-avatar" title='Avatar del profilo'/>
-              : <div className="default-avatar" title='Avatar del profilo'></div>
-            }  
-            <span className="user-name" title='Aggiorna Username'>{user.displayName}</span>
-            {isExpanded && <button onClick={handleLogOut} className="sign-out-btn" title='Esci dal tuo account'>
-              ESCI
-            </button>}
-          </div>
+          <button
+            type="button"
+            className="profilo-pulsante"
+            onClick={() => setprofiloAperto(true)}
+            title="Apri il tuo profilo: avatar, nome e uscita"
+          >
+            {user.photoURL ? (
+              <img src={user.photoURL} alt="" className="user-avatar" />
+            ) : (
+              <span className="default-avatar" aria-hidden="true" />
+            )}
+            <span className="user-name">{user.displayName || 'Il tuo profilo'}</span>
+          </button>
         ) : (
-          <div className="login-btns" >
-            {!isExpanded ? (
-              <button onClick={() => setIsExpanded(true)} className="sign-in-btn" title='Accedi o Registrati'>ACCEDI</button>
+          <div className="login-btns">
+            {!menuAperto ? (
+              <button
+                type="button"
+                onClick={() => setMenuAperto(true)}
+                className="sign-in-btn"
+                title="Accedi o registrati"
+              >
+                ACCEDI
+              </button>
             ) : (
               <div className="login-options">
-                <button onClick={() => {signInWithGoogle();setIsExpanded(false);}} className="google-sign-in-btn" title='Registratio o Accedi con Google'>Google</button>
                 <button
-                  onClick={() => {
-                    setisModalLoginOpen(true);
-                    setIsExpanded(false);
-                  }}
+                  type="button"
+                  onClick={signInWithGoogle}
                   className="google-sign-in-btn"
-                  title='Registrati o Accedi con Email'
+                  title="Accedi con Google"
                 >
-                  Email
+                  Continua con Google
+                </button>
+                <button type="button" onClick={apriLogin} className="google-sign-in-btn" title="Accedi con email">
+                  Continua con email
                 </button>
               </div>
             )}
           </div>
         )}
       </div>
-      
-      <Modal isOpen={isModalLoginOpen} onNotExpanded={notExpanded} onClose={() => {setisModalLoginOpen(false);}}>
-        <h2>Accedi con Email</h2>
-        <form onSubmit={handleSignInEmail} className="form">
+
+      {/* Errore di accesso: visibile, non solo in console. */}
+      {authError && !loginAperto && (
+        <div className="auth-errore" role="alert">
+          <p>{authError}</p>
+          <button type="button" onClick={() => clearAuthError?.()} title="Chiudi il messaggio">
+            Chiudi
+          </button>
+        </div>
+      )}
+
+      <Modal isOpen={loginAperto} onClose={() => setLoginAperto(false)}>
+        <h2>Accedi con email</h2>
+        <form onSubmit={handleLoginEmail} className="form">
           <input
             type="email"
             placeholder="Email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            title='Email del tuo account'
+            title="La tua email"
           />
           <input
             type="password"
@@ -162,51 +146,28 @@ export default function Auth() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
-            title='Password del tuo account'
+            minLength={6}
+            title="La tua password (almeno 6 caratteri)"
           />
-          <button type="submit" className='profile-button'  title='Accedi o Registrati con Email'>
+          <button type="submit" className="profile-button" title="Accedi o registrati">
             Accedi
           </button>
-          {error && <p className="error-message" title='Errore di Registrazione o Login'>{error}</p>}
+          {(erroreEmail || authError) && (
+            <p className="error-message">{erroreEmail || authError}</p>
+          )}
+          <p className="profilo-nota">
+            Se non hai un account, viene creato adesso con questi dati.
+          </p>
         </form>
       </Modal>
-      <Modal isOpen={isModalNameOpen} onClose={() => {setisModalNameOpen(false);}}>
-        <h2>Imposta il tuo Nome Utente</h2>
-        <div className="form">
-          <input
-            type="text"
-            placeholder="Inserisci il tuo Nome Utente"
-            value={username}
-            className='username-input'
-            onChange={(e) => setUsername(e.target.value)}
-            title='Imposta Nome Utente del tuo Account'
-          />
-          <button className='profile-button' onClick={() => {handleSetUsername(true);}} title='Salva Nome Utente'>Salva</button>
-        </div>
-      </Modal>
-      <Modal isOpen={isModalAvatarOpen} onClose={() => {setIsModalAvatarOpen(false);}}>
-        <h2>Scegli il tuo Avatar</h2>
-        <div className="form">
-          <div className="avatar-grid">
-          {avatars.map((avatar) => {
-            const fullUrl = avatar.url + avatarSeed + avatar.id;
-            return (
-              <div
-                key={avatar.id}
-                title={avatar.name}
-                className={`avatar-option ${avatarSelected === fullUrl ? 'selected' : ''}`}
-                onClick={() => setAvatarSelected(fullUrl)}
-              >
-                <img src={fullUrl} alt={avatar.id} />
-              </div>
-            );
-          })}
-          </div>
-          <button onClick={handleUpdateAvatar} className='profile-button' disabled={!avatarSelected}>
-            Conferma
-          </button>
-        </div>
-      </Modal>
+
+      <ProfileModal
+        isOpen={profiloAperto}
+        onClose={() => setprofiloAperto(false)}
+        user={user}
+        updateUserProfile={updateUserProfile}
+        onLogout={logout}
+      />
     </>
   );
 }

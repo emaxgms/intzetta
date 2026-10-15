@@ -119,5 +119,52 @@ check('cambio del solo avatar', (await writeDoc('users/emailuser', { photoURL: s
 console.log('\n=== 7. Nessuno può cancellare dal client ===');
 check('cancellazione rifiutata anche al proprietario', (await deleteDoc('users/emailuser', { uid: 'emailuser' })) === 403);
 
+console.log('\n=== 8. Classifiche: lettura pubblica, scrittura solo della propria voce ===');
+const BOARD = 'leaderboards/generale/entries';
+const BOARD_OGGI = 'leaderboards/giornaliera-2026-10-14/entries';
+const BOARD_PROV = 'leaderboards/provincia-ss/entries';
+
+check(
+  'scrittura della propria voce',
+  (await writeDoc(`${BOARD}/giocatore1`, { username: str('Mario'), bestScore: int(21000) }, { uid: 'giocatore1' })) === 200
+);
+check('lettura anonima della classifica', (await readDoc(`${BOARD}/giocatore1`)) === 200);
+check(
+  'scrittura anonima rifiutata',
+  (await writeDoc(`${BOARD}/intruso`, { username: str('X'), bestScore: int(100) })) === 403
+);
+check(
+  'non si scrive nella voce di un altro',
+  (await writeDoc(`${BOARD}/giocatore1`, { bestScore: int(40000) }, { uid: 'attaccante' })) === 403
+);
+check(
+  'punteggio oltre il massimo rifiutato',
+  (await writeDoc(`${BOARD}/giocatore1`, { bestScore: int(50000) }, { uid: 'giocatore1' })) === 403
+);
+check(
+  'peggiorare il proprio punteggio rifiutato',
+  (await writeDoc(`${BOARD}/giocatore1`, { bestScore: int(10) }, { uid: 'giocatore1' })) === 403
+);
+check(
+  'migliorare il proprio punteggio accettato',
+  (await writeDoc(`${BOARD}/giocatore1`, { bestScore: int(31000) }, { uid: 'giocatore1' })) === 200
+);
+check(
+  'la classifica del giorno è un tabellone a parte',
+  (await writeDoc(`${BOARD_OGGI}/giocatore1`, { username: str('Mario'), bestScore: int(9000) }, { uid: 'giocatore1' })) === 200
+);
+check(
+  'la classifica di provincia è un tabellone a parte',
+  (await writeDoc(`${BOARD_PROV}/giocatore1`, { username: str('Mario'), bestScore: int(15000) }, { uid: 'giocatore1' })) === 200
+);
+check(
+  'cancellare una voce di classifica rifiutato',
+  (await deleteDoc(`${BOARD}/giocatore1`, { uid: 'giocatore1' })) === 403
+);
+check(
+  'nessuna voce con punteggio non numerico',
+  (await writeDoc(`${BOARD}/giocatore2`, { username: str('Lui'), bestScore: str('40000') }, { uid: 'giocatore2' })) === 403
+);
+
 console.log(`\n=== RISULTATO: ${pass} superati, ${fail} falliti ===\n`);
 process.exit(fail === 0 ? 0 : 1);

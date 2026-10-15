@@ -187,6 +187,39 @@ export function calcScore(distanceInMeters) {
   return Math.max(0, Math.min(score, maxScore));
 }
 
+// ---------------------------------------------------------------------------
+// Tempo
+// ---------------------------------------------------------------------------
+
+/** Secondi a disposizione per ogni round. */
+export const ROUND_TIME_LIMIT_S = 30;
+
+/** Entro questi secondi si prende il punteggio pieno. */
+export const FULL_CREDIT_TIME_S = 5;
+
+/** Quota minima del punteggio: allo scadere del tempo non si scende sotto questa. */
+export const MIN_TIME_MULTIPLIER = 0.75;
+
+/**
+ * Quota del punteggio che spetta in base al tempo impiegato.
+ *
+ * Regola voluta: entro 5 secondi si prende il 100%, allo scadere dei 30 secondi il 75%,
+ * e in mezzo scende in modo lineare. Serve a premiare chi riconosce subito il posto senza
+ * trasformare il gioco in una corsa: anche chi arriva all'ultimo secondo porta a casa
+ * tre quarti dei punti, quindi la distanza resta la cosa che conta di piu'.
+ */
+export function timeMultiplier(elapsedSeconds) {
+  if (!Number.isFinite(elapsedSeconds) || elapsedSeconds <= FULL_CREDIT_TIME_S) return 1;
+  if (elapsedSeconds >= ROUND_TIME_LIMIT_S) return MIN_TIME_MULTIPLIER;
+  const progress = (elapsedSeconds - FULL_CREDIT_TIME_S) / (ROUND_TIME_LIMIT_S - FULL_CREDIT_TIME_S);
+  return 1 - progress * (1 - MIN_TIME_MULTIPLIER);
+}
+
+/** Punti di un round: distanza e tempo insieme. */
+export function roundPoints(distanceInMeters, elapsedSeconds) {
+  return Math.round(calcScore(distanceInMeters) * timeMultiplier(elapsedSeconds));
+}
+
 /**
  * Soglie della griglia, calibrate sulla Sardegna.
  *

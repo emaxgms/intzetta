@@ -1,22 +1,25 @@
-import React, { useState, useEffect, useMemo, useRef } from 'react';
+import React, { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { MapContainer, TileLayer, Marker, Circle, useMapEvents, useMap } from 'react-leaflet';
 import * as turf from '@turf/turf';
 import 'leaflet/dist/leaflet.css';
 import './daily.css';
+import './ui.css';
 import L from 'leaflet';
 import Auth from './components/Auth';
-import { upsertBestScore } from './utils/db';
-import { useAuth } from './context/AuthContext';
 import Leaderboard from './components/Leaderboard';
 import BestScore from './components/BestScore';
+import { AdBanner, VideoBreak } from './components/AdSlot';
+import { useAuth } from './context/AuthContext';
 import {
   ROUNDS_PER_GAME,
   MAX_GAME_SCORE,
+  ROUND_TIME_LIMIT_S,
   todayKey,
   pickDailyCities,
   pickRandomCities,
   pickRandomFrom,
-  calcScore,
+  roundPoints,
+  timeMultiplier,
   distanceEmoji,
   formatDistance,
   buildShareText,
@@ -32,11 +35,23 @@ import {
   formatCountdown,
   dailyNumber,
 } from './utils/daily';
+import { livesState, consumeLife } from './utils/lives';
+import {
+  saveRankedScore,
+  boardForRun,
+  dailyBoardId,
+  provinceBoardId,
+  BOARD_GENERALE,
+} from './utils/db';
+import { provinceGroups, provinceFromSearch, citiesByProvince, PROVINCE } from './utils/provinces';
 import { initAnalytics, track, EVENTS } from './utils/analytics';
 import { getTileSource, warnIfUnlicensedSource } from './utils/maptiles';
-import { provinceFromSearch, citiesByProvince } from './utils/provinces';
+import { adsActive, loadAdsScript } from './utils/ads';
 
-// Icone dei segnaposto di Leaflet
+// ---------------------------------------------------------------------------
+// Mappa
+// ---------------------------------------------------------------------------
+
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
@@ -57,7 +72,6 @@ const SARDINIA_BOUNDS = [
 ];
 const HOME_VIEW = { center: [40.1, 9.0], zoom: 8 };
 
-// Sorgente delle immagini della mappa: configurabile, con avviso se non e' una sorgente autorizzata.
 const TILE_SOURCE = getTileSource();
 
 function MapClickHandler({ onClick }) {
@@ -65,11 +79,74 @@ function MapClickHandler({ onClick }) {
   return null;
 }
 
+function ResetMapView({ trigger }) {
+  const map = useMap();
+  useEffect(() => {
+    if (trigger > 0) map.setView(HOME_VIEW.center, HOME_VIEW.zoom);
+  }, [trigger, map]);
+  return null;
+}
+
+function CenterCity({ coordinates }) {
+  const map = useMap();
+  useEffect(() => {
+    if (coordinates) map.setView(coordinates);
+  }, [coordinates, map]);
+  return null;
+}
+
+// ---------------------------------------------------------------------------
+// Agganci riutilizzabili
+// ---------------------------------------------------------------------------
+
+/** Ricalcola il giorno corrente: se si gioca oltre la mezzanotte, la sfida cambia. */
+function useDateKey() {
+  const [key, setKey] = useState(() => todayKey());
+  useEffect(() => {
+    const id = setInterval(() => setKey(todayKey()), 30000);
+    return () => clearInterval(id);
+  }, []);
+  return key;
+}
+
+function useCountdown() {
+  const [ms, setMs] = useState(() => msUntilNextDaily());
+  useEffect(() => {
+    const id = setInterval(() => setMs(msUntilNextDaily()), 30000);
+    return () => clearInterval(id);
+  }, []);
+  return ms;
+}
+
 /**
- * Rete di sicurezza: se qualcosa va storto mentre si disegna la pagina (per esempio un dato
- * rovinato in memoria locale), l'utente vede un messaggio e un pulsante invece di una pagina bianca.
- * Su un gioco che verra' condiviso con sconosciuti, una pagina bianca e' un giocatore perso.
+ * Cronometro del round. Si aggiorna ogni decimo di secondo perche' il punteggio dipende
+ * dal tempo impiegato, non solo dalla distanza.
  */
+function useRoundTimer(attivo) {
+  const [trascorsi, setTrascorsi] = useState(0);
+  const inizio = useRef(null);
+
+  useEffect(() => {
+    if (!attivo) {
+      inizio.current = null;
+      setTrascorsi(0);
+      return undefined;
+    }
+    inizio.current = Date.now();
+    setTrascorsi(0);
+    const id = setInterval(() => {
+      setTrascorsi((Date.now() - inizio.current) / 1000);
+    }, 100);
+    return () => clearInterval(id);
+  }, [attivo]);
+
+  return { trascorsi, rimanenti: Math.max(0, ROUND_TIME_LIMIT_S - trascorsi) };
+}
+
+// ---------------------------------------------------------------------------
+// Confine di sicurezza
+// ---------------------------------------------------------------------------
+
 class ErrorBoundary extends React.Component {
   constructor(props) {
     super(props);
@@ -90,10 +167,8 @@ class ErrorBoundary extends React.Component {
       <div className="start-page">
         <div className="daily-panel">
           <h1>Ops, qualcosa non va</h1>
-          <p className="countdown">
-            Si e' verificato un errore imprevisto. Ricaricare la pagina di solito risolve.
-          </p>
-          <button className="button" onClick={() => window.location.reload()} title="Ricarica la pagina">
+          <p className="countdown">Si è verificato un errore imprevisto. Ricaricare la pagina di solito risolve.</p>
+          <button type="button" className="button" onClick={() => window.location.reload()} title="Ricarica la pagina">
             Ricarica
           </button>
         </div>
@@ -102,42 +177,9 @@ class ErrorBoundary extends React.Component {
   }
 }
 
-/** Riporta la mappa all'inquadratura iniziale quando si passa al round successivo. */
-function ResetMapView({ trigger }) {
-  const map = useMap();
-  useEffect(() => {
-    if (trigger > 0) map.setView(HOME_VIEW.center, HOME_VIEW.zoom);
-  }, [trigger, map]);
-  return null;
-}
-
-/** Dopo la conferma, inquadra il comune da indovinare. */
-function CenterCity({ coordinates }) {
-  const map = useMap();
-  useEffect(() => {
-    if (coordinates) map.setView(coordinates);
-  }, [coordinates, map]);
-  return null;
-}
-
-/** Ricalcola il giorno corrente: se si gioca oltre la mezzanotte, la sfida deve cambiare. */
-function useDateKey() {
-  const [key, setKey] = useState(() => todayKey());
-  useEffect(() => {
-    const id = setInterval(() => setKey(todayKey()), 30000);
-    return () => clearInterval(id);
-  }, []);
-  return key;
-}
-
-function useCountdown() {
-  const [ms, setMs] = useState(() => msUntilNextDaily());
-  useEffect(() => {
-    const id = setInterval(() => setMs(msUntilNextDaily()), 30000);
-    return () => clearInterval(id);
-  }, []);
-  return ms;
-}
+// ---------------------------------------------------------------------------
+// Pezzi di interfaccia
+// ---------------------------------------------------------------------------
 
 function ShareBox({ result }) {
   const text = useMemo(() => buildShareText(result), [result]);
@@ -145,13 +187,12 @@ function ShareBox({ result }) {
 
   const handleShare = async () => {
     track(EVENTS.SHARE_CLICKED, { modalita: result.mode, punteggio: result.score });
-    const outcome = await shareResult(text);
-    setStatus(outcome);
+    setStatus(await shareResult(text));
   };
 
   return (
     <div className="share-box">
-      <button className="button share" onClick={handleShare} title="Condividi il risultato su WhatsApp o altrove">
+      <button type="button" className="button share" onClick={handleShare} title="Condividi il risultato">
         Condividi il risultato
       </button>
       {status === 'copied' && <p className="share-hint">Testo copiato: incollalo nella chat.</p>}
@@ -169,25 +210,114 @@ function RoundList({ rounds }) {
         <li key={`${r.name}-${i}`}>
           <span className="round-emoji" aria-hidden="true">{distanceEmoji(r.distanceM)}</span>
           <span className="round-name">{r.name}</span>
-          <span className="round-distance">{formatDistance(r.distanceM)}</span>
-          <span className="round-points">{r.points.toLocaleString('it-IT')}</span>
+          <span className="round-distance">
+            {r.skipped ? 'tempo scaduto' : formatDistance(r.distanceM)}
+          </span>
+          <span className="round-points">{(r.points || 0).toLocaleString('it-IT')}</span>
         </li>
       ))}
     </ul>
   );
 }
 
+/** Pastiglie per scegliere il territorio: tutta la Sardegna oppure una provincia. */
+function SelettoreTerritorio({ scelto, onScegli, gruppi }) {
+  return (
+    <div className="territorio">
+      <button
+        type="button"
+        className={`pillola ${scelto === null ? 'attiva' : ''}`}
+        onClick={() => onScegli(null)}
+        title="Gioca su tutti i comuni della Sardegna"
+      >
+        Tutta la Sardegna
+      </button>
+      {gruppi.map((g) => (
+        <button
+          key={g.sigla}
+          type="button"
+          className={`pillola ${scelto === g.sigla ? 'attiva' : ''}`}
+          onClick={() => onScegli(g.sigla)}
+          title={`Gioca sui ${g.cities.length} comuni della ${g.nome}`}
+        >
+          {g.breve}
+          <span className="pillola-conteggio">{g.cities.length}</span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+/** Pastiglie per scegliere quale classifica guardare. */
+function SelettoreClassifica({ scelte, attiva, onScegli }) {
+  return (
+    <div className="classifiche-scelta">
+      {scelte.map((s) => (
+        <button
+          key={s.id}
+          type="button"
+          className={`pillola ${attiva === s.id ? 'attiva' : ''}`}
+          onClick={() => onScegli(s.id)}
+        >
+          {s.nome}
+        </button>
+      ))}
+    </div>
+  );
+}
+
+function IndicatoreVite({ stato }) {
+  const mostrate = Math.min(stato.total, 5);
+  return (
+    <div className="vite" title={`${stato.freeLeft} gratuite oggi, ${stato.bought} comprate`}>
+      <span className="vite-etichetta">Vite</span>
+      <span className="vite-pallini">
+        {Array.from({ length: mostrate }).map((_, i) => (
+          <span key={i} className="vite-pallino" aria-hidden="true">
+            {i < stato.freeLeft ? '❤️' : '💛'}
+          </span>
+        ))}
+        {stato.total > mostrate && <span className="vite-extra">+{stato.total - mostrate}</span>}
+      </span>
+      <span className="vite-numero">{stato.total}</span>
+    </div>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Pagina iniziale
+// ---------------------------------------------------------------------------
+
 function StartPage({
   onStartDaily,
+  onStartRanked,
   onStartPractice,
-  onStartProvince,
-  province,
   dailyResult,
   inProgress,
   streak,
   countdownMs,
   dateKey,
+  province,
+  onScegliProvincia,
+  vite,
+  provinceGroups: gruppi,
 }) {
+  const classiDisponibili = useMemo(() => {
+    const base = [
+      { id: BOARD_GENERALE, nome: 'Generale' },
+      { id: dailyBoardId(dateKey), nome: 'Oggi' },
+    ];
+    if (province) base.push({ id: provinceBoardId(province.sigla), nome: province.breve });
+    return base;
+  }, [dateKey, province]);
+
+  const [classifica, setClassifica] = useState(classiDisponibili[0].id);
+  useEffect(() => {
+    if (!classiDisponibili.some((c) => c.id === classifica)) setClassifica(classiDisponibili[0].id);
+  }, [classiDisponibili, classifica]);
+
+  const puoGiocare = vite.canPlay;
+
   return (
     <div className="start-page">
       <header>
@@ -198,36 +328,13 @@ function StartPage({
       </header>
 
       <section className="intro">
-        <h1>{province ? province.nome.toUpperCase() : 'SCOPRI LA SARDEGNA!'}</h1>
-        <h2>
-          Da Bitti a Teulada, trova ogni paese sulla mappa.
-          <br />
-          Gioca ora e scopri quante ne Intzetti!
-        </h2>
+        <h1>{province ? province.breve.toUpperCase() : 'SCOPRI LA SARDEGNA!'}</h1>
 
+        <IndicatoreVite stato={vite} />
         {streak > 0 && (
           <p className="streak" title="Giorni consecutivi in cui hai giocato la sfida">
             🔥 {streak} {streak === 1 ? 'giorno di fila' : 'giorni di fila'}
           </p>
-        )}
-
-        {province && (
-          <div className="daily-panel province-panel">
-            <h3>
-              {province.comuni} comuni in questa provincia
-            </h3>
-            <button
-              className="play"
-              onClick={() => onStartProvince(province.sigla)}
-              title={`Gioca con i ${province.comuni} comuni della ${province.nome}`}
-            >
-              GIOCA SU QUESTI COMUNI
-            </button>
-            <p className="countdown">
-              La sfida del giorno invece comprende tutta la Sardegna.{' '}
-              <a href="/">Gioca con tutti i 377 comuni</a>
-            </p>
-          </div>
         )}
 
         {dailyResult ? (
@@ -243,40 +350,67 @@ function StartPage({
             </div>
             <ShareBox result={dailyResult} />
             <p className="countdown">Prossima sfida fra {formatCountdown(countdownMs)}</p>
-            <button
-              className="button secondary"
-              onClick={onStartPractice}
-              title="Gioca quanto vuoi, con comuni estratti a caso"
-            >
-              Allenati
-            </button>
           </div>
         ) : (
           <div className="daily-panel">
-            <button className="play" onClick={onStartDaily} title="La sfida di oggi: gli stessi comuni per tutti">
+            <button
+              type="button"
+              className="play"
+              onClick={onStartDaily}
+              disabled={!puoGiocare}
+              title="La sfida di oggi: gli stessi comuni per tutti, una volta sola"
+            >
               {inProgress ? 'RIPRENDI LA SFIDA' : 'SFIDA DEL GIORNO'}
             </button>
             <p className="countdown">
-              Sfida #{dailyNumber(dateKey)} · cambia fra {formatCountdown(countdownMs)}
+              Sfida #{dailyNumber(dateKey)} · {ROUNDS_PER_GAME} comuni · {ROUND_TIME_LIMIT_S}s a round
             </p>
-            <p className="countdown">
-              Non ricordi dove sono? <a href="/comuni-sardegna.html">Guarda l'elenco dei 377 comuni</a>
-            </p>
-            <button
-              className="button secondary"
-              onClick={onStartPractice}
-              title="Gioca quanto vuoi, con comuni estratti a caso"
-            >
-              Allenamento libero
-            </button>
           </div>
         )}
+
+        <div className="daily-panel territorio-pannello">
+          <h3>Scegli il territorio e gioca per la classifica</h3>
+          <SelettoreTerritorio scelto={province?.sigla ?? null} onScegli={onScegliProvincia} gruppi={gruppi} />
+          <button
+            type="button"
+            className="button"
+            onClick={onStartRanked}
+            disabled={!puoGiocare}
+            title="Partita valida per la classifica: consuma una vita"
+          >
+            {province ? `Gioca su ${province.comuni} comuni` : 'Gioca una partita classificata'}
+          </button>
+          <p className="countdown">
+            {puoGiocare
+              ? 'Consuma una vita. Il punteggio entra in classifica.'
+              : 'Vite esaurite per oggi. Puoi allenarti, oppure comprarne altre (in arrivo).'}
+          </p>
+        </div>
+
+        <div className="daily-panel">
+          <button
+            type="button"
+            className="button secondary"
+            onClick={onStartPractice}
+            title="Gioca quanto vuoi: non consuma vite e non entra in classifica"
+          >
+            Allenamento libero
+          </button>
+          <p className="countdown">Illimitato, senza vite, fuori classifica.</p>
+        </div>
       </section>
 
       <section className="stats">
-        <Leaderboard maxPlayers={5} />
+        <SelettoreClassifica scelte={classiDisponibili} attiva={classifica} onScegli={setClassifica} />
+        <Leaderboard
+          boardId={classifica}
+          maxPlayers={5}
+          titolo={classiDisponibili.find((c) => c.id === classifica)?.nome || 'Classifica'}
+        />
         <BestScore />
       </section>
+
+      <AdBanner />
 
       <footer className="legal-links">
         <a href="/comuni-sardegna.html">I 377 comuni della Sardegna</a>
@@ -289,7 +423,11 @@ function StartPage({
   );
 }
 
-function EndPage({ result, streak, onRestart, onPractice, refreshData }) {
+// ---------------------------------------------------------------------------
+// Pagina finale
+// ---------------------------------------------------------------------------
+
+function EndPage({ result, streak, onRestart, onPractice, refreshData, classificata }) {
   const { score, rounds, mode } = result;
   return (
     <div className="end-page">
@@ -307,14 +445,21 @@ function EndPage({ result, streak, onRestart, onPractice, refreshData }) {
         {score > 5000 && score <= 9000 && <h1>Bonu po fundi a Santu Ingiu!</h1>}
         {score > 9000 && score <= 20000 && <h1>Ndasi intzettau una pariga!</h1>}
         {score > 20000 && score <= 30000 && <h1>Bravu complimenti!</h1>}
-        {score > 30000 && score < 40000 && <h1>Bravu Meda!</h1>}
-        {score === 40000 && <h1>Ses un Intzettadori!</h1>}
+        {score > 30000 && score < MAX_GAME_SCORE && <h1>Bravu Meda!</h1>}
+        {score === MAX_GAME_SCORE && <h1>Ses un Intzettadori!</h1>}
       </div>
 
       <h2>
         {mode === 'daily' ? `Sfida #${dailyNumber(result.dateKey)} — ` : ''}
         Intzettati: {score.toLocaleString('it-IT')}/{MAX_GAME_SCORE.toLocaleString('it-IT')}
       </h2>
+
+      {!classificata && (
+        <p className="countdown">
+          Partita di allenamento: non entra in classifica. Gioca una partita classificata per
+          confrontarti con gli altri.
+        </p>
+      )}
 
       {streak > 0 && mode === 'daily' && (
         <p className="streak">🔥 {streak} {streak === 1 ? 'giorno' : 'giorni'} di fila</p>
@@ -324,10 +469,10 @@ function EndPage({ result, streak, onRestart, onPractice, refreshData }) {
       <ShareBox result={result} />
 
       <div className="end-actions">
-        <button className="button" onClick={onRestart} title="Torna alla pagina iniziale">
+        <button type="button" className="button" onClick={onRestart} title="Torna alla pagina iniziale">
           Torra a Giogai
         </button>
-        <button className="button secondary" onClick={onPractice} title="Nuova partita con comuni estratti a caso">
+        <button type="button" className="button secondary" onClick={onPractice} title="Nuova partita di allenamento">
           Allenamento
         </button>
       </div>
@@ -336,50 +481,85 @@ function EndPage({ result, streak, onRestart, onPractice, refreshData }) {
         <Leaderboard maxPlayers={10} refreshData={refreshData} />
         <BestScore score={score} />
       </section>
+
+      <AdBanner />
     </div>
   );
 }
 
-function Game({ mode, dateKey, cities, initialRounds = [], onProgress, onGameEnd }) {
+// ---------------------------------------------------------------------------
+// Partita
+// ---------------------------------------------------------------------------
+
+function Game({ modalita, dateKey, cities, initialRounds = [], onProgress, onGameEnd, classificata }) {
   const [roundIndex, setRoundIndex] = useState(initialRounds.length);
   const [rounds, setRounds] = useState(initialRounds);
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [showResult, setShowResult] = useState(false);
-  const [distance, setDistance] = useState(null);
-  const [lastPoints, setLastPoints] = useState(0);
+  const [ultimo, setUltimo] = useState(null);
   const [resetTrigger, setResetTrigger] = useState(0);
   const startedAtRef = useRef(Date.now());
+  const chiuso = useRef(false);
 
   const totalRounds = cities.length;
   const currentCity = cities[roundIndex] || null;
   const score = rounds.reduce((sum, r) => sum + r.points, 0);
+  const inCorso = !showResult && Boolean(currentCity);
+  const { trascorsi, rimanenti } = useRoundTimer(inCorso);
 
   const handleMapClick = (e) => {
     if (!showResult) setSelectedPosition(e.latlng);
   };
 
-  const handleConfirm = () => {
-    if (!selectedPosition || !currentCity || showResult) return;
+  /** Chiude il round: distanza e tempo insieme. */
+  const chiudiRound = useCallback(
+    (posizione, secondi) => {
+      if (chiuso.current || !currentCity) return;
+      chiuso.current = true;
 
-    const from = turf.point([selectedPosition.lng, selectedPosition.lat]);
-    const to = turf.point([currentCity.coordinates[1], currentCity.coordinates[0]]);
-    const distanceInKm = turf.distance(from, to);
-    const distanceM = distanceInKm * 1000;
-    const points = calcScore(distanceM);
+      let distanceM = null;
+      let punti = 0;
+      if (posizione) {
+        const from = turf.point([posizione.lng, posizione.lat]);
+        const to = turf.point([currentCity.coordinates[1], currentCity.coordinates[0]]);
+        distanceM = turf.distance(from, to) * 1000;
+        punti = roundPoints(distanceM, secondi);
+      }
 
-    const nextRounds = [...rounds, { name: currentCity.name, distanceM, points }];
-    setDistance(distanceInKm);
-    setLastPoints(points);
-    setRounds(nextRounds);
-    setShowResult(true);
+      const round = {
+        name: currentCity.name,
+        distanceM: distanceM === null ? Number.MAX_SAFE_INTEGER : distanceM,
+        points: punti,
+        seconds: Math.round(secondi * 10) / 10,
+        skipped: distanceM === null,
+      };
 
-    track(EVENTS.ROUND_SCORED, { modalita: mode, round: nextRounds.length, punti: points });
-    if (mode === 'daily') onProgress?.({ rounds: nextRounds });
-  };
+      const prossimi = [...rounds, round];
+      setUltimo({ ...round, quota: timeMultiplier(secondi) });
+      setRounds(prossimi);
+      setShowResult(true);
+
+      track(EVENTS.ROUND_SCORED, {
+        modalita,
+        round: prossimi.length,
+        punti,
+        secondi: round.seconds,
+        saltato: round.skipped,
+      });
+      if (classificata) onProgress?.({ rounds: prossimi });
+    },
+    [currentCity, modalita, onProgress, rounds, classificata]
+  );
+
+  // Tempo scaduto: si chiude il round con quello che c'e' sullo schermo.
+  useEffect(() => {
+    if (!inCorso || rimanenti > 0) return;
+    chiudiRound(selectedPosition, ROUND_TIME_LIMIT_S);
+  }, [inCorso, rimanenti, selectedPosition, chiudiRound]);
 
   const finish = (finalRounds) => {
     onGameEnd({
-      mode,
+      mode: modalita,
       dateKey,
       score: finalRounds.reduce((sum, r) => sum + r.points, 0),
       rounds: finalRounds,
@@ -389,40 +569,52 @@ function Game({ mode, dateKey, cities, initialRounds = [], onProgress, onGameEnd
 
   const handleNext = () => {
     const nextIndex = roundIndex + 1;
+    chiuso.current = false;
     if (nextIndex < totalRounds) {
       setRoundIndex(nextIndex);
       setSelectedPosition(null);
       setShowResult(false);
-      setDistance(null);
-      setLastPoints(0);
+      setUltimo(null);
       setResetTrigger((n) => n + 1);
     } else {
       finish(rounds);
     }
   };
 
-  // La barra spaziatrice conferma la scelta o passa al round successivo.
   useEffect(() => {
     const handleKeyPress = (e) => {
       if (e.code !== 'Space') return;
       e.preventDefault();
-      if (!showResult && selectedPosition) handleConfirm();
+      if (!showResult && selectedPosition) chiudiRound(selectedPosition, trascorsi);
       else if (showResult) handleNext();
     };
     window.addEventListener('keydown', handleKeyPress);
     return () => window.removeEventListener('keydown', handleKeyPress);
   });
 
+  const urgente = rimanenti <= 5;
+
   return (
     <section className="game-page">
       <div className="game-overlay">
         <div className="city-prompt">{currentCity ? currentCity.name : 'Caricando...'}</div>
 
+        <div className={`cronometro ${urgente ? 'urgente' : ''}`} title="Tempo rimasto per questo round">
+          <span className="cronometro-numero">{Math.ceil(rimanenti)}</span>
+          <span className="cronometro-barra" aria-hidden="true">
+            <span style={{ width: `${Math.max(0, (rimanenti / ROUND_TIME_LIMIT_S) * 100)}%` }} />
+          </span>
+        </div>
+
         <div className="score-display">
           {score.toLocaleString('it-IT')}/{(rounds.length * 5000).toLocaleString('it-IT')}
-          {distance !== null && (
+          {ultimo && (
             <div className="distance">
-              {formatDistance(distance * 1000)} · {lastPoints.toLocaleString('it-IT')} punti
+              {ultimo.skipped ? 'tempo scaduto' : formatDistance(ultimo.distanceM)} ·{' '}
+              {ultimo.points.toLocaleString('it-IT')} punti
+              {!ultimo.skipped && ultimo.quota < 1 && (
+                <span className="quota-tempo"> (tempo {Math.round(ultimo.quota * 100)}%)</span>
+              )}
             </div>
           )}
         </div>
@@ -433,12 +625,17 @@ function Game({ mode, dateKey, cities, initialRounds = [], onProgress, onGameEnd
 
         <div className="game-controls">
           {!showResult && selectedPosition && (
-            <button className="button" onClick={handleConfirm} title="Conferma la tua scelta">
+            <button
+              type="button"
+              className="button"
+              onClick={() => chiudiRound(selectedPosition, trascorsi)}
+              title="Conferma la tua scelta"
+            >
               Conferma
             </button>
           )}
           {showResult && (
-            <button className="button" onClick={handleNext} title="Vai avanti">
+            <button type="button" className="button" onClick={handleNext} title="Vai avanti">
               {roundIndex + 1 < totalRounds ? 'Prossimo' : 'Fine'}
             </button>
           )}
@@ -468,152 +665,240 @@ function Game({ mode, dateKey, cities, initialRounds = [], onProgress, onGameEnd
   );
 }
 
+// ---------------------------------------------------------------------------
+// Applicazione
+// ---------------------------------------------------------------------------
+
 function App() {
   const [gameState, setGameState] = useState('start');
-  const [mode, setMode] = useState('daily');
+  const [modalita, setModalita] = useState('daily');
+  const [classificata, setClassificata] = useState(false);
   const [cities, setCities] = useState([]);
   const [resumeRounds, setResumeRounds] = useState([]);
   const [gameDateKey, setGameDateKey] = useState(() => todayKey());
-  const [result, setResult] = useState(null);
+  const [risultato, setRisultato] = useState(null);
   const [dailyResult, setDailyResult] = useState(null);
   const [streak, setStreak] = useState(0);
   const [inProgress, setInProgress] = useState(false);
-  const { user } = useAuth();
+  const [vite, setVite] = useState(() => livesState(todayKey()));
+  const [videoAttivo, setVideoAttivo] = useState(false);
   const [refreshData, setRefreshData] = useState(false);
+  const [avviso, setAvviso] = useState(null);
+  const { user } = useAuth();
 
   const dateKey = useDateKey();
   const countdownMs = useCountdown();
+  const gruppi = useMemo(() => provinceGroups(), []);
 
-  // Provincia richiesta nell'indirizzo (?provincia=SS): arriva dalle pagine di contenuto.
-  // Si legge una volta sola, all'avvio: e' un parametro di ingresso, non uno stato che cambia.
+  // La provincia si puo' ricevere dall'indirizzo (?provincia=SS) oppure sceglierla dalla home.
   const [province, setProvince] = useState(() => {
     const p = provinceFromSearch(window.location.search);
     if (!p) return null;
     const comuni = citiesByProvince(p.sigla);
-    return comuni.length > 0 ? { ...p, comuni: comuni.length, pool: comuni } : null;
+    return comuni.length > 0 ? { ...p, comuni: comuni.length } : null;
   });
 
   useEffect(() => {
     initAnalytics();
     warnIfUnlicensedSource(TILE_SOURCE);
+    loadAdsScript();
   }, []);
 
-  // Quando cambia il giorno cambia la sfida: risultato, serie e partita in corso vanno riletti.
   useEffect(() => {
     setDailyResult(getDailyResult(dateKey));
     setStreak(effectiveStreak(dateKey));
+    setVite(livesState(dateKey));
     const progress = getDailyProgress(dateKey);
-    const done = progress && progress.rounds ? progress.rounds.length : 0;
+    const done = progress?.rounds ? progress.rounds.length : 0;
     setInProgress(done > 0 && done < ROUNDS_PER_GAME);
   }, [dateKey]);
 
-  const beginGame = (nextMode, nextCities, initialRounds) => {
-    setMode(nextMode);
-    setCities(nextCities);
+  const scegliProvincia = (sigla) => {
+    if (!sigla) {
+      setProvince(null);
+      window.history.replaceState({}, '', '/');
+      return;
+    }
+    const comuni = citiesByProvince(sigla);
+    if (comuni.length === 0) return;
+    setProvince({ ...PROVINCE[sigla], comuni: comuni.length });
+    window.history.replaceState({}, '', `/?provincia=${sigla}`);
+    track(EVENTS.PRACTICE_STARTED, { azione: 'scelta_provincia', provincia: sigla });
+  };
+
+  const beginGame = (prossimaModalita, prossimeCitta, initialRounds, eClassificata) => {
+    setModalita(prossimaModalita);
+    setCities(prossimeCitta);
     setResumeRounds(initialRounds);
+    setClassificata(eClassificata);
     setGameDateKey(dateKey);
     setGameState('playing');
   };
 
+  /** Consuma una vita. Restituisce false se non ce ne sono. */
+  const prendiVita = () => {
+    const ok = consumeLife(dateKey);
+    setVite(livesState(dateKey));
+    if (!ok) {
+      setAvviso(
+        'Hai esaurito le vite di oggi. Puoi allenarti quanto vuoi, oppure comprarne altre (in arrivo).'
+      );
+      track(EVENTS.DAILY_BLOCKED, { motivo: 'vite_esaurite' });
+    }
+    return ok;
+  };
+
   const startDaily = () => {
     if (getDailyResult(dateKey)) {
-      // Qui non dovrebbe arrivarsi (il pulsante cambia), ma la sfida non si rigioca:
-      // e' proprio il fatto di poterla fare una volta sola a renderla un appuntamento.
-      track(EVENTS.DAILY_BLOCKED, {});
+      track(EVENTS.DAILY_BLOCKED, { motivo: 'gia_giocata' });
       return;
     }
     const progress = getDailyProgress(dateKey);
-    const done = progress && progress.rounds ? progress.rounds.length : 0;
+    const done = progress?.rounds ? progress.rounds.length : 0;
     const initialRounds = done > 0 && done < ROUNDS_PER_GAME ? progress.rounds : [];
+
+    // Riprendere la stessa partita non costa una seconda vita.
+    if (initialRounds.length === 0 && !prendiVita()) return;
 
     track(initialRounds.length ? EVENTS.DAILY_RESUMED : EVENTS.GAME_STARTED, {
       modalita: 'daily',
       round_gia_fatti: initialRounds.length,
     });
-    beginGame('daily', pickDailyCities(dateKey), initialRounds);
+    setAvviso(null);
+    beginGame('daily', pickDailyCities(dateKey), initialRounds, true);
+  };
+
+  const startRanked = () => {
+    if (!prendiVita()) return;
+    const sigla = province?.sigla || null;
+    const insieme = sigla ? citiesByProvince(sigla) : null;
+    track(EVENTS.GAME_STARTED, { modalita: 'ranked', provincia: sigla || 'tutte' });
+    setAvviso(null);
+    beginGame('ranked', insieme ? pickRandomFrom(insieme) : pickRandomCities(), [], true);
   };
 
   const startPractice = () => {
-    track(EVENTS.PRACTICE_STARTED, { provincia: province?.sigla || 'tutte' });
-    beginGame('practice', pickRandomCities(), []);
-  };
-
-  /** Partita di allenamento limitata ai comuni di una provincia. */
-  const startProvince = (sigla) => {
-    const comuni = citiesByProvince(sigla);
-    if (comuni.length === 0) return;
-    track(EVENTS.PRACTICE_STARTED, { provincia: sigla, comuni: comuni.length });
-    beginGame('practice', pickRandomFrom(comuni), []);
+    const sigla = province?.sigla || null;
+    const insieme = sigla ? citiesByProvince(sigla) : null;
+    track(EVENTS.PRACTICE_STARTED, { provincia: sigla || 'tutte' });
+    setAvviso(null);
+    beginGame('practice', insieme ? pickRandomFrom(insieme) : pickRandomCities(), [], false);
   };
 
   const handleProgress = (progress) => {
-    if (mode === 'daily') saveDailyProgress(gameDateKey, progress);
+    if (classificata) saveDailyProgress(gameDateKey, progress);
   };
 
-  const endGame = async (finished) => {
-    setResult(finished);
+  const endGame = async (finito) => {
+    setRisultato(finito);
     setGameState('end');
     track(EVENTS.GAME_FINISHED, {
-      modalita: finished.mode,
-      punteggio: finished.score,
-      durata_s: Math.round(finished.durationMs / 1000),
+      modalita: finito.mode,
+      punteggio: finito.score,
+      durata_s: Math.round(finito.durationMs / 1000),
     });
 
-    if (finished.mode === 'daily') {
-      // Risultato del giorno salvato, partita in corso archiviata, serie aggiornata.
-      saveDailyResult(finished.dateKey, finished);
-      clearDailyProgress(finished.dateKey);
-      setDailyResult(finished);
-      setStreak(registerDailyPlayed(finished.dateKey).current);
+    if (finito.mode === 'daily') {
+      saveDailyResult(finito.dateKey, finito);
+      clearDailyProgress(finito.dateKey);
+      setDailyResult(finito);
+      setStreak(registerDailyPlayed(finito.dateKey).current);
       setInProgress(false);
     }
 
-    if (user) {
-      try {
-        await upsertBestScore(user.uid, finished.score);
-        setRefreshData((prev) => !prev);
-      } catch (error) {
-        console.error('Errore durante il salvataggio del punteggio:', error);
+    // Il video sta fra la fine della partita e il risultato: e' l'unico momento in cui
+    // l'utente sta comunque aspettando qualcosa.
+    if (adsActive()) setVideoAttivo(true);
+
+    // Entrano in classifica SOLO le partite giocate con le vite.
+    if (classificata) {
+      if (!user) {
+        setAvviso(
+          'Punteggio non salvato: per entrare in classifica serve un accesso. Accedi e riprova.'
+        );
+      } else {
+        const boardId = boardForRun({
+          mode: finito.mode,
+          provinceSigla: province?.sigla || null,
+          dateKey: finito.dateKey,
+        });
+        if (boardId) {
+          try {
+            await saveRankedScore({
+              uid: user.uid,
+              username: user.displayName || 'Giocatore',
+              boardId,
+              score: finito.score,
+            });
+            setRefreshData((v) => !v);
+          } catch (error) {
+            console.error('Errore nel salvataggio del punteggio:', error);
+          }
+        }
       }
     }
   };
 
-  const goHome = () => setGameState('start');
+  const goHome = () => {
+    setVideoAttivo(false);
+    setGameState('start');
+    setVite(livesState(dateKey));
+  };
 
   return (
     <ErrorBoundary>
       {gameState === 'start' && (
         <StartPage
           onStartDaily={startDaily}
+          onStartRanked={startRanked}
           onStartPractice={startPractice}
-          onStartProvince={startProvince}
-          province={province}
           dailyResult={dailyResult}
           inProgress={inProgress}
           streak={streak}
           countdownMs={countdownMs}
           dateKey={dateKey}
+          province={province}
+          onScegliProvincia={scegliProvincia}
+          vite={vite}
+          provinceGroups={gruppi}
         />
       )}
+
       {gameState === 'playing' && (
         <Game
-          key={`${mode}-${gameDateKey}-${resumeRounds.length}`}
-          mode={mode}
+          key={`${modalita}-${gameDateKey}-${resumeRounds.length}-${province?.sigla || 'tutte'}`}
+          modalita={modalita}
           dateKey={gameDateKey}
           cities={cities}
           initialRounds={resumeRounds}
           onProgress={handleProgress}
           onGameEnd={endGame}
+          classificata={classificata}
         />
       )}
-      {gameState === 'end' && result && (
+
+      {gameState === 'end' && risultato && !videoAttivo && (
         <EndPage
-          result={result}
+          result={risultato}
           streak={streak}
           onRestart={goHome}
           onPractice={startPractice}
           refreshData={refreshData}
+          classificata={classificata}
         />
+      )}
+
+      {gameState === 'end' && videoAttivo && (
+        <VideoBreak attivo={videoAttivo} onFinito={() => setVideoAttivo(false)} />
+      )}
+
+      {avviso && (
+        <div className="avviso" role="alert">
+          <p>{avviso}</p>
+          <button type="button" onClick={() => setAvviso(null)} title="Chiudi">
+            Chiudi
+          </button>
+        </div>
       )}
     </ErrorBoundary>
   );

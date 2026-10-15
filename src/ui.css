@@ -1,0 +1,503 @@
+/* Stili dell'interfaccia nuova: vite, territorio, classifiche, cronometro, profilo, pubblicita'.
+   Tutto pensato prima per il telefono e poi allargato agli schermi grandi. */
+
+/* ------------------------------------------------------------------ */
+/* Vite                                                                */
+/* ------------------------------------------------------------------ */
+.vite {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 0, 0, 0.22);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+}
+
+.vite-etichetta {
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  opacity: 0.85;
+}
+
+.vite-pallini {
+  display: flex;
+  gap: 2px;
+  line-height: 1;
+}
+
+.vite-pallino {
+  font-size: 0.95rem;
+}
+
+.vite-extra {
+  font-size: 0.8rem;
+  opacity: 0.9;
+  align-self: center;
+}
+
+.vite-numero {
+  font-weight: 700;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pastiglie: territorio e classifiche                                 */
+/* ------------------------------------------------------------------ */
+.territorio,
+.classifiche-scelta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  width: 100%;
+}
+
+.pillola {
+  background: rgba(0, 0, 0, 0.22);
+  color: var(--primary-text);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: none;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+.pillola:hover {
+  background: rgba(0, 0, 0, 0.4);
+  transform: none;
+}
+
+.pillola.attiva {
+  background: var(--secondary-color);
+  border-color: var(--primary-light);
+  font-weight: 700;
+}
+
+.pillola-conteggio {
+  background: rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 0 7px;
+  font-size: 0.78rem;
+}
+
+.territorio-pannello {
+  background: rgba(0, 0, 0, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  padding: 18px 14px;
+}
+
+.territorio-pannello h3 {
+  text-align: center;
+  font-size: clamp(0.95rem, 2.4vw, 1.1rem);
+  margin-bottom: 6px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Cronometro del round                                                */
+/* ------------------------------------------------------------------ */
+.cronometro {
+  position: absolute;
+  top: 20px;
+  right: 16px;
+  width: 68px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  background: var(--primary-color);
+  border-radius: 16px;
+  padding: 8px 6px;
+  box-shadow: var(--elevation-2);
+  pointer-events: none;
+}
+
+.cronometro-numero {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.cronometro-barra {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.cronometro-barra > span {
+  display: block;
+  height: 100%;
+  background: var(--secondary-light);
+  transition: width 0.1s linear;
+}
+
+.cronometro.urgente {
+  background: var(--error);
+  animation: pulsa 1s ease-in-out infinite;
+}
+
+.cronometro.urgente .cronometro-barra > span {
+  background: #ffd8d8;
+}
+
+@keyframes pulsa {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+.quota-tempo {
+  opacity: 0.85;
+}
+
+/* ------------------------------------------------------------------ */
+/* Classifica: iniziali al posto delle foto                            */
+/* ------------------------------------------------------------------ */
+.player-initials {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Profilo                                                             */
+/* ------------------------------------------------------------------ */
+.profilo-pulsante {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  background: transparent;
+  box-shadow: none;
+  padding: 4px 8px;
+  border-radius: 12px;
+  min-width: 74px;
+}
+
+.profilo-pulsante:hover {
+  background: rgba(0, 0, 0, 0.2);
+  transform: none;
+}
+
+.profilo-pulsante .user-name {
+  font-size: 0.95rem;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.profilo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profilo h2,
+.profilo h3 {
+  text-align: center;
+  color: #333;
+  text-shadow: none;
+}
+
+.profilo h3 {
+  margin-top: 8px;
+}
+
+.profilo-anteprima {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.profilo-avatar-grande {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--background);
+  border: 3px solid var(--secondary-light);
+}
+
+.profilo-nome {
+  font-weight: 700;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.profilo-ok {
+  text-align: center;
+  color: var(--secondary-dark);
+  font-weight: 700;
+}
+
+.avatar-griglia {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.avatar-scelta {
+  background: var(--background);
+  border: 3px solid transparent;
+  border-radius: 14px;
+  padding: 6px;
+  cursor: pointer;
+  box-shadow: none;
+  display: flex;
+  justify-content: center;
+}
+
+.avatar-scelta:hover {
+  transform: none;
+  background: #e9e9e9;
+}
+
+.avatar-scelta img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+}
+
+.avatar-scelta.selezionato {
+  border-color: var(--secondary-color);
+  background: #e6f0e2;
+}
+
+.avatar-scelta.attuale {
+  border-color: var(--primary-light);
+}
+
+.profilo-azioni {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.profilo-nome-riga {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.profilo-nome-riga input {
+  flex: 1;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+.profilo-nota {
+  font-size: 0.85rem;
+  color: #666;
+  text-align: center;
+}
+
+.profilo-uscita {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.auth-errore {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 1200;
+  background: var(--error);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--elevation-3);
+}
+
+.auth-errore p {
+  flex: 1;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.auth-errore button {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Avvisi                                                              */
+/* ------------------------------------------------------------------ */
+.avviso {
+  position: fixed;
+  left: 12px;
+  right: 12px;
+  bottom: 12px;
+  z-index: 1200;
+  background: var(--primary-dark);
+  color: #fff;
+  border-radius: 12px;
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--elevation-3);
+}
+
+.avviso p {
+  flex: 1;
+  margin: 0;
+  font-size: 0.92rem;
+}
+
+.avviso button {
+  background: rgba(255, 255, 255, 0.18);
+  padding: 6px 12px;
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Pubblicita'                                                         */
+/* ------------------------------------------------------------------ */
+.ad-banner {
+  width: 100%;
+  max-width: 520px;
+  margin: 18px auto 0;
+  min-height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ad-finto {
+  width: 100%;
+  min-height: 60px;
+  border: 2px dashed rgba(255, 255, 255, 0.45);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ad-finto small {
+  text-transform: none;
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.video-pubblicita {
+  position: fixed;
+  inset: 0;
+  z-index: 1300;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 20px;
+}
+
+.video-riquadro {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 4 / 3;
+  background: #111;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-finto {
+  text-align: center;
+  color: #ddd;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.video-finto small {
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.7;
+}
+
+.video-conteggio {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.video-chiudi {
+  min-width: 200px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Schermi grandi                                                      */
+/* ------------------------------------------------------------------ */
+@media (min-width: 700px) {
+  .territorio,
+  .classifiche-scelta {
+    max-width: 620px;
+  }
+
+  .avatar-griglia {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .cronometro {
+    width: 80px;
+    right: 24px;
+  }
+
+  .avviso {
+    left: auto;
+    right: 20px;
+    max-width: 420px;
+  }
+
+  .auth-errore {
+    left: auto;
+    right: 20px;
+    max-width: 420px;
+  }
+}
